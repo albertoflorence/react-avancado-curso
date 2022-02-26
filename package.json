@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src --max-warnings=0"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -20,6 +20,8 @@
     "@typescript-eslint/parser": "^5.12.1",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
-    "eslint-plugin-react": "^7.29.1"
+    "eslint-plugin-react": "^7.29.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4"
   }
 }
