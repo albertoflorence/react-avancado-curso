@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "npm t -- --watch",
+    "test:staged": "npm t -- --bail --findRelatedTests"
   },
   "dependencies": {
     "next": "12.1.0",
