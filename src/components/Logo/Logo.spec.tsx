@@ -16,4 +16,18 @@ describe('<Logo />', () => {
       color: theme.colors.black
     })
   })
+
+  it('should render a bigger logo', () => {
+    renderWithTheme(<Logo size={'large'} />)
+    expect(screen.getByLabelText(/won games/i).parentElement).toHaveStyle({
+      width: '200px'
+    })
+  })
+
+  it('should render a normal logo', () => {
+    renderWithTheme(<Logo />)
+    expect(screen.getByLabelText(/won games/i).parentElement).toHaveStyle({
+      width: '110px'
+    })
+  })
 })

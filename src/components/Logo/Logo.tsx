@@ -2,11 +2,12 @@ import * as S from './LogoStyles'
 
 export interface LogoProps {
   color?: 'white' | 'black'
+  size?: 'normal' | 'large'
 }
 
-const Logo = ({ color }: LogoProps) => {
+const Logo = (props: LogoProps) => {
   return (
-    <S.Wrapper color={color}>
+    <S.Wrapper {...props}>
       <Svg />
     </S.Wrapper>
   )
@@ -14,8 +15,7 @@ const Logo = ({ color }: LogoProps) => {
 
 const Svg = () => (
   <svg
-    width="158"
-    height="48"
+    viewBox="0 0 158 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
