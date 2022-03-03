@@ -49,5 +49,11 @@ export default {
   transition: {
     default: '0.3s ease-in-out',
     fast: '0.1s ease-in-out'
+  },
+  breakpoints: {
+    huge: '1440px',
+    large: '1170px',
+    medium: '768px',
+    small: '450px'
   }
 } as const
