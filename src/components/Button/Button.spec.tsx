@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme, theme } from 'utils/tests'
 import Button, { ButtonProps } from './Button'
-import { AddShoppingCart } from 'components/Icons'
+import { Icon } from 'components'
 
-const makeIcon = (id: string) => <AddShoppingCart data-testid={id} />
+const makeIcon = (id: string) => <Icon label="AddShoppingCart" data-testid={id} />
 
 const init = (props?: ButtonProps) => {
   renderWithTheme(<Button {...props}>Won Games</Button>)

@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Button, { ButtonProps } from './Button'
-import { AddShoppingCart } from 'components/Icons'
+import { Icon } from 'components'
+
 export default {
   title: 'Button',
   component: Button
@@ -14,11 +15,11 @@ Default.args = {
 export const WithStartIcon: Story<ButtonProps> = args => <Button {...args} />
 WithStartIcon.args = {
   children: 'Buy now',
-  startIcon: <AddShoppingCart />
+  startIcon: <Icon label="AddShoppingCart" />
 }
 
 export const WithEndIcon: Story<ButtonProps> = args => <Button {...args} />
 WithEndIcon.args = {
   children: 'Buy now',
-  endIcon: <AddShoppingCart />
+  endIcon: <Icon label="AddShoppingCart" />
 }
