@@ -1,6 +1,7 @@
-const spacing = (n: number) => {
-  return `${8 * n}px`
-}
+type SpacingType = number | 'auto'
+type SpacingArgs = [SpacingType, SpacingType?, SpacingType?, SpacingType?]
+const spacing = (...args: SpacingArgs): string =>
+  args.map(arg => (typeof arg === 'number' ? `${8 * arg}px` : arg)).join(' ')
 
 export default {
   grid: {
@@ -37,6 +38,9 @@ export default {
     gray: '#8F8F8F',
     darkGray: '#2E2F42',
     red: '#FF6347'
+  },
+  gradients: {
+    primary: 'linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%)'
   },
   spacing,
   layers: {
