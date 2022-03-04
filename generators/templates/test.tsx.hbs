@@ -1,13 +1,17 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme, theme } from 'utils/tests'
+import {{pascalCase name}}, { {{pascalCase name}}Props } from './{{pascalCase name}}'
 
-import {{pascalCase name}} from './{{pascalCase name}}'
+const init = (props?: {{pascalCase name}}Props) => {
+  renderWithTheme(<{{pascalCase name}} {...props} />)
+  return screen.getByLabelText(/won games/i)
+}
+
 
 describe('<{{pascalCase name}} />', () => {
-  it('should render the heading', () => {
-    const { container } = render(<{{pascalCase name}} />)
+  it('should render', () => {
+    const sut = init()
 
-    expect(screen.getByRole('heading', { name: /{{pascalCase name}}/i })).toBeInTheDocument()
-
-    expect(container.firstChild).toMatchSnapshot()
+    expect(sut).toBeTruthy
   })
 })
