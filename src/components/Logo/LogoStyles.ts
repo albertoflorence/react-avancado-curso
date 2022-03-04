@@ -15,18 +15,16 @@ const sizes = {
 
 const handleHideOnMobile = () => css`
   ${media.lessThan('medium')`
-width: 58px;
-height: 45px;
-
-svg {
-  height: 45px;
-  pointer-events: none;
-}
-
-.text {
-  display: none
-}
-`}
+    width: 58px;
+    height: 45px;
+    svg {
+      height: 45px;
+      pointer-events: none;
+    }
+    .text {
+      display: none;
+    }
+  `}
 `
 
 export const Wrapper = styled.div<LogoProps>`
