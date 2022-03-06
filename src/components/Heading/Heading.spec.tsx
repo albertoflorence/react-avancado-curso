@@ -9,10 +9,11 @@ const init = (props?: Partial<HeadingProps>) => {
 }
 
 describe('<Heading />', () => {
-  it('should render a white heading by default', () => {
+  it('should render with the default values', () => {
     const sut = init()
     expect(sut).toHaveStyle({
-      color: theme.colors.white
+      color: theme.colors.white,
+      fontSize: theme.font.sizes.xlarge
     })
   })
 
@@ -41,6 +42,13 @@ describe('<Heading />', () => {
     const sut = init({ line: 'left', lineColor: 'secondary' })
     expect(sut).toHaveStyle({
       borderLeft: `5px solid ${theme.colors.secondary}`
+    })
+  })
+
+  it('should render a heading with a small size', () => {
+    const sut = init({ size: 'small' })
+    expect(sut).toHaveStyle({
+      fontSize: theme.font.sizes.medium
     })
   })
 })

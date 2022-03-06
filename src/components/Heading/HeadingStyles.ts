@@ -1,5 +1,4 @@
 import styled, { css, DefaultTheme } from 'styled-components'
-import media from 'styled-media-query'
 import { HeadingProps, LineColors } from './Heading'
 
 const lines = {
@@ -9,7 +8,7 @@ const lines = {
   `,
   bottom: (theme: DefaultTheme, color: LineColors) => css`
     position: relative;
-    margin-bottom: ${theme.spacing(1.5)};
+    margin-bottom: ${theme.spacing(1)};
 
     &::after {
       position: absolute;
@@ -22,14 +21,20 @@ const lines = {
   `
 }
 
-export const Wrapper = styled.h2<HeadingProps>`
-  ${({ theme, color = 'white', line, lineColor = 'primary' }) => css`
+const sizes = {
+  small: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.medium};
+  `,
+  medium: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xlarge};
-    color: ${theme.colors[color]};
-    ${line && lines[line](theme, lineColor)}
+  `
+}
 
-    ${media.greaterThan('medium')`
-      font-size: ${theme.font.sizes.xxlarge};
-    `}
+export const Wrapper = styled.h2<HeadingProps>`
+  ${({ theme, color = 'white', line, lineColor = 'primary', size = 'medium' }) => css`
+    color: ${theme.colors[color]};
+
+    ${line && lines[line](theme, lineColor)}
+    ${size && sizes[size](theme)}
   `}
 `
