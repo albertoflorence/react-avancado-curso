@@ -7,6 +7,7 @@ export interface HeadingProps {
   color?: 'white' | 'black'
   line?: 'left' | 'bottom'
   lineColor?: LineColors
+  size?: 'small'
 }
 
 const Heading = ({ children, ...props }: HeadingProps) => (

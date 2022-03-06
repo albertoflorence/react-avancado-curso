@@ -43,4 +43,11 @@ describe('<Heading />', () => {
       borderLeft: `5px solid ${theme.colors.secondary}`
     })
   })
+
+  it('should render a heading with a small size', () => {
+    const sut = init({ size: 'small' })
+    expect(sut).toHaveStyle({
+      fontSize: theme.font.sizes.medium
+    })
+  })
 })

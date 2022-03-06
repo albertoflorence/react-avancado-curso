@@ -22,8 +22,14 @@ const lines = {
   `
 }
 
+const sizes = {
+  small: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.medium};
+  `
+}
+
 export const Wrapper = styled.h2<HeadingProps>`
-  ${({ theme, color = 'white', line, lineColor = 'primary' }) => css`
+  ${({ theme, color = 'white', line, lineColor = 'primary', size }) => css`
     font-size: ${theme.font.sizes.xlarge};
     color: ${theme.colors[color]};
     ${line && lines[line](theme, lineColor)}
@@ -31,5 +37,7 @@ export const Wrapper = styled.h2<HeadingProps>`
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.xxlarge};
     `}
+
+    ${size && sizes[size](theme)}
   `}
 `
