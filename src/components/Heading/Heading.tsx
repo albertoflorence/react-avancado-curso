@@ -8,6 +8,7 @@ export interface HeadingProps {
   line?: 'left' | 'bottom'
   lineColor?: LineColors
   size?: 'small' | 'medium'
+  textTransform?: 'uppercase' | 'lowercase' | 'capitalize'
 }
 
 const Heading = ({ children, ...props }: HeadingProps) => (

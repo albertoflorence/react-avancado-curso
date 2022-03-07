@@ -30,11 +30,23 @@ const sizes = {
   `
 }
 
+const handleTextTransform = (type: HeadingProps['textTransform']) => css`
+  text-transform: ${type};
+`
+
 export const Wrapper = styled.h2<HeadingProps>`
-  ${({ theme, color = 'white', line, lineColor = 'primary', size = 'medium' }) => css`
+  ${({
+    theme,
+    color = 'white',
+    line,
+    lineColor = 'primary',
+    size = 'medium',
+    textTransform
+  }) => css`
     color: ${theme.colors[color]};
 
     ${line && lines[line](theme, lineColor)}
     ${size && sizes[size](theme)}
+    ${textTransform && handleTextTransform(textTransform)}
   `}
 `

@@ -51,4 +51,25 @@ describe('<Heading />', () => {
       fontSize: theme.font.sizes.medium
     })
   })
+
+  it('should render with uppercase text', () => {
+    const sut = init({ textTransform: 'uppercase' })
+    expect(sut).toHaveStyle({
+      textTransform: 'uppercase'
+    })
+  })
+
+  it('should render with lowercase text', () => {
+    const sut = init({ textTransform: 'lowercase' })
+    expect(sut).toHaveStyle({
+      textTransform: 'lowercase'
+    })
+  })
+
+  it('should render with capitalize text', () => {
+    const sut = init({ textTransform: 'capitalize' })
+    expect(sut).toHaveStyle({
+      textTransform: 'capitalize'
+    })
+  })
 })
