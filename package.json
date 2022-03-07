@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
-    "test": "jest",
+    "test": "jest --maxWorkers=50%",
     "test:watch": "npm t -- --watch",
     "test:staged": "npm t -- --bail --findRelatedTests",
     "storybook": "start-storybook -p 6006",
