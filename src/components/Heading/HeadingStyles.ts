@@ -8,15 +8,15 @@ const lines = {
   `,
   bottom: (theme: DefaultTheme, color: LineColors) => css`
     position: relative;
-    margin-bottom: ${theme.spacing(1)};
+    margin-bottom: 4px;
 
     &::after {
       position: absolute;
       left: 0;
-      bottom: -10px;
+      bottom: -4px;
       content: '';
-      width: 2em;
-      border-bottom: 5px solid ${theme.colors[color]};
+      width: 1.8em;
+      border-bottom: 4px solid ${theme.colors[color]};
     }
   `
 }

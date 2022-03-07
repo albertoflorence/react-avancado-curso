@@ -33,7 +33,7 @@ describe('<Heading />', () => {
 
   it('should render with a bottom line', () => {
     const sut = init({ line: 'bottom' })
-    expect(sut).toHaveStyleRule('border-bottom', `5px solid ${theme.colors.primary}`, {
+    expect(sut).toHaveStyleRule('border-bottom', `4px solid ${theme.colors.primary}`, {
       modifier: '::after'
     })
   })
