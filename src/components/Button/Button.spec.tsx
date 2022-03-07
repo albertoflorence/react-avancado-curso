@@ -5,9 +5,9 @@ import { Icon } from 'components'
 
 const makeIcon = (id: string) => <Icon label="AddShoppingCart" data-testid={id} />
 
-const init = (props?: ButtonProps) => {
+const init = (props?: ButtonProps, role = 'button') => {
   renderWithTheme(<Button {...props}>Won Games</Button>)
-  return screen.getByRole('button', { name: /won games/i })
+  return screen.getByRole(role, { name: /won games/i })
 }
 
 describe('<Button />', () => {
@@ -57,5 +57,10 @@ describe('<Button />', () => {
     const sut = init({ endIcon: makeIcon('endIcon') })
     expect(sut).toBeInTheDocument()
     expect(screen.getByTestId('endIcon')).toBeInTheDocument()
+  })
+
+  it('should render as a link', () => {
+    const sut = init({ as: 'a', href: '/link' }, 'link')
+    expect(sut).toHaveAttribute('href', '/link')
   })
 })

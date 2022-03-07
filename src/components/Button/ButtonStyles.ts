@@ -20,10 +20,6 @@ const handleFullWidth = () => css`
 `
 
 const handleIcon = (theme: DefaultTheme) => css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
   svg {
     width: 1em;
     & + span {
@@ -36,18 +32,24 @@ const handleIcon = (theme: DefaultTheme) => css`
   }
 `
 
-interface WrapperProps extends ButtonProps {
+type WrapperProps = {
   hasIcon: boolean
-}
+} & ButtonProps
 
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size = 'medium', fullWidth = false, hasIcon }) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: ${theme.gradients.primary};
     color: ${theme.colors.white};
     border: none;
     border-radius: ${theme.border.radius};
     padding: ${theme.spacing(1)};
     cursor: pointer;
+    text-decoration: none;
+    font-weight: ${theme.font.normal};
+    height: 2.5em;
 
     ${size && sizes[size](theme)}
     ${fullWidth && handleFullWidth}

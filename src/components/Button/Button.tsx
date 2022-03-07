@@ -1,12 +1,14 @@
 import * as S from './ButtonStyles'
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  children?: React.ReactNode
+type ButtonTypes = React.ComponentPropsWithoutRef<'button'> | React.ComponentPropsWithoutRef<'a'>
+
+export type ButtonProps = {
   size?: 'small' | 'medium' | 'large'
   fullWidth?: boolean
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
-}
+  as?: React.ElementType
+} & ButtonTypes
 
 const Button = ({ children, startIcon, endIcon, ...props }: ButtonProps) => (
   <S.Wrapper {...props} hasIcon={Boolean(startIcon || endIcon)}>

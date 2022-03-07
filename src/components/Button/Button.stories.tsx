@@ -23,3 +23,11 @@ WithEndIcon.args = {
   children: 'Buy now',
   endIcon: <Icon label="AddShoppingCart" />
 }
+
+export const AsLink: Story<ButtonProps> = args => <Button {...args} />
+AsLink.args = {
+  size: 'large',
+  children: 'Buy now',
+  as: 'a',
+  href: '/link'
+}
