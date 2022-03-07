@@ -12,7 +12,8 @@
     "test:staged": "npm t -- --bail --findRelatedTests",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "generate": "plop --plopfile generators/plopfile.js"
+    "generate": "plop --plopfile generators/plopfile.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "12.1.0",
