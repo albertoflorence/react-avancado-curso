@@ -32,4 +32,13 @@ describe('<Banner />', () => {
     expect(makeItem(props.image, 'img', 'src')).toBeInTheDocument()
     expect(makeItem(props.buttonLink, 'link', 'href')).toBeInTheDocument()
   })
+
+  it('should render with Ribbon', () => {
+    const props = mockBannerProps()
+    init({
+      ...props,
+      ribbon: 'best seller'
+    })
+    expect(screen.getByText('best seller')).toBeInTheDocument()
+  })
 })

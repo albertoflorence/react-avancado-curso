@@ -9,11 +9,21 @@ export default {
     title: 'Defy death',
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
-    buttonLink: '/games/defy-death'
+    buttonLink: '/games/defy-death',
+    ribbon: 'Best Seller'
   },
   parameters: {
     layout: 'fullScreen'
   }
 } as Meta
 
-export const Default: Story<BannerProps> = args => <Banner {...args} />
+export const Default: Story<BannerProps> = args => (
+  <div
+    style={{
+      maxWidth: '1040px',
+      margin: '0 auto'
+    }}
+  >
+    <Banner {...args} />
+  </div>
+)

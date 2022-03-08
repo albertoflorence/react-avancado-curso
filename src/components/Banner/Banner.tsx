@@ -1,4 +1,4 @@
-import { Button } from 'components'
+import { Button, Ribbon } from 'components'
 import * as S from './BannerStyles'
 
 export interface BannerProps {
@@ -7,10 +7,12 @@ export interface BannerProps {
   subtitle: string
   buttonLabel: string
   buttonLink: string
+  ribbon?: string
 }
 
-const Banner = ({ image, title, subtitle, buttonLabel, buttonLink }: BannerProps) => (
+const Banner = ({ image, title, subtitle, buttonLabel, buttonLink, ribbon }: BannerProps) => (
   <S.Wrapper>
+    {ribbon && <Ribbon color="secondary">{ribbon}</Ribbon>}
     <S.Image src={image} role="img" aria-label={title} />
     <S.Caption>
       <S.Title>{title}</S.Title>
