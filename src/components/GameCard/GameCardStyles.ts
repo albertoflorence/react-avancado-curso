@@ -2,7 +2,10 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 300px;
+  max-width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `
 
 export const ImageBox = styled.div`
@@ -20,7 +23,6 @@ export const ImageBox = styled.div`
     0% {
       background-position: -400px 0;
     }
-
     100% {
       background-position: 400px 0;
     }
@@ -30,6 +32,7 @@ export const Content = styled.div`
   ${({ theme }) => css`
     width: 100%;
     min-height: 100px;
+    height: 100%;
     padding: ${theme.spacing(1, 2, 2, 2)};
     display: flex;
     flex-wrap: wrap;
@@ -58,11 +61,17 @@ export const Subtitle = styled.h4`
 `
 
 export const BuyBox = styled.div`
-  justify-self: end;
+  div {
+    display: flex;
+    gap: 3px;
+  }
   display: flex;
-  align-items: center;
-  gap: 3px;
-  margin: auto 0 0 auto;
+  justify-self: end;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 16px 0 0 auto;
+  flex-wrap: wrap;
+
   button {
     height: 22px;
     border-radius: 2px;
@@ -76,6 +85,7 @@ const handleDiscount = (theme: DefaultTheme) => css`
   text-decoration: line-through;
   background: none;
   color: ${theme.colors.gray3};
+  margin-right: 5px;
 `
 export const Price = styled.span<HasDiscount>`
   ${({ theme, discount }) => css`

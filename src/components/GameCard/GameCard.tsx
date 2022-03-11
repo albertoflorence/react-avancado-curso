@@ -31,8 +31,10 @@ const GameCard = ({ title, subtitle, image, price, discount, favorite, ribbon }:
       </S.FavButton>
       <S.BuyBox>
         {discount && <S.Price discount>{price}</S.Price>}
-        <S.Price>{discount || price}</S.Price>
-        <Button startIcon={<Icon label="AddShoppingCart" />} size="small" />
+        <div>
+          <S.Price>{discount || price}</S.Price>
+          <Button startIcon={<Icon label="AddShoppingCart" />} size="small" />
+        </div>
       </S.BuyBox>
     </S.Content>
   </S.Wrapper>
