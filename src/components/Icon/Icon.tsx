@@ -8,6 +8,8 @@ import {
   Favorite
 } from '@styled-icons/material-outlined'
 
+import { ArrowForwardIos, ArrowBackIos } from '@styled-icons/material-rounded'
+
 const icons = {
   AddShoppingCart,
   ShoppingCart,
@@ -15,7 +17,9 @@ const icons = {
   Search,
   Close,
   FavoriteBorder,
-  Favorite
+  Favorite,
+  ArrowRight: ArrowForwardIos,
+  ArrowLeft: ArrowBackIos
 }
 
 interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
