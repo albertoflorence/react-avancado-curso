@@ -7,13 +7,26 @@ import '../.jest/next-image.mock'
 export const parameters = {
   nextRouter: {
     Provider: RouterContext.Provider
+  },
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: theme.colors.lightBg
+      },
+      {
+        name: 'dark',
+        value: theme.colors.mainBg
+      }
+    ]
   }
 }
 
 export const decorators = [
   Story => (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      <GlobalStyles removeBg />
       <Story />
     </ThemeProvider>
   )
