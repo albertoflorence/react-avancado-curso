@@ -1,17 +1,11 @@
 import { Story, Meta } from '@storybook/react'
 import Highlight, { HighlightProps } from './Highlight'
+import item from './mock'
 
 export default {
   title: 'Highlight',
   component: Highlight,
-  args: {
-    image: 'https://i.ibb.co/Sc0NPJw/Image.png',
-    background: 'https://i.ibb.co/56F2tQQ/Background.png',
-    title: "Read Dead it's back",
-    subtitle: "Come see John's new adventures",
-    buttonLabel: 'Buy now',
-    buttonLink: '/games/defy-death'
-  },
+  args: { ...item },
   parameters: {
     backgrounds: {
       default: 'dark'
