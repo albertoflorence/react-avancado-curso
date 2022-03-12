@@ -9,8 +9,9 @@ export const Wrapper = styled.div`
 `
 
 export const ImageBox = styled.div`
-  height: 140px;
+  min-height: 140px;
   background: #f6f7f8;
+  position: relative;
   background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
   background-size: 800px 140px;
   animation: placeholderShimmer 1s linear infinite forwards;
@@ -36,6 +37,8 @@ export const Content = styled.div`
     padding: ${theme.spacing(1, 2, 2, 2)};
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
     background-color: ${theme.colors.white};
   `}
