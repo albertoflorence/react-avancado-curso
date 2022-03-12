@@ -10,6 +10,8 @@ export const Wrapper = styled.div<Pick<GameCardSliderProps, 'arrowColor'>>`
     .slick-track,
     .slick-list {
       display: flex;
+      padding: ${theme.spacing(0.5)};
+      margin: -${theme.spacing(0.5)};
     }
 
     .slick-slide > div {
