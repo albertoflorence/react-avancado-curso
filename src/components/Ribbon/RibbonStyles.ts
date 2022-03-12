@@ -29,6 +29,7 @@ const sizes = {
 export const Wrapper = styled.div<RibbonProps>`
   ${({ theme, color = 'primary', size = 'normal' }) => css`
     position: absolute;
+    z-index: ${theme.layers.base};
     color: ${theme.colors.white};
     background-color: ${theme.colors[color]};
     font-weight: ${theme.font.bold};
@@ -39,6 +40,7 @@ export const Wrapper = styled.div<RibbonProps>`
 
     &::before {
       content: '';
+
       position: absolute;
       right: 0;
       top: 100%;
