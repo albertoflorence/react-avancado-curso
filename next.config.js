@@ -9,6 +9,9 @@ const nextConfig = {
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV !== 'production'
+  },
+  images: {
+    domains: ['source.unsplash.com']
   }
 }
 
