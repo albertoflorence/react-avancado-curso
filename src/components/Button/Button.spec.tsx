@@ -63,4 +63,12 @@ describe('<Button />', () => {
     const sut = init({ as: 'a', href: '/link' }, 'link')
     expect(sut).toHaveAttribute('href', '/link')
   })
+
+  it('should render a text button', () => {
+    const sut = init({ text: true })
+    expect(sut).toHaveStyle({
+      background: 'none',
+      color: theme.colors.primary
+    })
+  })
 })

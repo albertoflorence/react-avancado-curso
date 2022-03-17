@@ -32,12 +32,17 @@ const handleIcon = (theme: DefaultTheme) => css`
   }
 `
 
+const handleText = (theme: DefaultTheme) => css`
+  background: none;
+  color: ${theme.colors.primary};
+`
+
 type WrapperProps = {
   hasIcon: boolean
 } & ButtonProps
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, size = 'medium', fullWidth = false, hasIcon }) => css`
+  ${({ theme, size = 'medium', fullWidth = false, hasIcon, text }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -54,6 +59,7 @@ export const Wrapper = styled.button<WrapperProps>`
     ${size && sizes[size](theme)}
     ${fullWidth && handleFullWidth}
     ${hasIcon && handleIcon(theme)}
+    ${text && handleText(theme)}
 
     &:hover {
       filter: brightness(95%);

@@ -8,6 +8,7 @@ export type ButtonProps = {
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   as?: React.ElementType
+  text?: boolean
 } & ButtonTypes
 
 const Button = ({ children, startIcon, endIcon, ...props }: ButtonProps) => (
