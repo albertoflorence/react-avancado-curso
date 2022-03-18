@@ -1,8 +1,8 @@
 import { Button, Icon, Link, TextField } from 'components'
-import * as S from './FormSignUpStyles'
+import { FormWrapper, FormLink } from 'components'
 
 const FormSignUp = () => (
-  <S.Wrapper>
+  <FormWrapper>
     <form>
       <TextField startIcon={<Icon label="AccountCircle" />} placeholder="Name" id="name" />
       <TextField startIcon={<Icon label="Email" />} placeholder="Email" id="email" />
@@ -22,14 +22,14 @@ const FormSignUp = () => (
       <Button fullWidth as="a" href="#" size="large">
         Sign up now
       </Button>
-      <S.FormLink>
+      <FormLink>
         Already have an account?{' '}
         <Link href="/login" internal>
           Sign In
         </Link>
-      </S.FormLink>
+      </FormLink>
     </form>
-  </S.Wrapper>
+  </FormWrapper>
 )
 
 export default FormSignUp

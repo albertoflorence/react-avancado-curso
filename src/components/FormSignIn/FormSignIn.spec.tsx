@@ -17,6 +17,6 @@ describe('<FormSignIn />', () => {
     expect(textField('Password')).toBeInTheDocument()
     expect(link('forgot your password')).toBeInTheDocument()
     expect(link('sign in now')).toBeInTheDocument()
-    expect(link('sign up')).toHaveAttribute('href', '/login')
+    expect(link('sign up')).toHaveAttribute('href', '/signup')
   })
 })
