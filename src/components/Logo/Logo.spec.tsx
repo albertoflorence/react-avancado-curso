@@ -9,6 +9,11 @@ const init = (props?: LogoProps) => {
 }
 
 describe('<Logo />', () => {
+  it('should render logo with id', () => {
+    const { container } = renderWithTheme(<Logo id="my_id" />)
+    expect(container.querySelector('#my_id')).toBeInTheDocument()
+  })
+
   it('should render a white label by default', () => {
     const sut = init()
     expect(sut).toHaveStyle({

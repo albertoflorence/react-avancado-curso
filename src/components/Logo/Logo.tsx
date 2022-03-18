@@ -4,17 +4,18 @@ export interface LogoProps {
   color?: 'white' | 'black'
   size?: 'normal' | 'large'
   hideOnMobile?: boolean
+  id?: string
 }
 
-const Logo = (props: LogoProps) => {
+const Logo = ({ id = 'logo', ...props }: LogoProps) => {
   return (
     <S.Wrapper {...props}>
-      <Svg />
+      <Svg id={id} />
     </S.Wrapper>
   )
 }
 
-const Svg = () => (
+const Svg = ({ id }: { id: string }) => (
   <svg
     viewBox="0 0 158 48"
     fill="none"
@@ -24,7 +25,7 @@ const Svg = () => (
   >
     <path
       d="M.055 15.125.019 35.77c-.008 4.796 5.336 7.662 9.327 5.003l20.596-13.722L50.49 40.844c3.982 2.673 9.335-.176 9.344-4.972l.034-19.997c.014-7.881-7.549-13.565-15.116-11.36l-.873.254a50.874 50.874 0 0 1-29.358-.271C7.351 2.264.068 7.614.055 15.125Z"
-      fill="url(#a)"
+      fill={`url(#${id})`}
     />
     <path
       d="m30.163 27.057-6.033-4.292a.5.5 0 0 0-.782.494l1.293 7.298 5.523-3.5Z"
@@ -50,7 +51,7 @@ const Svg = () => (
     />
     <defs>
       <linearGradient
-        id="a"
+        id={id}
         x1="29.159"
         y1="-7.5"
         x2="30.155"
