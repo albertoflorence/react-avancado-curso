@@ -7,7 +7,8 @@ import {
   FavoriteBorder,
   Favorite,
   Email,
-  Lock
+  Lock,
+  AccountCircle
 } from '@styled-icons/material-outlined'
 
 import { ArrowForwardIos, ArrowBackIos } from '@styled-icons/material-rounded'
@@ -23,7 +24,8 @@ const icons = {
   ArrowRight: ArrowForwardIos,
   ArrowLeft: ArrowBackIos,
   Email,
-  Lock
+  Lock,
+  AccountCircle
 }
 
 interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
