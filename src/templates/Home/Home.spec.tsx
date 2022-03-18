@@ -17,17 +17,22 @@ const init = () => {
   renderWithTheme(<Home {...props} />)
 }
 
-describe('<Home />', () => {
-  it('should render menu and footer', () => {
-    init()
-    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /contact us/i }))
-  })
+jest.mock('components/Menu/Menu', () => makeMock('Mock Menu'))
+jest.mock('components/Footer/Footer', () => makeMock('Mock Footer'))
+jest.mock('components/Showcase/Showcase', () => makeMock('Mock Showcase'))
+jest.mock('components/BannerSlider/BannerSlider', () => makeMock('Mock BannerSlider'))
 
-  it('should render the sections', () => {
+const makeMock = (testid: string) => ({
+  __esModule: true,
+  default: () => <div data-testid={testid}></div>
+})
+
+describe('<Home />', () => {
+  it('should render correctly', () => {
     init()
-    expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /most popular/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /up coming/i })).toBeInTheDocument()
+    expect(screen.getByTestId('Mock BannerSlider')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
   })
 })
