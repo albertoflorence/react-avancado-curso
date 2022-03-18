@@ -16,7 +16,7 @@ export type ButtonProps = {
 } & ButtonTypes
 
 const Button = ({ children, startIcon, endIcon, ...props }: ButtonProps) => (
-  <S.Wrapper {...props} $hasIcon={Boolean(startIcon || endIcon)}>
+  <S.Wrapper {...props} hasIcon={Boolean(startIcon || endIcon)}>
     {startIcon}
     {children && <span> {children} </span>}
     {endIcon}

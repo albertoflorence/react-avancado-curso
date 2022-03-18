@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import * as HeadingStyles from 'components/Heading/HeadingStyles'
-import * as HighlightStyles from 'components/Highlight/HighlightStyles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -30,25 +29,13 @@ export const SectionNews = styled.section`
     ${media.greaterThan('medium')`
     padding-top: ${theme.spacing(18)};
     padding-bottom: ${theme.spacing(14)};
+    margin-bottom: -${theme.spacing(7)};
     background: ${theme.colors.lightBg};
       clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
       ${HeadingStyles.Wrapper} {
         color: ${theme.colors.black}
       }
     `};
-  `}
-`
-
-export const Section = styled.section`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    gap: ${theme.spacing(4)};
-    ${media.lessThan('medium')`
-      ${HighlightStyles.Wrapper} {
-        margin: 0 -${theme.grid.gutter};
-      }
-    `}
   `}
 `
 

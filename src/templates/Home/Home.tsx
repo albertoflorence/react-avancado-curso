@@ -1,12 +1,4 @@
-import {
-  Menu,
-  Footer,
-  Container,
-  Heading,
-  BannerSlider,
-  GameCardSlider,
-  Highlight
-} from 'components'
+import { Menu, Footer, Container, BannerSlider, Showcase } from 'components'
 import { BannerProps } from 'components/Banner/Banner'
 import { GameCardProps } from 'components/GameCard/GameCard'
 import { HighlightProps } from 'components/Highlight/Highlight'
@@ -41,16 +33,18 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
     </Container>
 
     <S.SectionNews>
-      <ShowCase gameCards={newGames} title="News" center arrowColor="black" />
+      <Showcase gameCards={newGames} title="News" center arrowColor="black" />
     </S.SectionNews>
 
-    <ShowCase
+    <Showcase
       highlight={mostPopular.highlight}
       gameCards={mostPopular.gameCards}
       title="Most Popular"
     />
-    <ShowCase highlight={upComing.highlight} gameCards={upComing.gameCards} title="Up Coming" />
-    <ShowCase highlight={freeGames.highlight} gameCards={freeGames.gameCards} title="Free Games" />
+    <Showcase title="Up Coming" gameCards={upComing.gameCards} />
+    <Showcase highlight={upComing.highlight} gameCards={upComing.gameCards} reverse />
+
+    <Showcase highlight={freeGames.highlight} gameCards={freeGames.gameCards} title="Free Games" />
 
     <S.Footer>
       <Container center>
@@ -58,26 +52,6 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
       </Container>
     </S.Footer>
   </S.Wrapper>
-)
-
-interface ShowCaseProps {
-  highlight?: HighlightProps
-  gameCards: GameCardProps[]
-  title: string
-  center?: boolean
-  arrowColor?: 'white' | 'black'
-}
-
-const ShowCase = ({ highlight, gameCards, title, center, arrowColor }: ShowCaseProps) => (
-  <Container center={center}>
-    <S.Section>
-      <Heading line="left" lineColor="secondary">
-        {title}
-      </Heading>
-      {highlight && <Highlight {...highlight} />}
-      <GameCardSlider items={gameCards} arrowColor={arrowColor} />
-    </S.Section>
-  </Container>
 )
 
 export default Home
