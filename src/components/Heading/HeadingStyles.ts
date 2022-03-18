@@ -27,6 +27,9 @@ const sizes = {
   `,
   medium: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xlarge};
+  `,
+  huge: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.huge};
   `
 }
 

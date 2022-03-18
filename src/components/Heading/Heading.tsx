@@ -7,7 +7,7 @@ export interface HeadingProps {
   color?: 'white' | 'black'
   line?: 'left' | 'bottom'
   lineColor?: LineColors
-  size?: 'small' | 'medium'
+  size?: 'small' | 'medium' | 'huge'
   textTransform?: 'uppercase' | 'lowercase' | 'capitalize'
 }
 

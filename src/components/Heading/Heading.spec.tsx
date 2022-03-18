@@ -52,6 +52,13 @@ describe('<Heading />', () => {
     })
   })
 
+  it('should render a heading with a huge size', () => {
+    const sut = init({ size: 'huge' })
+    expect(sut).toHaveStyle({
+      fontSize: theme.font.sizes.huge
+    })
+  })
+
   it('should render with uppercase text', () => {
     const sut = init({ textTransform: 'uppercase' })
     expect(sut).toHaveStyle({
