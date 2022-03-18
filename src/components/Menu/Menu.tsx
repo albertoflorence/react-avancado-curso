@@ -1,4 +1,4 @@
-import { Icon, Logo, MediaMatch } from 'components'
+import { Icon, Link, Logo, MediaMatch } from 'components'
 import Button from 'components/Button/Button'
 import { useState } from 'react'
 import * as S from './MenuStyles'
@@ -22,7 +22,9 @@ const Menu = ({ userName }: MenuProps) => {
 
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
-          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="/" internal>
+            Home
+          </S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
         </S.MenuNav>
       </MediaMatch>
@@ -32,7 +34,9 @@ const Menu = ({ userName }: MenuProps) => {
         <MenuItem icon="ShoppingCart" aria-label="Open Shopping Cart" />
         {!userName && (
           <MediaMatch greaterThan="medium">
-            <Button>Sign In</Button>
+            <Button as={Link} href="/login" internal>
+              Sign In
+            </Button>
           </MediaMatch>
         )}
       </S.MenuRight>
@@ -40,7 +44,9 @@ const Menu = ({ userName }: MenuProps) => {
       <MenuFull open={isOpen}>
         <Icon label="Close" aria-label="Close Menu" onClick={() => setIsOpen(false)}></Icon>
         <S.MenuNav>
-          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="/" internal>
+            Home
+          </S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
           {userName && (
             <>
@@ -51,9 +57,13 @@ const Menu = ({ userName }: MenuProps) => {
         </S.MenuNav>
         {!userName && (
           <S.RegisterBox>
-            <Button fullWidth>Log in now</Button>
+            <Button as={Link} href="/login" internal fullWidth>
+              Log in now
+            </Button>
             <span>or</span>
-            <S.SignIn href="#">Sign In</S.SignIn>
+            <S.SignUp href="/signup" internal>
+              Sign Up
+            </S.SignUp>
           </S.RegisterBox>
         )}
       </MenuFull>

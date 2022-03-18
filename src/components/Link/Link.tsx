@@ -6,15 +6,15 @@ interface InternalLink extends NextLinkProps {
   children?: React.ReactNode
 }
 
-type LinkProps = InternalLink & React.ComponentPropsWithoutRef<'a'>
+export type LinkProps = InternalLink & React.ComponentPropsWithoutRef<'a'>
 
-const Link = ({ internal, children, href, ...props }: LinkProps) =>
+const Link = ({ internal, children, href, className, ...props }: LinkProps) =>
   internal ? (
     <LinkNext href={href} {...props}>
-      <a>{children}</a>
+      <a className={className}>{children}</a>
     </LinkNext>
   ) : (
-    <a {...props} href={href}>
+    <a {...props} href={href} className={className}>
       {children}
     </a>
   )

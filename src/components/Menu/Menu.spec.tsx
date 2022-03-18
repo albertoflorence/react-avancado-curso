@@ -52,7 +52,7 @@ describe('<Menu />', () => {
       ['home', 2],
       ['explore', 2],
       ['log in now', 1],
-      ['sign in', 2],
+      ['sign in', 1],
       ['my account', 0],
       ['wishlist', 0]
     ])

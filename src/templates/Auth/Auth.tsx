@@ -11,7 +11,7 @@ const Auth = ({ title, children }: AuthProps) => (
     <S.BannerBlock>
       <Image src="/img/auth-bg.jpg" layout="fill" objectFit="cover" alt="background auth page" />
       <S.BannerContent>
-        <Logo></Logo>
+        <Logo toHome></Logo>
         <div>
           <Heading size="huge">All your favorite games in one place</Heading>
           <S.Subtitle>
@@ -24,7 +24,7 @@ const Auth = ({ title, children }: AuthProps) => (
 
     <S.ContentWrapper>
       <S.Content>
-        <Logo size="large" color="black" id="content"></Logo>
+        <Logo toHome size="large" color="black" id="content" />
         <Heading line="left" lineColor="secondary" color="black">
           {title}
         </Heading>

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import { MenuProps } from './Menu'
+import { Link } from 'components'
 
 export const Wrapper = styled.menu<MenuProps>`
   display: flex;
@@ -46,7 +47,7 @@ export const MenuNav = styled.div`
   `}
 `
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(Link)`
   ${({ theme }) => css`
     position: relative;
     color: ${theme.colors.white};
@@ -95,6 +96,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     opacity: ${open ? 1 : 0};
     pointer-events: ${open ? 'all' : 'none'};
     transition: opacity ${theme.transition.default};
+    z-index: ${theme.layers.menu};
 
     > svg {
       position: absolute;
@@ -145,7 +147,7 @@ export const RegisterBox = styled.div`
   `}
 `
 
-export const SignIn = styled.a`
+export const SignUp = styled(Link)`
   ${({ theme }) => css`
     text-decoration: none;
     cursor: pointer;
