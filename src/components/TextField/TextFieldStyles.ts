@@ -47,6 +47,7 @@ export const InputWrapper = styled.div`
     display: inline-flex;
     align-items: center;
     gap: ${theme.spacing(1)};
+    width: 100%;
 
     &:focus-within {
       box-shadow: 0 0 5px ${theme.colors.primary};
