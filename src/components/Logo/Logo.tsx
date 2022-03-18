@@ -1,16 +1,24 @@
 import * as S from './LogoStyles'
+import { Link } from 'components'
 
 export interface LogoProps {
   color?: 'white' | 'black'
   size?: 'normal' | 'large'
   hideOnMobile?: boolean
   id?: string
+  toHome?: boolean
 }
 
-const Logo = ({ id = 'logo', ...props }: LogoProps) => {
+const Logo = ({ id = 'logo', toHome, ...props }: LogoProps) => {
   return (
     <S.Wrapper {...props}>
-      <Svg id={id} />
+      {toHome ? (
+        <Link internal href="/">
+          <Svg id={id} />
+        </Link>
+      ) : (
+        <Svg id={id} />
+      )}
     </S.Wrapper>
   )
 }

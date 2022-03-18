@@ -48,4 +48,9 @@ describe('<Logo />', () => {
       media: `(max-width: ${theme.breakpoints.medium})`
     })
   })
+
+  it('should render as link to home', () => {
+    const sut = init({ toHome: true })
+    expect(sut).toHaveAttribute('href', '/')
+  })
 })

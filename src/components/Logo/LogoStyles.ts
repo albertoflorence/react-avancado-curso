@@ -32,5 +32,9 @@ export const Wrapper = styled.div<LogoProps>`
     color: ${theme.colors[color]};
     ${sizes[size]}
     ${hideOnMobile && handleHideOnMobile}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   `}
 `
