@@ -3,7 +3,7 @@ import { Icon } from 'components'
 import TextField, { TextFieldProps } from './TextField'
 
 export default {
-  title: 'TextField',
+  title: 'Form/TextField',
   component: TextField,
   args: {
     id: 'email',

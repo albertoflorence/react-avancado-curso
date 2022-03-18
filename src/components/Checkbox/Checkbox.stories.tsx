@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import Checkbox, { CheckboxProps } from './Checkbox'
 
 export default {
-  title: 'Checkbox',
+  title: 'Form/Checkbox',
   component: Checkbox,
   args: {
     color: 'white'
