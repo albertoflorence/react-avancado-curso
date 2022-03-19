@@ -55,7 +55,6 @@ export const Subtitle = styled.h3`
   `}
 `
 export const Footer = styled.p`
-  color: white;
   align-self: center;
 `
 

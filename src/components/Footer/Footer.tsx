@@ -1,7 +1,5 @@
-import { Logo, Heading, Link } from 'components'
+import { Logo, Heading, Link, Copyright } from 'components'
 import * as S from './FooterStyles'
-
-const currentYear = new Date().getFullYear()
 
 const Footer = () => (
   <S.Wrapper>
@@ -16,7 +14,9 @@ const Footer = () => (
         ></FooterItem>
       ))}
     </S.Content>
-    <S.CopyRight>Won Games {currentYear} © All rights reserved</S.CopyRight>
+    <S.CopyRightWrapper>
+      <Copyright />
+    </S.CopyRightWrapper>
   </S.Wrapper>
 )
 

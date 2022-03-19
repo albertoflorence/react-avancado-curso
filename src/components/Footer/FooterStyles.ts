@@ -38,10 +38,8 @@ export const Column = styled.div`
   `}
 `
 
-export const CopyRight = styled.span`
+export const CopyRightWrapper = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.gray};
-    font-size: ${theme.font.sizes.xsmall};
     margin-top: ${theme.spacing(6)};
     margin-bottom: ${theme.spacing(4)};
     text-align: center;

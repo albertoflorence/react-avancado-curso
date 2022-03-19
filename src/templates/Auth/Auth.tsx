@@ -1,4 +1,5 @@
-import { Heading, Logo, Image } from 'components'
+import { Heading, Logo, Image, Copyright } from 'components'
+
 import * as S from './AuthStyles'
 
 export interface AuthProps {
@@ -18,7 +19,9 @@ const Auth = ({ title, children }: AuthProps) => (
             <strong>WON</strong> is the best and most complete gaming platform.
           </S.Subtitle>
         </div>
-        <S.Footer>Won Games 2020 @ Todos os direitos reservados</S.Footer>
+        <S.Footer>
+          <Copyright color="white" />
+        </S.Footer>
       </S.BannerContent>
     </S.BannerBlock>
 
