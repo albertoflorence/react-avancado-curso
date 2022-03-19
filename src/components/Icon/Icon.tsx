@@ -12,6 +12,7 @@ import {
 } from '@styled-icons/material-outlined'
 
 import { ArrowForwardIos, ArrowBackIos } from '@styled-icons/material-rounded'
+import { Apple, Linux, Windows } from '@styled-icons/fa-brands'
 
 const icons = {
   AddShoppingCart,
@@ -25,11 +26,16 @@ const icons = {
   ArrowLeft: ArrowBackIos,
   Email,
   Lock,
-  AccountCircle
+  AccountCircle,
+  Apple,
+  Linux,
+  Windows
 }
 
-interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
+type IconProps = {
   label: keyof typeof icons
+  size?: number
+  title: string
 }
 
 const Icon = ({ label, ...props }: IconProps) => {
