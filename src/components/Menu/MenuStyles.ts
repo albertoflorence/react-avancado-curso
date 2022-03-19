@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
-import { MenuProps } from './Menu'
 import { Link } from 'components'
 
-export const Wrapper = styled.menu<MenuProps>`
-  display: flex;
-  position: relative;
-  align-items: center;
-  height: 45px;
+export const Wrapper = styled.menu`
+  ${({ theme }) => css`
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: ${theme.spacing(2, 0)};
+  `}
 `
 
 export const LogoWrapper = styled.div`
