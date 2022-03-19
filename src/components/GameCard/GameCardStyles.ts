@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `
 
 export const ImageBox = styled.div`
-  min-height: 140px;
+  height: 140px;
   background: #f6f7f8;
   position: relative;
   background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
@@ -62,7 +62,6 @@ export const Subtitle = styled.h4`
     font-weight: ${theme.font.normal};
   `}
 `
-
 export const BuyBox = styled.div`
   div {
     display: flex;
@@ -79,29 +78,6 @@ export const BuyBox = styled.div`
     height: 22px;
     border-radius: 2px;
   }
-`
-
-interface HasDiscount {
-  discount?: boolean
-}
-const handleDiscount = (theme: DefaultTheme) => css`
-  text-decoration: line-through;
-  background: none;
-  color: ${theme.colors.gray3};
-  margin-right: 5px;
-`
-export const Price = styled.span<HasDiscount>`
-  ${({ theme, discount }) => css`
-    height: 22px;
-    background: ${theme.colors.secondary};
-    border-radius: 2px;
-    color: ${theme.colors.white};
-    font-size: ${theme.font.sizes.small};
-    padding: ${theme.spacing(0, 1.5)};
-    font-weight: ${theme.font.bold};
-
-    ${discount && handleDiscount(theme)}
-  `}
 `
 
 export const FavButton = styled.div`

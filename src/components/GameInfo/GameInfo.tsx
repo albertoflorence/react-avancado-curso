@@ -1,4 +1,4 @@
-import { Button, Heading, Icon } from 'components'
+import { Button, Heading, Icon, Price } from 'components'
 import * as S from './GameInfoStyles'
 
 export interface GameInfoProps {
@@ -14,24 +14,16 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
     </Heading>
     <S.Description>{description}</S.Description>
 
-    <Price size="large">{price}</Price>
+    <Price>{price}</Price>
     <S.ButtonsWrapper>
-      <Button startIcon={<Icon label="Favorite" />} text>
+      <Button size="large" startIcon={<Icon label="FavoriteBorder" />} text>
         Wishlist
       </Button>
-      <Button startIcon={<Icon label="AddShoppingCart" />}>Add to cart</Button>
+      <Button size="large" startIcon={<Icon label="AddShoppingCart" />}>
+        Add to cart
+      </Button>
     </S.ButtonsWrapper>
   </S.Wrapper>
-)
-
-export interface PriceProps {
-  children: React.ReactNode
-  size?: 'small' | 'large'
-  discount?: boolean
-}
-
-const Price = ({ children, ...props }: PriceProps) => (
-  <S.PriceWrapper {...props}>{children}</S.PriceWrapper>
 )
 
 export default GameInfo

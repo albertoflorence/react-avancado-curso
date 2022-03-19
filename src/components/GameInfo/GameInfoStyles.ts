@@ -1,5 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
+import * as PriceStyles from 'components/Price/PriceStyles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -10,14 +11,15 @@ export const Wrapper = styled.div`
       width: 75%;
     }
 
-    ${PriceWrapper} {
+    ${PriceStyles.Wrapper} {
       position: absolute;
       right: ${theme.spacing(4)};
       top: ${theme.spacing(4)};
     }
 
     ${media.lessThan('medium')`
-      ${PriceWrapper} {
+      padding: ${theme.spacing(4, 3)};
+      ${PriceStyles.Wrapper} {
         right: -${theme.spacing(1)};
         margin-left: ${theme.spacing(3)};
         font-size: ${theme.font.sizes.large};
@@ -46,28 +48,5 @@ export const Description = styled.p`
     font-size: ${theme.font.sizes.small};
     width: 70%;
     margin: ${theme.spacing(2, 0)};
-  `}
-`
-
-const handleDiscount = (theme: DefaultTheme) => css`
-  text-decoration: line-through;
-  background: none;
-  color: ${theme.colors.gray3};
-  margin-right: 5px;
-`
-type HasDiscount = {
-  discount?: boolean
-}
-
-export const PriceWrapper = styled.span<HasDiscount>`
-  ${({ theme, discount }) => css`
-    background: ${theme.colors.secondary};
-    border-radius: 2px;
-    color: ${theme.colors.white};
-    font-size: ${theme.font.sizes.small};
-    padding: ${theme.spacing(0, 1.5)};
-    font-weight: ${theme.font.bold};
-
-    ${discount && handleDiscount(theme)}
   `}
 `

@@ -1,4 +1,4 @@
-import { Button, Icon, Image, Ribbon } from 'components'
+import { Button, Icon, Image, Price, Ribbon } from 'components'
 import * as S from './GameCardStyles'
 
 export interface GameCardProps {
@@ -30,9 +30,9 @@ const GameCard = ({ title, subtitle, image, price, discount, favorite, ribbon }:
         )}
       </S.FavButton>
       <S.BuyBox>
-        {discount && <S.Price discount>{price}</S.Price>}
+        {discount && <Price discount>{price}</Price>}
         <div>
-          <S.Price>{discount || price}</S.Price>
+          <Price>{discount || price}</Price>
           <Button startIcon={<Icon label="AddShoppingCart" />} size="small" />
         </div>
       </S.BuyBox>
