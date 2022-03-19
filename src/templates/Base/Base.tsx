@@ -6,8 +6,8 @@ export interface BaseProps {
 }
 
 const Base = ({ children }: BaseProps) => (
-  <section>
-    <Container>
+  <S.Wrapper>
+    <Container center>
       <Menu />
     </Container>
     {children}
@@ -16,7 +16,7 @@ const Base = ({ children }: BaseProps) => (
         <Footer />
       </Container>
     </S.Footer>
-  </section>
+  </S.Wrapper>
 )
 
 export default Base

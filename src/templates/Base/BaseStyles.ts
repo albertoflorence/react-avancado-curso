@@ -1,4 +1,13 @@
 import styled, { css } from 'styled-components'
+import * as MenuStyles from 'components/Menu/MenuStyles'
+
+export const Wrapper = styled.section`
+  ${({ theme }) => css`
+    ${MenuStyles.Wrapper} {
+      margin-bottom: ${theme.spacing(7)};
+    }
+  `}
+`
 
 export const Footer = styled.section`
   ${({ theme }) => css`

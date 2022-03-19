@@ -17,22 +17,22 @@ const init = () => {
   renderWithTheme(<Home {...props} />)
 }
 
-jest.mock('components/Menu/Menu', () => makeMock('Mock Menu'))
-jest.mock('components/Footer/Footer', () => makeMock('Mock Footer'))
+jest.mock('templates/Base/Base', () => makeMock('Mock Base'))
 jest.mock('components/Showcase/Showcase', () => makeMock('Mock Showcase'))
 jest.mock('components/BannerSlider/BannerSlider', () => makeMock('Mock BannerSlider'))
 
 const makeMock = (testid: string) => ({
   __esModule: true,
-  default: () => <div data-testid={testid}></div>
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid={testid}>{children}</div>
+  )
 })
 
 describe('<Home />', () => {
   it('should render correctly', () => {
     init()
+    expect(screen.getByTestId('Mock Base')).toBeInTheDocument()
     expect(screen.getByTestId('Mock BannerSlider')).toBeInTheDocument()
-    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
-    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
     expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
   })
 })
