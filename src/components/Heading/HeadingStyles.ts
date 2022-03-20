@@ -1,7 +1,7 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 import { HeadingProps, LineColors } from './Heading'
 
-const lines = {
+export const lines = {
   left: (theme: DefaultTheme, color: LineColors) => css`
     padding-left: ${theme.spacing(1)};
     border-left: 5px solid ${theme.colors[color]};
@@ -21,7 +21,7 @@ const lines = {
   `
 }
 
-const sizes = {
+export const sizes = {
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.medium};
   `,
