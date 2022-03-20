@@ -34,9 +34,7 @@ const icons = {
 
 type IconProps = {
   label: keyof typeof icons
-  size?: number
-  title: string
-}
+} & React.ComponentPropsWithoutRef<typeof Menu>
 
 const Icon = ({ label, ...props }: IconProps) => {
   const Component = icons[label]
