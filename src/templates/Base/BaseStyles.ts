@@ -1,19 +1,27 @@
 import styled, { css } from 'styled-components'
-import * as MenuStyles from 'components/Menu/MenuStyles'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.section`
-  ${({ theme }) => css`
-    ${MenuStyles.Wrapper} {
-      margin-bottom: ${theme.spacing(7)};
-    }
-  `}
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+export const Content = styled.section`
+  flex: 1 0 auto;
 `
 
 export const Footer = styled.section`
   ${({ theme }) => css`
+    margin-top: ${theme.spacing(8)};
     background: ${theme.colors.lightBg};
-    align-self: stretch;
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+    padding-top: ${theme.spacing(7)};
+
+    ${media.greaterThan('medium')`
     padding-top: ${theme.spacing(14)};
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    `}
   `}
 `
