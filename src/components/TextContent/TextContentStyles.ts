@@ -46,5 +46,9 @@ export const Wrapper = styled.div`
     hr {
       margin: ${theme.spacing(3, 0)};
     }
+
+    video {
+      max-width: min(700px, 100%);
+    }
   `}
 `

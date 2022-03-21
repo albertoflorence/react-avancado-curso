@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     .slick-slide > div {
       margin-right: ${theme.spacing(2)};
-      height: 100%;
+      height: min-content;
       cursor: pointer;
-      > img {
-        border: 1px solid rgba(255, 255, 255, 0.2);
+      img {
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
       }
     }
 

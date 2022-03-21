@@ -59,6 +59,8 @@ const Gallery = ({ items, ...props }: GalleryProps) => {
       >
         {items.map(({ alt, src }, index) => (
           <Image
+            width={295}
+            height={165}
             onClick={() => handleOpen(index)}
             role="button"
             key={alt}
@@ -72,7 +74,7 @@ const Gallery = ({ items, ...props }: GalleryProps) => {
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map(({ alt, src }) => (
-              <Image key={`gallery - ${alt}`} src={src} alt={alt} />
+              <Image width={1200} height={675} key={`gallery - ${alt}`} src={src} alt={alt} />
             ))}
           </Slider>
         </S.Content>
