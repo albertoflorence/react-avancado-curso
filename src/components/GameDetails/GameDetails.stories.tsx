@@ -1,17 +1,10 @@
 import { Story, Meta } from '@storybook/react'
 import GameDetails, { GameDetailsProps } from './GameDetails'
-
+import mockDetails from './mock'
 export default {
   title: 'GameDetails',
   component: GameDetails,
-  args: {
-    developer: 'Gearbox Software',
-    publisher: '2k',
-    platforms: ['windows', 'mac', 'linux'],
-    releaseDate: '2020-11-21T23:00:00',
-    rating: 'BR18',
-    genres: ['Action', 'Adventure']
-  },
+  args: mockDetails,
   parameters: {
     backgrounds: {
       default: 'dark'

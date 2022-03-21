@@ -1,13 +1,11 @@
 import { Story, Meta } from '@storybook/react'
 import Gallery, { GalleryProps } from './Gallery'
-import items from './mock'
+import galleryMock from './mock'
 
 export default {
   title: 'Gallery',
   component: Gallery,
-  args: {
-    items
-  },
+  args: galleryMock,
   parameters: {
     backgrounds: {
       default: 'dark'
