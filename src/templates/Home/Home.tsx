@@ -32,22 +32,34 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
       </Container>
 
       <S.SectionNews>
-        <Showcase gameCards={newGames} title="News" center arrowColor="black" />
+        <Container center>
+          <Showcase gameCards={newGames} title="News" center arrowColor="black" />
+        </Container>
       </S.SectionNews>
 
-      <Showcase
-        highlight={mostPopular.highlight}
-        gameCards={mostPopular.gameCards}
-        title="Most Popular"
-      />
-      <Showcase title="Up Coming" gameCards={upComing.gameCards} />
-      <Showcase highlight={upComing.highlight} gameCards={upComing.gameCards} reverse />
+      <Container>
+        <Showcase
+          highlight={mostPopular.highlight}
+          gameCards={mostPopular.gameCards}
+          title="Most Popular"
+        />
+      </Container>
 
-      <Showcase
-        highlight={freeGames.highlight}
-        gameCards={freeGames.gameCards}
-        title="Free Games"
-      />
+      <Container>
+        <Showcase title="Up Coming" gameCards={upComing.gameCards} />
+      </Container>
+
+      <Container>
+        <Showcase highlight={upComing.highlight} gameCards={upComing.gameCards} reverse />
+      </Container>
+
+      <Container>
+        <Showcase
+          highlight={freeGames.highlight}
+          gameCards={freeGames.gameCards}
+          title="Free Games"
+        />
+      </Container>
     </S.Wrapper>
   </Base>
 )
