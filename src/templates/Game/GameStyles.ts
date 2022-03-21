@@ -7,11 +7,11 @@ export const Wrapper = styled(Container).attrs({ center: true })`
     display: flex;
     flex-direction: column;
     gap: ${theme.spacing(6)};
-    margin-top: 200px;
+    margin-top: ${theme.spacing(23)};
 
     ${media.greaterThan('medium')`
       gap: ${theme.spacing(12)};
-      margin-top: 400px;
+      margin-top: ${theme.spacing(48)};
     `}
 
     .description__copyrights {
