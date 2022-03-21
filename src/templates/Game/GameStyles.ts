@@ -34,13 +34,3 @@ export const Cover = styled.div`
     height: 700px;
   `}
 `
-
-export const DetailsWrapper = styled.div`
-  ${({ theme }) => css`
-    padding-bottom: ${theme.spacing(6)};
-    border-bottom: 1px solid rgba(181, 181, 181, 0.3);
-    ${media.greaterThan('medium')`
-      padding-bottom: ${theme.spacing(14)}
-    `}
-  `}
-`

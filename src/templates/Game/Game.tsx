@@ -1,5 +1,5 @@
 import Base from 'templates/Base/Base'
-import { Image, MediaMatch, Showcase } from 'components'
+import { Image, MediaMatch, Showcase, Divider } from 'components'
 import GameInfo, { GameInfoProps } from 'components/GameInfo/GameInfo'
 import * as S from './GameStyles'
 import Gallery, { GalleryProps } from 'components/Gallery/Gallery'
@@ -43,9 +43,11 @@ const Game = ({
 
       <TextContent title="Description" content={description} />
 
-      <S.DetailsWrapper>
+      <div>
         <GameDetails {...gameDetails} />
-      </S.DetailsWrapper>
+      </div>
+
+      <Divider />
 
       <Showcase
         center
