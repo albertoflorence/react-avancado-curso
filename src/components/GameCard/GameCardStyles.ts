@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 `
 
 export const ImageBox = styled.div`
+  min-height: 140px;
   height: 140px;
   background: #f6f7f8;
   position: relative;
