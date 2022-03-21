@@ -1,4 +1,4 @@
-import { Heading, Showcase, Grid, Divider } from 'components'
+import { Heading, Showcase, Grid, Divider, Empty } from 'components'
 import GameCard, { GameCardProps } from 'components/GameCard/GameCard'
 import { HighlightProps } from 'components/Highlight/Highlight'
 import Base from 'templates/Base/Base'
@@ -12,19 +12,25 @@ export interface WishlistTemplateProps {
   }
 }
 
-const Wishlist = ({ games, recommended }: WishlistTemplateProps) => (
+const Wishlist = ({ games = [], recommended }: WishlistTemplateProps) => (
   <Base>
     <S.Wrapper>
       <Heading line="left" lineColor="secondary">
         Wishlist
       </Heading>
-      <Grid>
-        {games ? (
-          games.map(props => <GameCard key={props.title} {...props} />)
-        ) : (
-          <S.Text>Add here games that you wish to buy</S.Text>
-        )}
-      </Grid>
+      {games.length ? (
+        <Grid>
+          {games.map(props => (
+            <GameCard key={props.title} {...props} />
+          ))}
+        </Grid>
+      ) : (
+        <Empty
+          title="Your wishlist is empty"
+          description="Games added to your wishlist will appear here"
+          toHome
+        />
+      )}
 
       <Divider />
 

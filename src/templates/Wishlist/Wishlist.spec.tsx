@@ -35,9 +35,9 @@ describe('<Wishlist />', () => {
   })
 
   it('should not render GameCard if there is no games ', () => {
-    renderWithTheme(<Wishlist {...props} games={undefined} />)
+    renderWithTheme(<Wishlist {...props} games={[]} />)
 
     expect(screen.queryByTestId('Mock GameCard')).not.toBeInTheDocument()
-    expect(screen.getByText('Add here games that you wish to buy')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Your wishlist is empty' })).toBeInTheDocument()
   })
 })
