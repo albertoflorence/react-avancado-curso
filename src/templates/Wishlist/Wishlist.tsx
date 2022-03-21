@@ -1,4 +1,4 @@
-import { Heading, Showcase } from 'components'
+import { Heading, Showcase, Grid } from 'components'
 import GameCard, { GameCardProps } from 'components/GameCard/GameCard'
 import { HighlightProps } from 'components/Highlight/Highlight'
 import Base from 'templates/Base/Base'
@@ -18,13 +18,13 @@ const Wishlist = ({ games, recommended }: WishlistTemplateProps) => (
       <Heading line="left" lineColor="secondary">
         Wishlist
       </Heading>
-      <S.Content>
+      <Grid>
         {games ? (
           games.map(props => <GameCard key={props.title} {...props} />)
         ) : (
           <S.Text>Add here games that you wish to buy</S.Text>
         )}
-      </S.Content>
+      </Grid>
 
       <Showcase
         title="You may like these games"
