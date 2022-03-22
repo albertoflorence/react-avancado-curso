@@ -9,13 +9,13 @@ const handleDiscount = (theme: DefaultTheme) => css`
 `
 
 export const Wrapper = styled.span<PriceProps>`
-  ${({ theme, discount }) => css`
+  ${({ theme, discount, light }) => css`
     background: ${theme.colors.secondary};
     border-radius: 2px;
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacing(0.2, 1.5)};
-    font-weight: ${theme.font.bold};
+    font-weight: ${theme.font[light ? 'light' : 'bold']};
 
     ${discount && handleDiscount(theme)}
   `}
