@@ -11,6 +11,7 @@ import { FavoriteBorder } from '@styled-icons/material-outlined/FavoriteBorder'
 import { ArrowForwardIos } from '@styled-icons/material-outlined/ArrowForwardIos'
 import { ArrowBackIos } from '@styled-icons/material-outlined/ArrowBackIos'
 import { Download } from '@styled-icons/material-outlined/Download'
+import { Add } from '@styled-icons/material-outlined/Add'
 
 import { Windows } from '@styled-icons/fa-brands/Windows'
 import { Apple } from '@styled-icons/fa-brands/Apple'
@@ -32,7 +33,8 @@ const icons = {
   Download,
   Apple,
   Linux,
-  Windows
+  Windows,
+  Add
 }
 
 export type IconProps = {
