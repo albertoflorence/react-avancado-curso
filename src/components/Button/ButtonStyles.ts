@@ -64,5 +64,10 @@ export const Wrapper = styled.button<WrapperProps>`
     &:hover {
       filter: brightness(95%);
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
   `}
 `

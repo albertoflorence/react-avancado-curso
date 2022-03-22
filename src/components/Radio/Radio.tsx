@@ -15,16 +15,17 @@ const Radio = ({ label, color, value, onCheck, ...props }: RadioProps) => {
     onCheck && onCheck(value)
   }
 
-  const Input = <S.Input type="radio" {...props} onChange={onChange} />
+  const Input = <S.Input type="radio" {...props} onChange={onChange} value={value} />
 
   return (
     <S.Wrapper>
-      {!label && Input}
-      {label && (
+      {label ? (
         <S.Label color={color}>
           {Input}
           {label}
         </S.Label>
+      ) : (
+        Input
       )}
     </S.Wrapper>
   )

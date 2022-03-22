@@ -17,11 +17,6 @@ const mockBannerProps = (): BannerProps => ({
 })
 
 describe('<Banner />', () => {
-  it('should match the snapshot', () => {
-    const { container } = renderWithTheme(<Banner {...mockBannerProps()} />)
-    expect(container.firstChild).toMatchSnapshot()
-  })
-
   it('should render correctly', () => {
     const props = mockBannerProps()
     const makeItem = init(props)

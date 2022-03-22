@@ -11,11 +11,6 @@ const init = (props?: ButtonProps, role = 'button') => {
 }
 
 describe('<Button />', () => {
-  it('should render the correct snapshot', () => {
-    const { container } = renderWithTheme(<Button>Won Games</Button>)
-    expect(container.firstChild).toMatchSnapshot()
-  })
-
   it('should render medium size by default', () => {
     const sut = init()
     expect(sut).toHaveStyle({
