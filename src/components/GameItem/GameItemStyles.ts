@@ -3,14 +3,18 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    padding: ${theme.spacing(3, 0)};
+    padding: ${theme.spacing(2)};
+    border-bottom: 1px solid ${theme.colors.lightGray};
     ${media.greaterThan('medium')`
       display: flex;
+      padding: ${theme.spacing(3)};
       gap: ${theme.spacing(2)};
     `}
   `}
 `
 export const Thumbnail = styled.div`
+  display: flex;
+  align-items: center;
   ${media.lessThan('small')`
     img {
       width: 94px;
