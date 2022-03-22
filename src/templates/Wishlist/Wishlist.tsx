@@ -1,7 +1,12 @@
-import { Heading, Showcase, Grid, Divider, Empty } from 'components'
-import GameCard, { GameCardProps } from 'components/GameCard/GameCard'
-import { HighlightProps } from 'components/Highlight/Highlight'
-import Base from 'templates/Base/Base'
+import Showcase from 'components/Showcase'
+import Grid from 'components/Grid'
+import Divider from 'components/Divider'
+import Empty from 'components/Empty'
+import Heading from 'components/Heading'
+import GameCard, { GameCardProps } from 'components/GameCard'
+import { HighlightProps } from 'components/Highlight'
+import Base from 'templates/Base'
+
 import * as S from './WishlistStyles'
 
 export interface WishlistTemplateProps {

@@ -1,4 +1,7 @@
-import { Heading, Logo, Image, Copyright } from 'components'
+import Heading from 'components/Heading'
+import Logo from 'components/Logo'
+import Image from 'components/Image'
+import Copyright from 'components/Copyright'
 
 import * as S from './AuthStyles'
 

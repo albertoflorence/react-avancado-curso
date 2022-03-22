@@ -1,4 +1,5 @@
-import { Button } from 'components'
+import Button from 'components/Button'
+
 import * as S from './HighlightStyles'
 
 export interface HighlightProps {

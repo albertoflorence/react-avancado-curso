@@ -1,5 +1,7 @@
 import * as S from './EmptyStyles'
-import { Button, Link, Image } from 'components'
+import Button from 'components/Button'
+import Link from 'components/Link'
+import Image from 'components/Image'
 
 export interface EmptyProps {
   title: string

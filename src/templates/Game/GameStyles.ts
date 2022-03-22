@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
-import { Container } from 'components'
+import Container from 'components/Container'
 
 export const Wrapper = styled(Container).attrs({ center: true })`
   ${({ theme }) => css`

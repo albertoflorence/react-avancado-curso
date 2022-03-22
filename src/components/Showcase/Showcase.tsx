@@ -1,6 +1,8 @@
-import { Heading, GameCardSlider, Highlight } from 'components'
-import { GameCardProps } from 'components/GameCard/GameCard'
-import { HighlightProps } from 'components/Highlight/Highlight'
+import Heading from 'components/Heading'
+import GameCardSlider from 'components/GameCardSlider'
+import { GameCardProps } from 'components/GameCard'
+import Highlight, { HighlightProps } from 'components/Highlight'
+
 import * as S from './ShowcaseStyles'
 
 export interface ShowcaseProps {

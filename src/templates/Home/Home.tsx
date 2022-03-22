@@ -1,8 +1,11 @@
-import { Container, BannerSlider, Showcase } from 'components'
-import { BannerProps } from 'components/Banner/Banner'
-import { GameCardProps } from 'components/GameCard/GameCard'
-import { HighlightProps } from 'components/Highlight/Highlight'
 import Base from 'templates/Base/Base'
+import Container from 'components/Container'
+import BannerSlider from 'components/BannerSlider'
+import Showcase from 'components/Showcase'
+import { BannerProps } from 'components/Banner'
+import { GameCardProps } from 'components/GameCard'
+import { HighlightProps } from 'components/Highlight'
+
 import * as S from './HomeStyles'
 
 export interface HomeTemplateProps {

@@ -1,4 +1,5 @@
-import { Button, Ribbon } from 'components'
+import Ribbon from 'components/Ribbon'
+import Button from 'components/Button'
 import * as S from './BannerStyles'
 
 export interface BannerProps {

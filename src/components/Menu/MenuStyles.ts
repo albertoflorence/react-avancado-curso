@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
-import { Link } from 'components'
+import Link from 'components/Link'
 
 export const Wrapper = styled.menu`
   ${({ theme }) => css`

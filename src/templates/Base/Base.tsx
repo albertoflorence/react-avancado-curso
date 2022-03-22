@@ -1,4 +1,7 @@
-import { Menu, Container, Footer } from 'components'
+import Menu from 'components/Menu'
+import Container from 'components/Container'
+import Footer from 'components/Footer'
+
 import * as S from './BaseStyles'
 
 export interface BaseProps {

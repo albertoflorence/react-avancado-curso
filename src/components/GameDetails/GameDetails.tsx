@@ -1,4 +1,6 @@
-import { Heading, Icon, MediaMatch } from 'components'
+import Heading from 'components/Heading'
+import Icon from 'components/Icon'
+import MediaMatch from 'components/MediaMatch'
 import * as S from './GameDetailsStyles'
 
 type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'

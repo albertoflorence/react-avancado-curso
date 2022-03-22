@@ -1,23 +1,25 @@
-import {
-  AddShoppingCart,
-  ShoppingCart,
-  Menu,
-  Search,
-  Close,
-  FavoriteBorder,
-  Favorite,
-  Email,
-  Lock,
-  AccountCircle
-} from '@styled-icons/material-outlined'
+import { Menu } from '@styled-icons/material-outlined/Menu'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
+import { Search } from '@styled-icons/material-outlined/Search'
+import { Close } from '@styled-icons/material-outlined/Close'
+import { Favorite } from '@styled-icons/material-outlined/Favorite'
+import { Email } from '@styled-icons/material-outlined/Email'
+import { Lock } from '@styled-icons/material-outlined/Lock'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
+import { FavoriteBorder } from '@styled-icons/material-outlined/FavoriteBorder'
 
-import { ArrowForwardIos, ArrowBackIos } from '@styled-icons/material-rounded'
-import { Apple, Linux, Windows } from '@styled-icons/fa-brands'
+import { ArrowForwardIos } from '@styled-icons/material-rounded/ArrowForwardIos'
+import { ArrowBackIos } from '@styled-icons/material-rounded/ArrowBackIos'
+
+import { Windows } from '@styled-icons/fa-brands/Windows'
+import { Apple } from '@styled-icons/fa-brands/Apple'
+import { Linux } from '@styled-icons/fa-brands/Linux'
 
 const icons = {
+  Menu,
   AddShoppingCart,
   ShoppingCart,
-  Menu,
   Search,
   Close,
   FavoriteBorder,
@@ -32,7 +34,7 @@ const icons = {
   Windows
 }
 
-type IconProps = {
+export type IconProps = {
   label: keyof typeof icons
 } & React.ComponentPropsWithoutRef<typeof Menu>
 

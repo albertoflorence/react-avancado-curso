@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import { Icon } from 'components'
+import Icon from 'components/Icon'
 import TextField, { TextFieldProps } from './TextField'
 
 export default {

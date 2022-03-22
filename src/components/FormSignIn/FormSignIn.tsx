@@ -1,6 +1,10 @@
-import { Button, Icon, Link, TextField } from 'components'
+import Button from 'components/Button'
+import Icon from 'components/Icon'
+import Link from 'components/Link'
+import TextField from 'components/TextField'
+import { FormLink, FormWrapper } from 'components/Form'
+
 import * as S from './FormSignInStyles'
-import { FormWrapper, FormLink } from 'components'
 
 const FormSignIn = () => (
   <FormWrapper>

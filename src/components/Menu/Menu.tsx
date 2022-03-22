@@ -1,5 +1,9 @@
-import { Icon, Link, Logo, MediaMatch } from 'components'
-import Button from 'components/Button/Button'
+import Logo from 'components/Logo'
+import MediaMatch from 'components/MediaMatch'
+import Icon from 'components/Icon'
+import Link from 'components/Link'
+import Button from 'components/Button'
+
 import { useState } from 'react'
 import * as S from './MenuStyles'
 

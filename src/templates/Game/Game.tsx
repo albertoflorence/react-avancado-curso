@@ -1,12 +1,16 @@
-import Base from 'templates/Base/Base'
-import { Image, MediaMatch, Showcase, Divider } from 'components'
-import GameInfo, { GameInfoProps } from 'components/GameInfo/GameInfo'
+import Base from 'templates/Base'
+import Image from 'components/Image'
+import MediaMatch from 'components/MediaMatch'
+import Showcase from 'components/Showcase'
+import Divider from 'components/Divider'
+import TextContent from 'components/TextContent'
+import GameInfo, { GameInfoProps } from 'components/GameInfo'
+import Gallery, { GalleryProps } from 'components/Gallery'
+import GameDetails, { GameDetailsProps } from 'components/GameDetails'
+import { HighlightProps } from 'components/Highlight'
+import { GameCardProps } from 'components/GameCard'
+
 import * as S from './GameStyles'
-import Gallery, { GalleryProps } from 'components/Gallery/Gallery'
-import TextContent from 'components/TextContent/TextContent'
-import GameDetails, { GameDetailsProps } from 'components/GameDetails/GameDetails'
-import { HighlightProps } from 'components/Highlight/Highlight'
-import { GameCardProps } from 'components/GameCard/GameCard'
 
 export interface GameTemplateProps {
   cover: string

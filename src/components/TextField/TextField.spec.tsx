@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Icon } from 'components'
+import Icon from 'components/Icon'
 import { renderWithTheme } from 'utils/tests'
 import TextField, { TextFieldProps } from './TextField'
 

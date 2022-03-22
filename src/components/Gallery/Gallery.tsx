@@ -1,5 +1,6 @@
-import { Icon, Slider, Image } from 'components'
-import { SliderSettings } from 'components/Slider/Slider'
+import Icon from 'components/Icon'
+import Image from 'components/Image'
+import Slider, { SliderSettings } from 'components/Slider'
 import { useEffect, useRef, useState } from 'react'
 import * as S from './GalleryStyles'
 import SlickSlider from 'react-slick'

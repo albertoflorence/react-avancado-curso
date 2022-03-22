@@ -1,5 +1,6 @@
+import Link from 'components/Link'
+
 import * as S from './LogoStyles'
-import { Link } from 'components'
 
 export interface LogoProps {
   color?: 'white' | 'black'

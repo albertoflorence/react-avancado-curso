@@ -1,5 +1,5 @@
-import { FormSignUp } from 'components'
-import Auth from 'templates/Auth/Auth'
+import FormSignUp from 'components/FormSignUp'
+import Auth from 'templates/Auth'
 
 export default function SignUp() {
   return (

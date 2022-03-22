@@ -1,4 +1,8 @@
-import { Button, Icon, Image, Price, Ribbon } from 'components'
+import Button from 'components/Button'
+import Icon from 'components/Icon'
+import Image from 'components/Image'
+import Price from 'components/Price'
+import Ribbon from 'components/Ribbon'
 import * as S from './GameCardStyles'
 
 export interface GameCardProps {

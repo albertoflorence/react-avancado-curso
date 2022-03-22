@@ -1,6 +1,6 @@
-import { Icon } from 'components'
-import GameCard, { GameCardProps } from 'components/GameCard/GameCard'
-import Slider, { SliderSettings } from 'components/Slider/Slider'
+import Icon from 'components/Icon'
+import GameCard, { GameCardProps } from 'components/GameCard'
+import Slider, { SliderSettings } from 'components/Slider'
 import * as S from './GameCardSliderStyles'
 
 export type ArrowColor = 'black' | 'white'

@@ -1,5 +1,8 @@
-import { Button, Icon, Link, TextField } from 'components'
-import { FormWrapper, FormLink } from 'components'
+import Button from 'components/Button'
+import Icon from 'components/Icon'
+import Link from 'components/Link'
+import TextField from 'components/TextField'
+import { FormWrapper, FormLink } from 'components/Form'
 
 const FormSignUp = () => (
   <FormWrapper>

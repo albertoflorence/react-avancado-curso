@@ -1,4 +1,7 @@
-import { Logo, Heading, Link, Copyright } from 'components'
+import Logo from 'components/Logo'
+import Copyright from 'components/Copyright'
+import Heading from 'components/Heading'
+import Link from 'components/Link'
 import * as S from './FooterStyles'
 
 const Footer = () => (

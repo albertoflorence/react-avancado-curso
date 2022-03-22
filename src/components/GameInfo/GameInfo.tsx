@@ -1,4 +1,8 @@
-import { Button, Heading, Icon, Price } from 'components'
+import Button from 'components/Button'
+import Heading from 'components/Heading'
+import Icon from 'components/Icon'
+import Price from 'components/Price'
+
 import * as S from './GameInfoStyles'
 
 export interface GameInfoProps {

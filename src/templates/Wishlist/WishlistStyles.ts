@@ -1,4 +1,5 @@
-import { Container } from 'components'
+import Container from 'components/Container'
+
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled(Container).attrs({ center: true })`
