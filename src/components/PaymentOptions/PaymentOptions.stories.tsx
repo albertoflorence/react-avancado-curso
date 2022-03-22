@@ -7,6 +7,11 @@ export default {
   component: PaymentOptions,
   args: {
     cards: mockCards
+  },
+  argTypes: {
+    handlePayment: {
+      action: 'clicked'
+    }
   }
 } as Meta
 
