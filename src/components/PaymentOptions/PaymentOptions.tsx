@@ -6,7 +6,7 @@ import Radio from 'components/Radio'
 import { useState } from 'react'
 import * as S from './PaymentOptionsStyles'
 
-interface PaymentCard {
+export interface PaymentCard {
   number: string
   flag: string
   image: string
