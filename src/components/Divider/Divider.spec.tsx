@@ -1,13 +1,13 @@
-import { renderWithTheme } from 'utils/tests'
-import Divider from './Divider'
+import { renderWithTheme } from "utils/tests";
+import Divider from "./Divider";
 
-describe('<Divider />', () => {
-  it('should render correctly', () => {
-    const { container } = renderWithTheme(<Divider />)
+describe("<Divider />", () => {
+  it("should render correctly", () => {
+    const { container } = renderWithTheme(<Divider />);
     expect(container).toMatchInlineSnapshot(`
       .c0 {
         background: rgba(181,181,181,0.3);
-        margin-top: 56px;
+        margin: 56px auto 32px;
         height: 1px;
         border: 0;
         width: 100%;
@@ -24,6 +24,6 @@ describe('<Divider />', () => {
           class="c0"
         />
       </div>
-    `)
-  })
-})
+    `);
+  });
+});

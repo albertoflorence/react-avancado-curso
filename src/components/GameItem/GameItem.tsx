@@ -20,7 +20,7 @@ const GameItem = ({ title, price, image, downloadLink, paymentInfo }: GameItemPr
   <S.Wrapper>
     <S.GameContent>
       <S.Thumbnail>
-        <Image width={150} height={70} src={image} alt={`Thumbnail - ${title}`} objectFit="cover" />
+        <Image layout="fill" src={image} alt={`Thumbnail - ${title}`} objectFit="cover" />
       </S.Thumbnail>
 
       <div>

@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
     max-width: 100%;
     height: auto;
   }
+  p:last-child {
+    margin-bottom: 0;
+  }
 `
 
 export const Title = styled.h2`
@@ -19,5 +22,6 @@ export const Description = styled.p`
     font-size: ${theme.font.sizes.large};
     font-weight: ${theme.font.light};
     color: ${theme.colors.gray2};
+    margin-bottom: ${theme.spacing(4)};
   `}
 `

@@ -13,13 +13,14 @@ export const Wrapper = styled.div`
   `}
 `
 export const Thumbnail = styled.div`
-  display: flex;
-  align-items: center;
-  ${media.lessThan('small')`
-    img {
-      width: 94px;
-      height: 56px;
-    }
+  position: relative;
+  width: 150px;
+  height: 70px;
+  flex-shrink: 0;
+
+  ${media.lessThan('medium')`
+    width: 94px;
+    height: 56px;
   `}
 `
 
@@ -28,7 +29,7 @@ export const Title = styled.h3`
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xlarge};
 
-    ${media.lessThan('small')`
+    ${media.lessThan('medium')`
       font-size: ${theme.font.sizes.medium};
     `}
   `}
