@@ -12,6 +12,9 @@ import { ArrowForwardIos } from '@styled-icons/material-outlined/ArrowForwardIos
 import { ArrowBackIos } from '@styled-icons/material-outlined/ArrowBackIos'
 import { Download } from '@styled-icons/material-outlined/Download'
 import { Add } from '@styled-icons/material-outlined/Add'
+import { CreditCard } from '@styled-icons/material-outlined/CreditCard'
+import { FormatListBulleted } from '@styled-icons/material-outlined/FormatListBulleted'
+import { ExitToApp } from '@styled-icons/material-outlined/ExitToApp'
 
 import { Windows } from '@styled-icons/fa-brands/Windows'
 import { Apple } from '@styled-icons/fa-brands/Apple'
@@ -34,7 +37,10 @@ const icons = {
   Apple,
   Linux,
   Windows,
-  Add
+  Add,
+  CreditCard,
+  List: FormatListBulleted,
+  ExitToApp
 }
 
 export type IconProps = {
