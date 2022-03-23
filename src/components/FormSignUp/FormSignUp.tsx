@@ -13,13 +13,13 @@ const FormSignUp = () => (
         startIcon={<Icon label="Lock" />}
         placeholder="Password"
         type="password"
-        id="password"
+        name="password"
       />
       <TextField
         startIcon={<Icon label="Lock" />}
         placeholder="Confirm password"
         type="password"
-        id="confirm-password"
+        name="confirm-password"
       />
 
       <Button fullWidth as="a" href="#" size="large">

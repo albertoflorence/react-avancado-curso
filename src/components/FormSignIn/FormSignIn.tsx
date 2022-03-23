@@ -9,12 +9,12 @@ import * as S from './FormSignInStyles'
 const FormSignIn = () => (
   <FormWrapper>
     <form>
-      <TextField startIcon={<Icon label="Email" />} placeholder="Email" id="email" />
+      <TextField startIcon={<Icon label="Email" />} placeholder="Email" name="email" />
       <TextField
         startIcon={<Icon label="Lock" />}
         placeholder="Password"
         type="password"
-        id="password"
+        name="password"
       />
       <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
       <Button fullWidth as="a" href="#" size="large">

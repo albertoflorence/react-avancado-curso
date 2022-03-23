@@ -40,6 +40,7 @@ export const WithError: Story<TextFieldProps> = args => (
       {...args}
       startIcon={<Icon label="Email" />}
       label="E-mail"
+      name="email"
     />
   </div>
 )

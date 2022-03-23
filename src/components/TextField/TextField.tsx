@@ -5,10 +5,8 @@ export type TextFieldProps = {
   label?: string
   onInput?: (value: string) => void
   initialValue?: string
-  id?: string
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
-  disabled?: boolean
   error?: string
 } & React.ComponentPropsWithoutRef<'input'>
 
@@ -21,6 +19,7 @@ const TextField = ({
   endIcon,
   disabled,
   error,
+  name,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -36,24 +35,26 @@ const TextField = ({
     <S.InputWrapper>
       {startIcon && startIcon}
       <S.Input
-        id={id}
+        id={id || name}
         type="text"
         onChange={onChange}
         value={value}
-        {...props}
         disabled={disabled}
+        name={name}
+        {...props}
       />
       {endIcon && endIcon}
     </S.InputWrapper>
   )
   return (
     <S.Wrapper disabled={disabled} error={error}>
-      {!label && Input}
-      {label && (
+      {label ? (
         <S.Label htmlFor={id}>
           {label}
           {Input}
         </S.Label>
+      ) : (
+        Input
       )}
       {error && <S.Error>{error}</S.Error>}
     </S.Wrapper>
