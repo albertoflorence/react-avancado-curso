@@ -10,14 +10,14 @@ export interface BaseProps {
 
 const Base = ({ children }: BaseProps) => (
   <S.Wrapper>
-    <Container center>
+    <Container>
       <Menu />
     </Container>
 
     <S.Content>{children}</S.Content>
 
     <S.Footer>
-      <Container center>
+      <Container>
         <Footer />
       </Container>
     </S.Footer>

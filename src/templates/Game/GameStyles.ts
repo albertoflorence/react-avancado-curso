@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import Container from 'components/Container'
 
-export const Wrapper = styled(Container).attrs({ center: true })`
+export const Wrapper = styled(Container)`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;

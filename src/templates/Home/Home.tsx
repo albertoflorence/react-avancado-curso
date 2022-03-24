@@ -35,8 +35,8 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
       </Container>
 
       <S.SectionNews>
-        <Container center>
-          <Showcase gameCards={newGames} title="News" center arrowColor="black" />
+        <Container>
+          <Showcase gameCards={newGames} title="News" arrowColor="black" />
         </Container>
       </S.SectionNews>
 

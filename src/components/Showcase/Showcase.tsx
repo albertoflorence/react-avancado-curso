@@ -9,7 +9,6 @@ export interface ShowcaseProps {
   highlight?: HighlightProps
   gameCards?: GameCardProps[]
   title?: string
-  center?: boolean
   arrowColor?: 'white' | 'black'
   reverse?: boolean
 }

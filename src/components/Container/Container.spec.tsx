@@ -15,6 +15,8 @@ describe("<Container />", () => {
         width: 100%;
         padding-left: calc(32px * 2);
         padding-right: calc(32px * 2);
+        margin-right: auto;
+        margin-left: auto;
       }
 
       @media (max-width:768px) {
