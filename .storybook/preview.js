@@ -2,7 +2,17 @@ import GlobalStyles from '../src/styles/global'
 import { RouterContext } from 'next/dist/shared/lib/router-context'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
-import '../.jest/next-image.mock'
+import * as nextImage from 'next/image'
+
+const NextImage = nextImage.default
+
+Object.defineProperty(nextImage, 'default', {
+  configurable: true,
+  value: props => {
+    const { ...rest } = props
+    return <NextImage {...rest} unoptimized />
+  }
+})
 
 export const parameters = {
   nextRouter: {
