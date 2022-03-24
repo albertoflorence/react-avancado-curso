@@ -22,7 +22,7 @@ const Empty = ({ title, description, toHome }: EmptyProps) => (
     <S.Description>{description}</S.Description>
 
     {toHome && (
-      <Button href="/" internal as={Link}>
+      <Button href="/" as={Link}>
         Go back to store
       </Button>
     )}

@@ -14,7 +14,7 @@ const Logo = ({ id = 'logo', toHome, ...props }: LogoProps) => {
   return (
     <S.Wrapper {...props}>
       {toHome ? (
-        <Link internal href="/">
+        <Link href="/">
           <Svg id={id} />
         </Link>
       ) : (

@@ -44,15 +44,15 @@ const FooterItem = ({ links, title, labelledby }: FooterItemProps) => {
       <nav aria-labelledby={labelledby}>
         {links.map(link =>
           link.href ? (
-            <Link
-              key={link.text}
-              href={link.href}
-              internal={link.internal}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {link.text}
-            </Link>
+            link.internal ? (
+              <Link key={link.text} href={link.href}>
+                {link.text}
+              </Link>
+            ) : (
+              <a key={link.text} href={link.href} target="_blank" rel="noreferrer">
+                {link.text}
+              </a>
+            )
           ) : (
             <span key={link.text}>{link.text}</span>
           )

@@ -26,9 +26,7 @@ const Menu = ({ userName }: MenuProps) => {
 
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
-          <S.MenuLink href="/" internal>
-            Home
-          </S.MenuLink>
+          <S.MenuLink href="/">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
         </S.MenuNav>
       </MediaMatch>
@@ -38,7 +36,7 @@ const Menu = ({ userName }: MenuProps) => {
         <MenuItem icon="ShoppingCart" aria-label="Open Shopping Cart" />
         {!userName && (
           <MediaMatch greaterThan="medium">
-            <Button as={Link} href="/login" internal>
+            <Button as={Link} href="/login">
               Sign In
             </Button>
           </MediaMatch>
@@ -48,9 +46,7 @@ const Menu = ({ userName }: MenuProps) => {
       <MenuFull open={isOpen}>
         <Icon label="Close" aria-label="Close Menu" onClick={() => setIsOpen(false)}></Icon>
         <S.MenuNav>
-          <S.MenuLink href="/" internal>
-            Home
-          </S.MenuLink>
+          <S.MenuLink href="/">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
           {userName && (
             <>
@@ -61,13 +57,11 @@ const Menu = ({ userName }: MenuProps) => {
         </S.MenuNav>
         {!userName && (
           <S.RegisterBox>
-            <Button as={Link} href="/login" internal fullWidth>
+            <Button as={Link} href="/login" fullWidth>
               Log in now
             </Button>
             <span>or</span>
-            <S.SignUp href="/signup" internal>
-              Sign Up
-            </S.SignUp>
+            <S.SignUp href="/signup">Sign Up</S.SignUp>
           </S.RegisterBox>
         )}
       </MenuFull>

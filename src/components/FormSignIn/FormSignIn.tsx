@@ -21,10 +21,7 @@ const FormSignIn = () => (
         Sign in now
       </Button>
       <FormLink>
-        Don&apos;t have an account?{' '}
-        <Link href="/signup" internal>
-          Sign Up
-        </Link>
+        Don&apos;t have an account? <Link href="/signup">Sign Up</Link>
       </FormLink>
     </form>
   </FormWrapper>

@@ -26,10 +26,7 @@ const FormSignUp = () => (
         Sign up now
       </Button>
       <FormLink>
-        Already have an account?{' '}
-        <Link href="/login" internal>
-          Sign In
-        </Link>
+        Already have an account? <Link href="/login">Sign In</Link>
       </FormLink>
     </form>
   </FormWrapper>

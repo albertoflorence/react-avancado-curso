@@ -22,7 +22,7 @@ const handleActive = (theme: DefaultTheme) => css`
   background: ${theme.colors.primary};
 `
 
-export const Item = styled(Link).attrs({ internal: true })<ItemProps>`
+export const Item = styled(Link)<ItemProps>`
   ${({ theme, active }) => css`
     color: ${theme.colors.black};
     display: flex;
