@@ -4,7 +4,7 @@ import Profile from 'templates/Profile'
 
 export default function Index(props: CardsListProps) {
   return (
-    <Profile activeLink={'/profile/cards'}>
+    <Profile>
       <CardsList {...props} />
     </Profile>
   )
