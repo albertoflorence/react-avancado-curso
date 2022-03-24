@@ -18,8 +18,18 @@ const FormProfile = ({ userName, email }: FormProfileProps) => {
       <S.Content>
         <TextField name="userName" label="Name" initialValue={userName} />
         <TextField name="email" label="E-mail" type="email" initialValue={email} disabled />
-        <TextField name="password" type="password" label="Password" />
-        <TextField name="newPassword" type="password" label="New Password" />
+        <TextField
+          name="password"
+          type="password"
+          label="Password"
+          placeholder="Type your password"
+        />
+        <TextField
+          name="newPassword"
+          type="password"
+          label="New Password"
+          placeholder="New password"
+        />
       </S.Content>
 
       <Button size="large">SAVE</Button>
