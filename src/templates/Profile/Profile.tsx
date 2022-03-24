@@ -1,3 +1,4 @@
+import Container from 'components/Container'
 import Heading from 'components/Heading'
 import ProfileMenu, { Links } from 'components/ProfileMenu'
 import Base from 'templates/Base'
@@ -10,15 +11,15 @@ export interface ProfileProps {
 
 const Profile = ({ children, activeLink }: ProfileProps) => (
   <Base>
-    <S.Wrapper>
+    <Container>
       <Heading line="left" lineColor="secondary">
         My Profile
       </Heading>
-      <S.Content>
+      <S.Wrapper>
         <ProfileMenu activeLink={activeLink} />
-        {children}
-      </S.Content>
-    </S.Wrapper>
+        <S.Content>{children}</S.Content>
+      </S.Wrapper>
+    </Container>
   </Base>
 )
 

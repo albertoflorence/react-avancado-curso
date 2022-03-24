@@ -9,7 +9,7 @@ export interface CardsListProps {
 
 const CardsList = ({ cards }: CardsListProps) => (
   <S.Wrapper>
-    <Heading line="bottom" lineColor="secondary" size="small" color="black">
+    <Heading line="bottom" size="small" color="black">
       My Cards
     </Heading>
     <S.Content>

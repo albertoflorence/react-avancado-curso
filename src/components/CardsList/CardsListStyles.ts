@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-    padding: ${theme.spacing(2)};
-  `}
-`
+export const Wrapper = styled.div``
+
 export const Card = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.lightGray};
