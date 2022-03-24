@@ -6,6 +6,7 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: scroll;
 `
 
 export const Content = styled.section`

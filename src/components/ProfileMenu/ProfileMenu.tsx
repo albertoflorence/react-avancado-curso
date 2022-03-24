@@ -1,7 +1,7 @@
 import Icon, { IconProps } from 'components/Icon'
 import * as S from './ProfileMenuStyles'
 
-type Links = '/profile/me' | '/profile/cards' | '/profile/orders'
+export type Links = '/profile/me' | '/profile/cards' | '/profile/orders'
 
 export interface ProfileMenuProps {
   activeLink?: Links
