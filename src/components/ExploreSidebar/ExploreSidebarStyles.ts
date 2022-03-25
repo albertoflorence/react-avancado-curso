@@ -26,13 +26,13 @@ export const Content = styled.div`
     }
 
     ${media.lessThan('medium')`
-      > div:not(:last-child) {
+      box-shadow: 0 -0.2px 4px rgba(0, 0, 0, 0.2);
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: ${theme.spacing(1)};
+      > div {
         border: 0;
       }
-      border-bottom: 1px solid rgba(181, 181, 181, 0.3);
-
-      max-height: 75vh;
-      overflow-y: auto;
     `}
   `}
 `
