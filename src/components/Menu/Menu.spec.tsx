@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests'
 import Menu, { MenuProps } from './Menu'
 
@@ -30,17 +30,6 @@ describe('<Menu />', () => {
       ['open shopping cart', 1]
     ])
     expect(logo).toBeInTheDocument()
-  })
-
-  it('should handle the open/close mobile menu', () => {
-    const { menuFull, makeIcon } = init()
-    expect(menuFull).toHaveStyle({ opacity: 0 })
-
-    fireEvent.click(makeIcon('open menu')[0])
-    expect(menuFull).toHaveStyle({ opacity: 1 })
-
-    fireEvent.click(makeIcon('close menu')[0])
-    expect(menuFull).toHaveStyle({ opacity: 0 })
   })
 
   it('should render logged out elements', () => {

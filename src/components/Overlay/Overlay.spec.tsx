@@ -1,14 +1,12 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests'
 import Overlay, { OverlayProps } from './Overlay'
 
 const init = (props?: Partial<OverlayProps>) => {
-  return renderWithTheme(
-    <Overlay {...props} icon={<span data-testid="icon" />}>
-      children
-    </Overlay>
-  ).container.firstChild as HTMLElement
+  return renderWithTheme(<Overlay {...props}>children</Overlay>).container.firstChild as HTMLElement
 }
+
+const getClose = () => screen.getByLabelText('Close Overlay')
 
 describe('<Overlay />', () => {
   it('should render the children', () => {
@@ -27,5 +25,12 @@ describe('<Overlay />', () => {
 
     expect(overlay.getAttribute('aria-hidden')).toBe('false')
     expect(overlay).toHaveStyle({ opacity: 1 })
+  })
+
+  it('should call onClose when close button is clicked', () => {
+    const handleClose = jest.fn()
+    init({ handleClose })
+    fireEvent.click(getClose())
+    expect(handleClose).toHaveBeenCalledTimes(1)
   })
 })

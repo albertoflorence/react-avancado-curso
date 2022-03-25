@@ -44,10 +44,7 @@ const Menu = ({ userName }: MenuProps) => {
         )}
       </S.MenuRight>
 
-      <Overlay
-        open={isOpen}
-        icon={<Icon label="Close" aria-label="Close Menu" onClick={() => setIsOpen(false)} />}
-      >
+      <Overlay open={isOpen} handleClose={() => setIsOpen(false)}>
         <S.OverlayContent>
           <S.MenuNav>
             <S.MenuLink href="/">Home</S.MenuLink>

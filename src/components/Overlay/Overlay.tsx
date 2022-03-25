@@ -1,14 +1,15 @@
+import Icon from 'components/Icon'
 import * as S from './OverlayStyles'
 
 export interface OverlayProps {
   children?: React.ReactNode
-  icon: React.ReactNode
   open?: boolean
+  handleClose?: () => void
 }
 
-const Overlay = ({ children, icon, open }: OverlayProps) => (
+const Overlay = ({ children, open, handleClose }: OverlayProps) => (
   <S.Wrapper open={open} aria-hidden={!open}>
-    {icon}
+    <Icon label="Close" aria-label="Close Overlay" onClick={handleClose} />
     {children}
   </S.Wrapper>
 )
