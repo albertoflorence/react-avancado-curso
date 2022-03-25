@@ -6,6 +6,7 @@ import Button from 'components/Button'
 
 import { useState } from 'react'
 import * as S from './MenuStyles'
+import Overlay from 'components/Overlay'
 
 export interface MenuProps {
   userName?: string
@@ -43,28 +44,32 @@ const Menu = ({ userName }: MenuProps) => {
         )}
       </S.MenuRight>
 
-      <MenuFull open={isOpen}>
-        <Icon label="Close" aria-label="Close Menu" onClick={() => setIsOpen(false)}></Icon>
-        <S.MenuNav>
-          <S.MenuLink href="/">Home</S.MenuLink>
-          <S.MenuLink href="#">Explore</S.MenuLink>
-          {userName && (
-            <>
-              <S.MenuLink href="#">My Account</S.MenuLink>
-              <S.MenuLink href="#">Wishlist</S.MenuLink>
-            </>
+      <Overlay
+        open={isOpen}
+        icon={<Icon label="Close" aria-label="Close Menu" onClick={() => setIsOpen(false)} />}
+      >
+        <S.OverlayContent>
+          <S.MenuNav>
+            <S.MenuLink href="/">Home</S.MenuLink>
+            <S.MenuLink href="#">Explore</S.MenuLink>
+            {userName && (
+              <>
+                <S.MenuLink href="#">My Account</S.MenuLink>
+                <S.MenuLink href="#">Wishlist</S.MenuLink>
+              </>
+            )}
+          </S.MenuNav>
+          {!userName && (
+            <S.RegisterBox>
+              <Button as={Link} href="/login" fullWidth>
+                Log in now
+              </Button>
+              <span>or</span>
+              <S.SignUp href="/signup">Sign Up</S.SignUp>
+            </S.RegisterBox>
           )}
-        </S.MenuNav>
-        {!userName && (
-          <S.RegisterBox>
-            <Button as={Link} href="/login" fullWidth>
-              Log in now
-            </Button>
-            <span>or</span>
-            <S.SignUp href="/signup">Sign Up</S.SignUp>
-          </S.RegisterBox>
-        )}
-      </MenuFull>
+        </S.OverlayContent>
+      </Overlay>
     </S.Wrapper>
   )
 }
@@ -77,17 +82,6 @@ const MenuItem = ({ icon, ...props }: MenuItemProps) => (
   <S.IconWrapper>
     <Icon label={icon} {...props}></Icon>
   </S.IconWrapper>
-)
-
-export interface MenuFullProps {
-  open: boolean
-  children: React.ReactNode
-}
-
-const MenuFull = ({ open, children, ...props }: MenuFullProps) => (
-  <S.MenuFull aria-hidden={!open} open={open} {...props}>
-    {children}
-  </S.MenuFull>
 )
 
 export default Menu

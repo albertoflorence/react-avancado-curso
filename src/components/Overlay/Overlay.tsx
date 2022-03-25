@@ -2,13 +2,13 @@ import * as S from './OverlayStyles'
 
 export interface OverlayProps {
   children?: React.ReactNode
-  Icon: React.ReactNode
+  icon: React.ReactNode
   open?: boolean
 }
 
-const Overlay = ({ children, Icon, open }: OverlayProps) => (
+const Overlay = ({ children, icon, open }: OverlayProps) => (
   <S.Wrapper open={open} aria-hidden={!open}>
-    {Icon}
+    {icon}
     {children}
   </S.Wrapper>
 )

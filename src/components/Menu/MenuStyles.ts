@@ -80,35 +80,12 @@ export const MenuLink = styled(Link)`
   `}
 `
 
-import { MenuFullProps } from './Menu'
-
-export const MenuFull = styled.nav<MenuFullProps>`
-  ${({ theme, open }) => css`
+export const OverlayContent = styled.div`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: ${theme.colors.white};
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
     height: 100vh;
-    overflow: hidden;
-    opacity: ${open ? 1 : 0};
-    pointer-events: ${open ? 'all' : 'none'};
-    transition: opacity ${theme.transition.default};
-    z-index: ${theme.layers.modal};
-
-    > svg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: ${theme.spacing(2)};
-      cursor: pointer;
-      width: 24px;
-      height: 24px;
-    }
 
     ${MenuNav} {
       display: flex;
@@ -123,13 +100,6 @@ export const MenuFull = styled.nav<MenuFullProps>`
       font-weight: ${theme.font.bold};
       font-size: ${theme.font.sizes.xlarge};
       margin-bottom: ${theme.spacing(3)};
-      transform: ${open ? 'translateY(0)' : 'translateY(30px)'};
-      transition: transform ${theme.transition.default};
-    }
-
-    ${RegisterBox} {
-      transform: ${open ? 'translateY(0)' : 'translateY(30px)'};
-      transition: transform ${theme.transition.default};
     }
   `}
 `

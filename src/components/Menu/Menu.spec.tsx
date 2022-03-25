@@ -34,15 +34,12 @@ describe('<Menu />', () => {
 
   it('should handle the open/close mobile menu', () => {
     const { menuFull, makeIcon } = init()
-    expect(menuFull.getAttribute('aria-hidden')).toBe('true')
     expect(menuFull).toHaveStyle({ opacity: 0 })
 
     fireEvent.click(makeIcon('open menu')[0])
-    expect(menuFull.getAttribute('aria-hidden')).toBe('false')
     expect(menuFull).toHaveStyle({ opacity: 1 })
 
     fireEvent.click(makeIcon('close menu')[0])
-    expect(menuFull.getAttribute('aria-hidden')).toBe('true')
     expect(menuFull).toHaveStyle({ opacity: 0 })
   })
 
