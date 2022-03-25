@@ -24,3 +24,11 @@ export const Default: Story<RadioProps> = args => (
     <Radio {...args} label="RPG" name="radio" value="third" />
   </div>
 )
+
+export const WithInitialValue: Story<RadioProps> = args => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <Radio {...args} label="Action" name="radio" value="first" />
+    <Radio {...args} label="Adventure" name="radio" value="second" defaultChecked />
+    <Radio {...args} label="RPG" name="radio" value="third" />
+  </div>
+)
