@@ -19,6 +19,8 @@ import { ExitToApp } from '@styled-icons/material-outlined/ExitToApp'
 import { Windows } from '@styled-icons/fa-brands/Windows'
 import { Apple } from '@styled-icons/fa-brands/Apple'
 import { Linux } from '@styled-icons/fa-brands/Linux'
+import * as S from './IconStyles'
+import React from 'react'
 
 const icons = {
   Menu,
@@ -43,14 +45,31 @@ const icons = {
   ExitToApp
 }
 
+export type Color = 'primary' | 'secondary' | 'white' | 'black'
+
 export type IconProps = {
   label: keyof typeof icons
+  color?: Color
+  badge?: number
 } & React.ComponentPropsWithoutRef<typeof Menu>
 
-const Icon = ({ label, ...props }: IconProps) => {
+const Icon = ({ label, color, badge, ...props }: IconProps) => {
   const Component = icons[label]
 
-  return <Component {...props}></Component>
+  return (
+    <S.Wrapper color={color}>
+      {!!badge && <Badge aria-label="Icon Badge">{badge}</Badge>}
+      <Component {...props} />
+    </S.Wrapper>
+  )
 }
+
+interface BadgeProps {
+  children?: number
+}
+
+const Badge = ({ children, ...props }: BadgeProps) => (
+  <S.BadgeWrapper {...props}>{children}</S.BadgeWrapper>
+)
 
 export default Icon
