@@ -17,6 +17,7 @@ export const Wrapper = styled.nav<Pick<OverlayProps, 'open'>>`
 
     > svg {
       position: absolute;
+      z-index: ${theme.layers.base};
       top: 0;
       right: 0;
       margin: ${theme.spacing(2)};
