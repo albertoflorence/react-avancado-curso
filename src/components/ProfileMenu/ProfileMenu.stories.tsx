@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import ProfileMenu from './ProfileMenu'
 
 export default {
-  title: 'ProfileMenu',
+  title: 'Profile/ProfileMenu',
   component: ProfileMenu,
   parameters: {
     backgrounds: {

@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import GameDetails, { GameDetailsProps } from './GameDetails'
 import mockDetails from './mock'
 export default {
-  title: 'GameDetails',
+  title: 'Game/GameDetails',
   component: GameDetails,
   args: mockDetails,
   parameters: {

@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import GameItem, { GameItemProps } from './GameItem'
 
 export default {
-  title: 'GameItem',
+  title: 'Game/GameItem',
   component: GameItem,
   args: {
     title: 'Red Dead Redemption 2',

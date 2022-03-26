@@ -3,7 +3,7 @@ import mockCards from 'components/PaymentOptions/mock'
 import CardsList, { CardsListProps } from './CardsList'
 
 export default {
-  title: 'CardsList',
+  title: 'Profile/CardsList',
   component: CardsList,
   args: {
     cards: mockCards

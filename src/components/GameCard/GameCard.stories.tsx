@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react'
 import GameCard, { GameCardProps } from './GameCard'
 
 export default {
-  title: 'GameCard',
+  title: 'Game/GameCard',
   component: GameCard,
   args: {
     image: 'https://i.ibb.co/zPFXfK4/image.png',

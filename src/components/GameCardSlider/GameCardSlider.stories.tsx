@@ -3,7 +3,7 @@ import GameCardSlider, { GameCardSliderProps } from './GameCardSlider'
 import items from './mock'
 
 export default {
-  title: 'GameCardSlider',
+  title: 'Game/GameCardSlider',
   component: GameCardSlider,
   args: {
     items,
