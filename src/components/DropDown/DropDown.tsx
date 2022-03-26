@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as S from './DropDownStyles'
+import * as S from './DropdownStyles'
 
 export interface DropDownProps {
   title: React.ReactNode

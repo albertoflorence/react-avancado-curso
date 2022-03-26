@@ -1,5 +1,5 @@
 import * as S from './CartDropdownStyles'
-import Dropdown from 'components/DropDown'
+import Dropdown from 'components/Dropdown'
 import Icon from 'components/Icon'
 import CartList, { CartListProps } from 'components/CartList'
 

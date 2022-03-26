@@ -16,6 +16,7 @@ export const Title = styled.div`
 const handleOpen = () => css`
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 `
 
 export const Content = styled.div<{ open: boolean }>`
@@ -24,12 +25,15 @@ export const Content = styled.div<{ open: boolean }>`
     color: ${theme.colors.black};
     position: absolute;
     margin-top: ${theme.spacing(2)};
-    right: 0;
+    right: -${theme.spacing(2)};
+    pointer-events: none;
+    z-index: ${theme.layers.overlay};
+
     &::before {
       content: '';
       width: 24px;
       height: 24px;
-      top: -24px;
+      top: -23px;
       position: absolute;
       right: ${theme.spacing(2)};
       background: ${theme.colors.white};
@@ -37,7 +41,7 @@ export const Content = styled.div<{ open: boolean }>`
     }
 
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(-20px);
     transition: opacity, transform, ${theme.transition.default};
     ${open && handleOpen}
   `}

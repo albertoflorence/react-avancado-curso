@@ -1,3 +1,3 @@
-export { default } from './DropDown'
-export * from './DropDown'
-export * as DropDownStyles from './DropDownStyles'
+export { default } from './Dropdown'
+export * from './Dropdown'
+export * as DropDownStyles from './DropdownStyles'
