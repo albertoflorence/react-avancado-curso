@@ -5,7 +5,11 @@ export const Wrapper = styled.div`
     background: ${theme.colors.white};
   `}
 `
-
+export const EmptyWrapper = styled(Wrapper)`
+  ${({ theme }) => css`
+    padding-bottom: ${theme.spacing(4)};
+  `}
+`
 export const Total = styled.div`
   ${({ theme }) => css`
     display: flex;

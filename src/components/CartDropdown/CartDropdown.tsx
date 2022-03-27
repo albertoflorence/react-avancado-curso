@@ -9,7 +9,7 @@ const CartDropdown = (props: CartDropdownProps) => (
   <S.Wrapper>
     <Dropdown
       title={
-        <Icon label="ShoppingCart" title={'Shopping Cart'} size={24} badge={props.items.length} />
+        <Icon label="ShoppingCart" title={'Shopping Cart'} size={24} badge={props.items?.length} />
       }
     >
       <CartList {...props} hasButton />

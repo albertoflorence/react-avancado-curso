@@ -19,4 +19,10 @@ describe('<CartList />', () => {
 
     expect(screen.getByRole('link', { name: /buy it now/i })).toHaveAttribute('href', '/#')
   })
+
+  it('should render Empty if there are no games', () => {
+    init({ items: undefined })
+
+    expect(screen.getByRole('heading', { name: /your cart is empty/i })).toBeInTheDocument()
+  })
 })
