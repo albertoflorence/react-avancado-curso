@@ -7,15 +7,16 @@ export interface EmptyProps {
   title: string
   description: string
   toHome?: boolean
+  size?: 'small' | 'normal'
 }
 
-const Empty = ({ title, description, toHome }: EmptyProps) => (
-  <S.Wrapper>
+const Empty = ({ title, description, toHome, size }: EmptyProps) => (
+  <S.Wrapper size={size}>
     <Image
       src="/img/empty.svg"
       alt="a gamer in a couch playing videogame"
-      width={379}
-      height={284}
+      width={380}
+      height={285}
     />
 
     <S.Title>{title}</S.Title>
