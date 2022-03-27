@@ -9,7 +9,7 @@ export interface OverlayProps {
 
 const Overlay = ({ children, open, handleClose }: OverlayProps) => (
   <S.Wrapper open={open} aria-hidden={!open}>
-    <Icon label="Close" aria-label="Close Overlay" onClick={handleClose} />
+    <Icon label="Close" aria-label="Close Overlay" color="black" size={25} onClick={handleClose} />
     {children}
   </S.Wrapper>
 )

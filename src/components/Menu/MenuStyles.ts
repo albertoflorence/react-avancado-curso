@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import Link from 'components/Link'
+import { IconStyles } from 'components/Icon'
 
 export const Wrapper = styled.menu`
   ${({ theme }) => css`
@@ -9,6 +10,9 @@ export const Wrapper = styled.menu`
     align-items: center;
     padding: ${theme.spacing(2, 0)};
     z-index: ${theme.layers.menu};
+    ${IconStyles.Wrapper} {
+      cursor: pointer;
+    }
   `}
 `
 

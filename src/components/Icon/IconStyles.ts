@@ -4,9 +4,7 @@ import { IconProps } from './Icon'
 export const Wrapper = styled.span<Omit<IconProps, 'label'>>`
   ${({ theme, color = 'white' }) => css`
     position: relative;
-    > svg {
-      color: ${theme.colors[color]};
-    }
+    color: ${theme.colors[color]};
   `}
 `
 

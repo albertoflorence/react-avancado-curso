@@ -1,3 +1,4 @@
+import { IconStyles } from 'components/Icon'
 import styled, { css } from 'styled-components'
 import { OverlayProps } from './Overlay'
 
@@ -15,15 +16,13 @@ export const Wrapper = styled.nav<Pick<OverlayProps, 'open'>>`
     transition: opacity ${theme.transition.default};
     z-index: ${theme.layers.modal};
 
-    > svg {
+    > ${IconStyles.Wrapper} {
       position: absolute;
       z-index: ${theme.layers.base};
       top: 0;
       right: 0;
       margin: ${theme.spacing(2)};
       cursor: pointer;
-      width: 24px;
-      height: 24px;
     }
 
     > * {

@@ -17,7 +17,7 @@ describe('<Icon />', () => {
   it('should render with color', () => {
     init({ color: 'primary' })
 
-    expect(getIcon()).toHaveStyle({
+    expect(getIcon().parentNode).toHaveStyle({
       color: theme.colors.primary
     })
   })

@@ -1,6 +1,6 @@
 import Logo from 'components/Logo'
 import MediaMatch from 'components/MediaMatch'
-import Icon from 'components/Icon'
+import Icon, { IconProps } from 'components/Icon'
 import Link from 'components/Link'
 import Button from 'components/Button'
 
@@ -71,14 +71,12 @@ const Menu = ({ userName }: MenuProps) => {
   )
 }
 
-interface MenuItemProps extends React.ComponentPropsWithoutRef<'svg'> {
+interface MenuItemProps extends Omit<IconProps, 'label'> {
   icon: 'Menu' | 'Search' | 'ShoppingCart'
 }
 
 const MenuItem = ({ icon, ...props }: MenuItemProps) => (
-  <S.IconWrapper>
-    <Icon label={icon} {...props}></Icon>
-  </S.IconWrapper>
+  <Icon label={icon} color="white" size={24} {...props} />
 )
 
 export default Menu
