@@ -29,7 +29,7 @@ const Cart = ({ recommended, cartList, paymentOptions }: CartTemplateProps) => {
           My Cart
         </Heading>
 
-        {cartList.items.length ? (
+        {cartList.items?.length ? (
           <S.Content>
             <CartList {...cartList} />
             <PaymentOptions {...paymentOptions} handlePayment={handlePayment} />

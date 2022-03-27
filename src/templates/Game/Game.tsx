@@ -53,14 +53,9 @@ const Game = ({
 
       <Divider />
 
-      <Showcase
-        center
-        title="Up Coming"
-        gameCards={upComing.gameCards}
-        highlight={upComing.highlight}
-      />
+      <Showcase title="Up Coming" gameCards={upComing.gameCards} highlight={upComing.highlight} />
 
-      <Showcase center title="You may like these games" gameCards={recommended.gameCards} />
+      <Showcase title="You may like these games" gameCards={recommended.gameCards} />
     </S.Wrapper>
   </Base>
 )

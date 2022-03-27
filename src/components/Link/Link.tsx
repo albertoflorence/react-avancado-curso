@@ -1,7 +1,7 @@
 import LinkNext, { LinkProps as NextLinkProps } from 'next/link'
 import React from 'react'
 
-interface LinkProps extends NextLinkProps {
+export interface LinkProps extends NextLinkProps {
   children?: React.ReactNode
   className?: string
 }

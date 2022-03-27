@@ -2,14 +2,14 @@ import { useState } from 'react'
 import Base from 'templates/Base'
 import MediaMatch from 'components/MediaMatch'
 import * as S from './GamesStyles'
-import ExploreSidebar, { ExploreSidebarProps } from 'components/ExploreSidebar'
+import ExploreSidebar, { FilterProps } from 'components/ExploreSidebar'
 import Overlay from 'components/Overlay'
 import Icon from 'components/Icon'
 import Grid from 'components/Grid'
 import GameCard, { GameCardProps } from 'components/GameCard'
 
 export interface GamesTemplateProps {
-  filters: ExploreSidebarProps['items']
+  filters: FilterProps[]
   games?: GameCardProps[]
 }
 

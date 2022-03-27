@@ -1,10 +1,6 @@
-import { LinkProps } from 'components/Link/Link'
 import * as S from './ButtonStyles'
 
-type ButtonTypes =
-  | React.ComponentPropsWithoutRef<'button'>
-  | React.ComponentPropsWithoutRef<'a'>
-  | LinkProps
+type ButtonTypes = React.ComponentPropsWithoutRef<'button'> | React.ComponentPropsWithoutRef<'a'>
 
 export type ButtonProps = {
   size?: 'small' | 'medium' | 'large'
