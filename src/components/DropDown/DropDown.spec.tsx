@@ -1,9 +1,10 @@
 import { fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from 'utils/tests'
 import DropDown from './Dropdown'
 
 const init = () => {
-  renderWithTheme(<DropDown title="title">children</DropDown>)
+  renderWithTheme(<DropDown title="title">content</DropDown>)
 }
 
 describe('<DropDown />', () => {
@@ -15,14 +16,26 @@ describe('<DropDown />', () => {
   it('should handle open/close dropdown', async () => {
     init()
 
-    const children = screen.getByText('children')
+    const content = screen.getByText('content')
 
-    expect(children).toHaveStyle({ opacity: 0 })
-    expect(children).toHaveAttribute('aria-hidden', 'true')
+    expect(content).toHaveStyle({ opacity: 0 })
+    expect(content).toHaveAttribute('aria-hidden', 'true')
 
     fireEvent.click(screen.getByText('title'))
 
-    expect(children).toHaveStyle({ opacity: 1 })
-    expect(children).toHaveAttribute('aria-hidden', 'false')
+    expect(content).toHaveStyle({ opacity: 1 })
+    expect(content).toHaveAttribute('aria-hidden', 'false')
+  })
+
+  it('should handle close if click outside', async () => {
+    init()
+
+    const content = screen.getByText('content')
+
+    fireEvent.click(screen.getByText('title'))
+    expect(content).toHaveStyle({ opacity: 1 })
+
+    userEvent.click(document.body)
+    expect(content).toHaveStyle({ opacity: 0 })
   })
 })
