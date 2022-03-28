@@ -6,7 +6,7 @@ import * as S from './CartListStyles'
 
 export interface CartListProps {
   items?: GameItemProps[]
-  total: string
+  total?: string
   hasButton?: boolean
 }
 

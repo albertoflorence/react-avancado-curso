@@ -12,7 +12,7 @@ export default [
     }
   },
   {
-    title: 'Red Dead Redemption 2',
+    title: 'Red Dead Redemption 2 2',
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     price: 'R$215,00',
     paymentInfo: {
@@ -23,7 +23,7 @@ export default [
     }
   },
   {
-    title: 'Red Dead Redemption 2',
+    title: 'Red Dead Redemption 2 3',
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     price: 'R$215,00',
     downloadLink: '/download/red-dead-redemption2'

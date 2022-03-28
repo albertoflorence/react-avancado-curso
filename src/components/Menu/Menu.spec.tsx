@@ -4,16 +4,6 @@ import Menu, { MenuProps } from './Menu'
 
 const init = (props?: MenuProps) => {
   renderWithTheme(<Menu {...props} />)
-  const makeIcon = (name: string) => screen.getAllByLabelText(new RegExp(name, 'i'))
-  const makeLink = (name: string) => screen.queryAllByText(new RegExp(name, 'i'))
-  const logo = screen.getByRole('img', { name: /won games/i })
-  const menuFull = screen.getByRole('navigation', { hidden: true })
-  return {
-    makeLink,
-    makeIcon,
-    logo,
-    menuFull
-  }
 }
 
 type MakeLink = (name: string) => Element[]
@@ -21,19 +11,24 @@ type Elements = [string, number][]
 const testElements = (makeLink: MakeLink, elements: Elements) =>
   elements.forEach(([name, qtd]) => expect(makeLink(name)).toHaveLength(qtd))
 
+const makeLink = (name: string) =>
+  screen.queryAllByRole('link', { name: new RegExp(name, 'i'), hidden: true })
+const makeIcon = (name: string) => screen.getAllByLabelText(new RegExp(name, 'i'))
+const getLogo = () => screen.getByRole('img', { name: /won games/i, hidden: true })
+
 describe('<Menu />', () => {
   it('should render the menu with correct elements', () => {
-    const { makeIcon, logo } = init()
+    init()
     testElements(makeIcon, [
       ['open menu', 1],
       ['open search', 1],
       ['open shopping cart', 1]
     ])
-    expect(logo).toBeInTheDocument()
+    expect(getLogo()).toBeInTheDocument()
   })
 
   it('should render logged out elements', () => {
-    const { makeLink } = init()
+    init()
     testElements(makeLink, [
       ['home', 2],
       ['explore', 2],
@@ -45,12 +40,12 @@ describe('<Menu />', () => {
   })
 
   it('should show logged in elements', () => {
-    const { makeLink } = init({ userName: 'any_name' })
+    init({ username: 'any_name' })
     testElements(makeLink, [
       ['home', 2],
       ['explore', 2],
-      ['my account', 1],
-      ['wishlist', 1],
+      ['my account', 2],
+      ['wishlist', 2],
       ['log in now', 0],
       ['sign in', 0]
     ])

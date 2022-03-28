@@ -7,12 +7,14 @@ import Button from 'components/Button'
 import { useState } from 'react'
 import * as S from './MenuStyles'
 import Overlay from 'components/Overlay'
+import CartDropdown from 'components/CartDropdown'
+import UserDropdown from 'components/UserDropdown'
 
 export interface MenuProps {
-  userName?: string
+  username?: string
 }
 
-const Menu = ({ userName }: MenuProps) => {
+const Menu = ({ username }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -28,35 +30,47 @@ const Menu = ({ userName }: MenuProps) => {
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
           <S.MenuLink href="/">Home</S.MenuLink>
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <S.MenuLink href="/games">Explore</S.MenuLink>
         </S.MenuNav>
       </MediaMatch>
 
       <S.MenuRight>
         <MenuItem icon="Search" aria-label="Open Search" />
-        <MenuItem icon="ShoppingCart" aria-label="Open Shopping Cart" />
-        {!userName && (
-          <MediaMatch greaterThan="medium">
+
+        <MediaMatch greaterThan="medium">
+          <CartDropdown />
+        </MediaMatch>
+
+        <MediaMatch lessThan="medium">
+          <Link href="/cart">
+            <MenuItem icon="ShoppingCart" aria-label="Open Shopping Cart" />
+          </Link>
+        </MediaMatch>
+
+        <MediaMatch greaterThan="medium">
+          {!username ? (
             <Button as={Link} href="/login">
               Sign In
             </Button>
-          </MediaMatch>
-        )}
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </S.MenuRight>
 
       <Overlay open={isOpen} handleClose={() => setIsOpen(false)}>
         <S.OverlayContent>
           <S.MenuNav>
             <S.MenuLink href="/">Home</S.MenuLink>
-            <S.MenuLink href="#">Explore</S.MenuLink>
-            {userName && (
+            <S.MenuLink href="/games">Explore</S.MenuLink>
+            {username && (
               <>
-                <S.MenuLink href="#">My Account</S.MenuLink>
-                <S.MenuLink href="#">Wishlist</S.MenuLink>
+                <S.MenuLink href="/profile/me">My Account</S.MenuLink>
+                <S.MenuLink href="/wishlist">Wishlist</S.MenuLink>
               </>
             )}
           </S.MenuNav>
-          {!userName && (
+          {!username && (
             <S.RegisterBox>
               <Button as={Link} href="/login" fullWidth>
                 Log in now
