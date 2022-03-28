@@ -30,7 +30,7 @@ const Games = ({ filters, games = [] }: GamesTemplateProps) => {
         <MediaMatch greaterThan="medium">{sideBar}</MediaMatch>
         <S.Content>
           <MediaMatch lessThan="medium">
-            <Icon label="Menu" size={25} color={'white'} onClick={() => setOpen(true)} />
+            <Icon label="FilterList" size={25} color="white" onClick={() => setOpen(true)} />
             <Overlay open={open} handleClose={() => setOpen(false)}>
               {sideBar}
             </Overlay>

@@ -39,4 +39,5 @@ export const ArrowIcon = styled.div`
   top: 50%;
   transform: translateY(-50%);
   align-items: center;
+  cursor: pointer;
 `

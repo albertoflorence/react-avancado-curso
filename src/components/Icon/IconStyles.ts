@@ -1,10 +1,14 @@
-import styled, { css } from 'styled-components'
-import { IconProps } from './Icon'
+import styled, { css, DefaultTheme } from 'styled-components'
+import { Color, IconProps } from './Icon'
+
+const handleColor = (theme: DefaultTheme, color: Color) => css`
+  color: ${theme.colors[color]};
+`
 
 export const Wrapper = styled.span<Omit<IconProps, 'label'>>`
-  ${({ theme, color = 'white' }) => css`
+  ${({ theme, color }) => css`
     position: relative;
-    color: ${theme.colors[color]};
+    ${color && handleColor(theme, color)};
   `}
 `
 
