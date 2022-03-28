@@ -36,9 +36,7 @@ export const IconWrapper = styled.div`
 export const MenuRight = styled.div`
   ${({ theme }) => css`
     display: flex;
-    div {
-      margin-left: ${theme.spacing(1)};
-    }
+    gap: ${theme.spacing(3)};
     flex-grow: 1;
     align-items: center;
     justify-content: flex-end;
