@@ -1,12 +1,15 @@
+import { ApolloProvider } from '@apollo/client'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
+import { useApollo } from 'utils/apollo'
 
 function App({ Component, pageProps }: AppProps) {
+  const client = useApollo(pageProps.initialApoloState)
   return (
-    <>
+    <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>React Avançado</title>
@@ -18,7 +21,7 @@ function App({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </ApolloProvider>
   )
 }
 
