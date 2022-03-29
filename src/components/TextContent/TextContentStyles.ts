@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
     h6 {
       color: ${theme.colors.white};
       margin: ${theme.spacing(2, 0)};
+      width: max-content;
       ${HeadingStyles.lines.left(theme, 'secondary')}
       ${media.greaterThan('medium')`
         color: ${theme.colors.black};

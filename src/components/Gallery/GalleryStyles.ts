@@ -1,3 +1,4 @@
+import { IconStyles } from 'components/Icon'
 import styled, { css } from 'styled-components'
 import { ModalProps } from './Gallery'
 
@@ -12,25 +13,13 @@ export const Wrapper = styled.div`
       }
     }
 
-    .slick-next,
-    .slick-prev {
-      color: ${theme.colors.white};
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      align-items: center;
-      padding: 0;
-      cursor: pointer;
-    }
-
     .slick-next {
-      right: -30px;
+      right: -25px;
     }
     .slick-prev {
       left: -40px;
     }
+
     .slick-disabled {
       visibility: hidden !important;
     }
@@ -40,6 +29,20 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   width: min(1200px, 100%);
   max-height: 800px;
+`
+
+export const Arrow = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    align-items: center;
+    cursor: pointer;
+    color: ${theme.colors.white};
+  `}
 `
 
 export const Modal = styled.div<ModalProps>`
@@ -58,12 +61,16 @@ export const Modal = styled.div<ModalProps>`
     align-items: center;
     transition: opacity ${theme.transition.default};
 
-    svg {
+    ${IconStyles.Wrapper},
+    ${Arrow} {
       width: 40px;
       height: 40px;
+    }
+
+    > ${IconStyles.Wrapper} {
       position: absolute;
-      top: ${theme.spacing(2)};
-      right: ${theme.spacing(2)};
+      top: ${theme.spacing(4)};
+      right: ${theme.spacing(4)};
       color: ${theme.colors.white};
       cursor: pointer;
     }

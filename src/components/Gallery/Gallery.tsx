@@ -24,8 +24,16 @@ const settings: SliderSettings = {
   slidesToShow: 4,
   infinite: false,
   lazyLoad: 'ondemand',
-  nextArrow: <Icon label="ArrowRight" aria-label="next slide" />,
-  prevArrow: <Icon label="ArrowLeft" aria-label="prev slide" />,
+  nextArrow: (
+    <S.Arrow>
+      <Icon label="ArrowRight" aria-label="next slide" />
+    </S.Arrow>
+  ),
+  prevArrow: (
+    <S.Arrow>
+      <Icon label="ArrowLeft" aria-label="prev slide" />
+    </S.Arrow>
+  ),
   responsive: makeResponsiveSettings([1375, 3.2], [1024, 2.2], [768, 2.2])
 }
 
