@@ -1,11 +1,13 @@
 import Home, { HomeTemplateProps } from 'templates/Home/Home'
-import gameCards from 'components/GameCardSlider/mock'
-import highlight from 'components/Highlight/mock'
 import { initializeApollo } from 'utils/apollo'
-import { QUERY_BANNERS } from 'graphql/queries/home'
-import { QueryBanners } from 'graphql/generated/QueryBanners'
 import { GetStaticPropsResult } from 'next'
-import { getImageUrl } from 'utils/helpers'
+import { formatPrice, getImageUrl } from 'utils/helpers'
+import { QUERY_HOME } from 'graphql/queries/home'
+import { QueryHome } from 'graphql/generated/QueryHome'
+import { GameFragment } from 'graphql/generated/GameFragment'
+import { GameCardProps } from 'components/GameCard'
+import { HighlightFragment } from 'graphql/generated/HighlightFragment'
+import { HighlightProps } from 'components/Highlight'
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
@@ -13,11 +15,13 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<HomeTemplateProps>> {
   const client = initializeApollo()
-  const { data } = await client.query<QueryBanners>({ query: QUERY_BANNERS })
+  const { data } = await client.query<QueryHome>({ query: QUERY_HOME })
+
+  const { banners, freeGames, newGames, sections, upComingGames } = data
   return {
     revalidate: 60,
     props: {
-      banners: data.banners.map(banner => ({
+      banners: banners.map(banner => ({
         title: banner.title,
         subtitle: banner.subtitle,
         buttonLabel: banner.button?.label as string,
@@ -28,10 +32,42 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<HomeTemplat
           ribbonColor: banner.ribbon.color || undefined
         })
       })),
-      newGames: gameCards,
-      mostPopular: { highlight, gameCards },
-      upComing: { highlight, gameCards },
-      freeGames: { highlight, gameCards }
+      newGames: newGames.map(normalizeGame),
+      mostPopular: normalizeSection(sections?.mostPopular?.highlight, sections?.mostPopular?.games),
+      upComing: normalizeSection(sections?.upComing?.highlight, upComingGames),
+      freeGames: normalizeSection(sections?.freeGames?.highlight, freeGames)
     }
   }
 }
+
+interface NormalizeSectionResult {
+  highlight?: HighlightProps
+  gameCards: GameCardProps[]
+}
+
+const normalizeSection = (
+  highlight?: HighlightFragment | null,
+  gameCards: GameFragment[] = []
+): NormalizeSectionResult => ({
+  ...(highlight && { highlight: normalizeHighlight(highlight) }),
+  gameCards: gameCards.map(normalizeGame)
+})
+
+const normalizeHighlight = (highlight: HighlightFragment): HighlightProps => ({
+  title: highlight.title,
+  subtitle: highlight.subtitle,
+  background: getImageUrl(highlight.background?.url),
+  image: getImageUrl(highlight.image?.url),
+  buttonLabel: highlight.buttonLabel,
+  buttonLink: highlight.buttonLink,
+  reverse: highlight.reverse
+})
+
+const normalizeGame = (game: GameFragment): GameCardProps => ({
+  title: game.name,
+  subtitle: game.developers[0].name,
+  slug: game.slug,
+  image: getImageUrl(game.cover?.url),
+  price: formatPrice(game.price),
+  favorite: false
+})

@@ -12,17 +12,24 @@ export interface HomeTemplateProps {
   banners: BannerProps[]
   newGames: GameCardProps[]
   mostPopular: {
-    highlight: HighlightProps
+    highlight?: HighlightProps
     gameCards: GameCardProps[]
   }
   upComing: {
-    highlight: HighlightProps
+    highlight?: HighlightProps
     gameCards: GameCardProps[]
   }
   freeGames: {
-    highlight: HighlightProps
+    highlight?: HighlightProps
     gameCards: GameCardProps[]
   }
+}
+
+function sliceHalf<T>(array: T[], side: 'left' | 'right' = 'left'): T[] {
+  const center = array.length / 2
+  if (side === 'right') return array.slice(center, array.length)
+
+  return array.slice(0, center)
 }
 
 const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTemplateProps) => (
@@ -36,7 +43,7 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
 
       <S.SectionNews>
         <Container>
-          <Showcase gameCards={newGames} title="News" arrowColor="black" />
+          <Showcase gameCards={newGames} title="New Games" arrowColor="black" />
         </Container>
       </S.SectionNews>
 
@@ -44,16 +51,23 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
         <Showcase
           highlight={mostPopular.highlight}
           gameCards={mostPopular.gameCards}
-          title="Most Popular"
+          title="Most Popular Ga,es"
         />
       </Container>
 
       <Container>
-        <Showcase title="Up Coming" gameCards={upComing.gameCards} />
+        <Showcase
+          title="Up Coming Games"
+          gameCards={sliceHalf<GameCardProps>(upComing.gameCards)}
+        />
       </Container>
 
       <Container>
-        <Showcase highlight={upComing.highlight} gameCards={upComing.gameCards} reverse />
+        <Showcase
+          highlight={upComing.highlight}
+          gameCards={sliceHalf<GameCardProps>(upComing.gameCards, 'right')}
+          reverse
+        />
       </Container>
 
       <Container>
