@@ -11,7 +11,7 @@ const nextConfig = {
     disable: process.env.NODE_ENV !== 'production'
   },
   images: {
-    domains: ['source.unsplash.com', 'i.ibb.co']
+    domains: ['source.unsplash.com', 'i.ibb.co', 'localhost']
   }
 }
 

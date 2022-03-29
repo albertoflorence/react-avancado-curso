@@ -13,7 +13,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "generate": "plop --plopfile generators/plopfile.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
+    "schema:convert": "node convertToNonNull.js",
+    "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
+    "types:generate": "npm run schema:download && npm run schema:convert && npm run codegen"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
