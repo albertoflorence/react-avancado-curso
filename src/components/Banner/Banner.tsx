@@ -9,11 +9,20 @@ export interface BannerProps {
   buttonLabel: string
   buttonLink: string
   ribbon?: string
+  ribbonColor?: 'primary' | 'secondary'
 }
 
-const Banner = ({ image, title, subtitle, buttonLabel, buttonLink, ribbon }: BannerProps) => (
+const Banner = ({
+  image,
+  title,
+  subtitle,
+  buttonLabel,
+  buttonLink,
+  ribbon,
+  ribbonColor
+}: BannerProps) => (
   <S.Wrapper>
-    {ribbon && <Ribbon color="secondary">{ribbon}</Ribbon>}
+    {ribbon && <Ribbon color={ribbonColor}>{ribbon}</Ribbon>}
     <S.Image src={image} role="img" aria-label={title} />
     <S.Caption>
       <S.Title>{title}</S.Title>
