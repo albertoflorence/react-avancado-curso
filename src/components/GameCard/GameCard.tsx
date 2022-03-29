@@ -6,6 +6,7 @@ import Ribbon from 'components/Ribbon'
 import * as S from './GameCardStyles'
 
 export interface GameCardProps {
+  slug: string
   image: string
   title: string
   subtitle: string
@@ -15,14 +16,23 @@ export interface GameCardProps {
   ribbon?: string
 }
 
-const GameCard = ({ title, subtitle, image, price, discount, favorite, ribbon }: GameCardProps) => (
+const GameCard = ({
+  title,
+  subtitle,
+  image,
+  price,
+  discount,
+  favorite,
+  ribbon,
+  slug
+}: GameCardProps) => (
   <S.Wrapper>
     {ribbon && <Ribbon size="small">{ribbon}</Ribbon>}
-    <S.ImageBox>
+    <S.ImageBox href={`game/${slug}`}>
       <Image src={image} layout="fill" objectFit="cover" alt={title} />
     </S.ImageBox>
     <S.Content>
-      <S.Info>
+      <S.Info href={`game/${slug}`}>
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
       </S.Info>

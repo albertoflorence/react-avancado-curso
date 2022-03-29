@@ -12,7 +12,8 @@ const mockGameCardProps = () => ({
   title: 'Population Zero',
   subtitle: 'Rockstar Games',
   price: 'R$215,00',
-  favorite: false
+  favorite: false,
+  slug: 'population-zero'
 })
 
 describe('<GameCard />', () => {
@@ -25,6 +26,10 @@ describe('<GameCard />', () => {
     expect(makeElement(props.subtitle, 'heading')).toBeInTheDocument()
     expect(screen.getByText(props.price)).toBeInTheDocument()
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+      'href',
+      `/game/${props.slug}`
+    )
   })
 
   it('should render with discount', () => {

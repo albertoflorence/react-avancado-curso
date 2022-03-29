@@ -13,14 +13,16 @@ const items = [
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   },
   {
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     title: 'Population Zero 2',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   }
 ]
 

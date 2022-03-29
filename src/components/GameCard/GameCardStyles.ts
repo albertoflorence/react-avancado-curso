@@ -1,14 +1,16 @@
+import Link from 'components/Link'
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
   max-width: 300px;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 `
 
-export const ImageBox = styled.div`
+export const ImageBox = styled(Link)`
   min-height: 140px;
   height: 140px;
   background: #f6f7f8;
@@ -45,8 +47,9 @@ export const Content = styled.div`
   `}
 `
 
-export const Info = styled.div`
+export const Info = styled(Link)`
   width: calc(100% - 25px);
+  text-decoration: none;
 `
 
 export const Title = styled.h3`
@@ -66,6 +69,7 @@ export const Subtitle = styled.h4`
 export const BuyBox = styled.div`
   div {
     display: flex;
+    align-items: center;
     gap: 3px;
   }
   display: flex;

@@ -4,14 +4,16 @@ export default [
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   },
   {
     image: 'https://source.unsplash.com/random',
     title: 'Population Zero 2',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   },
   {
     image: 'https://source.unsplash.com/random',
@@ -20,20 +22,23 @@ export default [
     price: 'R$215,00',
     favorite: true,
     discount: 'R$185,00',
-    ribbon: 'Promoção'
+    ribbon: 'Promoção',
+    slug: 'population-zero'
   },
   {
     image: 'https://source.unsplash.com/random',
     title: 'Population Zero 4',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   },
   {
     image: 'https://source.unsplash.com/random',
     title: 'Population Zero 5',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false
+    favorite: false,
+    slug: 'population-zero'
   }
 ]
