@@ -22,7 +22,7 @@ export interface GameProps {
 
 export interface GameTemplateProps extends GameProps {
   upComing: {
-    highlight: HighlightProps
+    highlight?: HighlightProps
     gameCards: GameCardProps[]
   }
   recommended?: {

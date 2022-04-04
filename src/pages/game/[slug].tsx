@@ -1,9 +1,7 @@
 import Game, { GameTemplateProps } from 'templates/Game/Game'
 import { useRouter } from 'next/router'
 import { GetStaticProps, GetStaticPropsResult } from 'next'
-import { getGameBySlug, getGames, getRecommended } from 'services'
-import gameCards from 'components/GameCardSlider/mock'
-import highlight from 'components/Highlight/mock'
+import { getGameBySlug, getGames, getRecommended, getUpComing } from 'services'
 
 export default function Index(props: GameTemplateProps) {
   const router = useRouter()
@@ -35,15 +33,13 @@ export const getStaticProps: GetStaticProps = async ({
   if (!game) return { notFound: true }
 
   const recommended = await getRecommended()
+  const upComing = await getUpComing()
 
   return {
     revalidate: 60,
     props: {
       ...game,
-      upComing: {
-        highlight,
-        gameCards
-      },
+      upComing,
       recommended
     }
   }
