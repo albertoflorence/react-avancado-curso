@@ -51,7 +51,7 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
         <Showcase
           highlight={mostPopular.highlight}
           gameCards={mostPopular.gameCards}
-          title="Most Popular Ga,es"
+          title="Most Popular Games"
         />
       </Container>
 

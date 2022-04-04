@@ -2,30 +2,19 @@ import { gql } from '@apollo/client'
 import { BannerFragment, GameFragment, HighlightFragment, SectionFragment } from 'graphql/fragments'
 
 export const QUERY_HOME = gql`
-  query QueryHome {
+  query QueryHome($date: Date!) {
     banners {
       ...BannerFragment
     }
-
-    newGames: games(
-      where: { release_date_lte: "2022-03-29" }
-      sort: "release_date:desc"
-      limit: 9
-    ) {
+    newGames: games(where: { release_date_lte: $date }, sort: "release_date:desc", limit: 9) {
       ...GameFragment
     }
-    upComingGames: games(
-      where: { release_date_gt: "2022-03-29" }
-      sort: "release_date:asc"
-      limit: 18
-    ) {
+    upComingGames: games(where: { release_date_gt: $date }, sort: "release_date:asc", limit: 18) {
       ...GameFragment
     }
-
-    freeGames: games(where: { price: 0 }, limit: 9) {
+    freeGames: games(where: { price: 0 }, sort: "release_date:desc", limit: 9) {
       ...GameFragment
     }
-
     sections: home {
       upComing {
         ...SectionFragment
