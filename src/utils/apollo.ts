@@ -1,4 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+import { concatPagination } from '@apollo/client/utilities'
 import { useMemo } from 'react'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
@@ -9,9 +10,19 @@ function createApolloClient() {
     link: new HttpLink({
       uri: 'http://localhost:1337/graphql'
     }),
-    cache: new InMemoryCache()
+    cache: apolloCache
   })
 }
+
+export const apolloCache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        games: concatPagination()
+      }
+    }
+  }
+})
 
 export function initializeApollo(initialState?: NormalizedCacheObject) {
   const apolloClientGlobal = apolloClient ?? createApolloClient()

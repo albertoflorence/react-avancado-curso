@@ -28,11 +28,11 @@ const GameCard = ({
 }: GameCardProps) => (
   <S.Wrapper>
     {ribbon && <Ribbon size="small">{ribbon}</Ribbon>}
-    <S.ImageBox href={`game/${slug}`}>
+    <S.ImageBox href={`/game/${slug}`}>
       <Image src={image} layout="fill" objectFit="cover" alt={title} />
     </S.ImageBox>
     <S.Content>
-      <S.Info href={`game/${slug}`}>
+      <S.Info href={`/game/${slug}`}>
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
       </S.Info>

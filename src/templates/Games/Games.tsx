@@ -6,21 +6,32 @@ import ExploreSidebar, { FilterProps } from 'components/ExploreSidebar'
 import Overlay from 'components/Overlay'
 import Icon from 'components/Icon'
 import Grid from 'components/Grid'
-import GameCard, { GameCardProps } from 'components/GameCard'
+import GameCard from 'components/GameCard'
+import { useGetGames } from 'services'
+import Loading from 'components/Loading'
 
 export interface GamesTemplateProps {
   filters: FilterProps[]
-  games?: GameCardProps[]
 }
 
-const Games = ({ filters, games = [] }: GamesTemplateProps) => {
+const Games = ({ filters }: GamesTemplateProps) => {
   const [open, setOpen] = useState(false)
+
+  const { data, loading, fetchMore } = useGetGames({ limit: 12 })
+
+  const games = data || []
 
   const handleFilter = () => {
     return
   }
+
   const handleShowMore = () => {
-    return
+    fetchMore({
+      variables: {
+        limit: 12,
+        start: games.length
+      }
+    })
   }
 
   const sideBar = <ExploreSidebar items={filters} onFilter={handleFilter} />
@@ -35,14 +46,20 @@ const Games = ({ filters, games = [] }: GamesTemplateProps) => {
               {sideBar}
             </Overlay>
           </MediaMatch>
-          <Grid>
-            {games.length
-              ? games.map(props => <GameCard key={props.title} {...props} />)
-              : 'Nada Encontrado'}
-          </Grid>
-          <S.ShowMore role="button">
-            <span onClick={handleShowMore}>show more</span>
-          </S.ShowMore>
+          {loading ? (
+            <Loading type="linear" />
+          ) : (
+            <>
+              <Grid>
+                {games.length
+                  ? games.map(props => <GameCard key={props.slug} {...props} />)
+                  : 'Nada Encontrado'}
+              </Grid>
+              <S.ShowMore role="button">
+                <span onClick={handleShowMore}>show more</span>
+              </S.ShowMore>
+            </>
+          )}
         </S.Content>
       </S.Wrapper>
     </Base>

@@ -9,23 +9,48 @@ import { GameProps } from 'templates/Game'
 import { Platform, Rating } from 'components/GameDetails'
 import { getImageUrl, formatPrice } from 'utils/helpers'
 import { GameCardProps } from 'components/GameCard'
-
-const client = initializeApollo()
+import { ApolloError, useQuery } from '@apollo/client'
 
 export const getFilters = (): FilterProps[] => filtersMock as FilterProps[]
 
 export const getGames = async (): Promise<GameCardProps[]> => {
+  const client = initializeApollo()
+
   const { data } = await client.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
-      limit: 9
+      limit: 12
     }
   })
 
   return data.games.map(normalizeGame)
 }
 
+export interface UseGetGamesResult {
+  data?: GameCardProps[]
+  loading: boolean
+  error?: ApolloError
+  fetchMore: ({ variables }: { variables: QueryGamesVariables }) => void
+}
+
+export const useGetGames = (options: QueryGamesVariables): UseGetGamesResult => {
+  const { data, loading, error, fetchMore } = useQuery<QueryGames, QueryGamesVariables>(
+    QUERY_GAMES,
+    {
+      variables: options
+    }
+  )
+
+  return {
+    data: data?.games.map(normalizeGame),
+    loading,
+    error,
+    fetchMore
+  }
+}
+
 export const getGameBySlug = async (slug: string): Promise<GameProps | undefined> => {
+  const client = initializeApollo()
   const { data } = await client.query<QueryGameBySlug, QueryGameBySlugVariables>({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug }

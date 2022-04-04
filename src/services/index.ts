@@ -1,3 +1,3 @@
 export * from './home'
 export * from './games'
-export * from './recommended'
+export * from './showcase'
