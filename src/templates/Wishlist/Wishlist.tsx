@@ -11,9 +11,9 @@ import * as S from './WishlistStyles'
 
 export interface WishlistTemplateProps {
   games?: GameCardProps[]
-  recommended: {
+  recommended?: {
     gameCards: GameCardProps[]
-    highlight: HighlightProps
+    highlight?: HighlightProps
   }
 }
 
@@ -39,11 +39,13 @@ const Wishlist = ({ games = [], recommended }: WishlistTemplateProps) => (
 
       <Divider />
 
-      <Showcase
-        title="You may like these games"
-        gameCards={recommended.gameCards}
-        highlight={recommended.highlight}
-      />
+      {recommended && (
+        <Showcase
+          title="You may like these games"
+          gameCards={recommended.gameCards}
+          highlight={recommended.highlight}
+        />
+      )}
     </S.Wrapper>
   </Base>
 )
