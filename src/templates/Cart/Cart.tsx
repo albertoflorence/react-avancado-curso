@@ -12,9 +12,9 @@ import Base from 'templates/Base'
 import * as S from './CartStyles'
 
 export interface CartTemplateProps {
-  recommended: {
+  recommended?: {
     gameCards: GameCardProps[]
-    highlight: HighlightProps
+    highlight?: HighlightProps
   }
   cartList: CartListProps
   paymentOptions: Omit<PaymentOptionsProps, 'handlePayment'>
@@ -42,11 +42,13 @@ const Cart = ({ recommended, cartList, paymentOptions }: CartTemplateProps) => {
         )}
         <Divider />
 
-        <Showcase
-          title="You may like these games"
-          gameCards={recommended.gameCards}
-          highlight={recommended.highlight}
-        />
+        {recommended && (
+          <Showcase
+            title="You may like these games"
+            gameCards={recommended.gameCards}
+            highlight={recommended.highlight}
+          />
+        )}
       </Container>
     </Base>
   )
