@@ -5,11 +5,9 @@ import { initializeApollo } from 'utils/apollo'
 import { normalizeGame } from './normalizer'
 import filtersMock from 'components/ExploreSidebar/mock'
 import { QueryGameBySlug, QueryGameBySlugVariables } from 'graphql/generated/QueryGameBySlug'
-import { GameTemplateProps } from 'templates/Game'
+import { GameProps } from 'templates/Game'
 import { Platform, Rating } from 'components/GameDetails'
 import { getImageUrl, formatPrice } from 'utils/helpers'
-import gameCards from 'components/GameCardSlider/mock'
-import highlight from 'components/Highlight/mock'
 import { GameCardProps } from 'components/GameCard'
 
 const client = initializeApollo()
@@ -27,7 +25,7 @@ export const getGames = async (): Promise<GameCardProps[]> => {
   return data.games.map(normalizeGame)
 }
 
-export const getGameBySlug = async (slug: string): Promise<GameTemplateProps | undefined> => {
+export const getGameBySlug = async (slug: string): Promise<GameProps | undefined> => {
   const { data } = await client.query<QueryGameBySlug, QueryGameBySlugVariables>({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug }
@@ -60,13 +58,6 @@ export const getGameBySlug = async (slug: string): Promise<GameTemplateProps | u
       releaseDate: game.release_date,
       rating: game.rating as Rating,
       genres: game.categories.map(item => item.name)
-    },
-    upComing: {
-      gameCards,
-      highlight
-    },
-    recommended: {
-      gameCards
     }
   }
 }

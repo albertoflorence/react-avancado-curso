@@ -12,17 +12,20 @@ import { GameCardProps } from 'components/GameCard'
 
 import * as S from './GameStyles'
 
-export interface GameTemplateProps {
+export interface GameProps {
   cover: string
   gameInfo: GameInfoProps
   gallery?: GalleryProps
   description: string
   gameDetails: GameDetailsProps
+}
+
+export interface GameTemplateProps extends GameProps {
   upComing: {
     highlight: HighlightProps
     gameCards: GameCardProps[]
   }
-  recommended: {
+  recommended?: {
     gameCards: GameCardProps[]
   }
 }
@@ -55,7 +58,9 @@ const Game = ({
 
       <Showcase title="Up Coming" gameCards={upComing.gameCards} highlight={upComing.highlight} />
 
-      <Showcase title="You may like these games" gameCards={recommended.gameCards} />
+      {recommended && (
+        <Showcase title="You may like these games" gameCards={recommended.gameCards} />
+      )}
     </S.Wrapper>
   </Base>
 )
