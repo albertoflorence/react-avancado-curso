@@ -18,7 +18,7 @@ export const apolloCache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        games: concatPagination()
+        games: concatPagination(['where', 'sort'])
       }
     }
   }
