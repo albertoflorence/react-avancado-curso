@@ -4,6 +4,7 @@ import Heading from 'components/Heading'
 import * as S from './ExploreSidebarStyles'
 import Button from 'components/Button'
 import { useState } from 'react'
+import { ParsedUrlQueryInput } from 'querystring'
 
 interface InputProps {
   label: string
@@ -17,14 +18,17 @@ export interface FilterProps {
   inputs: InputProps[]
 }
 
-interface Values {
-  [field: string]: string | string[]
-}
+type Values = ParsedUrlQueryInput
 
 export interface ExploreSidebarProps {
   items: FilterProps[]
   initialValues?: Values
   onFilter: (value: Values) => void
+}
+
+const isChecked = (value: unknown, name: string): boolean => {
+  if (value instanceof Array) return value.includes(name)
+  return String(value) === String(name)
 }
 
 const ExploreSidebar = ({ items, initialValues = {}, onFilter }: ExploreSidebarProps) => {
@@ -56,7 +60,7 @@ const ExploreSidebar = ({ items, initialValues = {}, onFilter }: ExploreSidebarP
                   key={props.label}
                   color="white"
                   {...props}
-                  defaultChecked={values[item.name]?.includes(props.name)}
+                  defaultChecked={isChecked(values[item.name], props.name)}
                   onCheck={() => handleCheckbox(item.name, props.name)}
                 />
               ) : (
@@ -66,7 +70,7 @@ const ExploreSidebar = ({ items, initialValues = {}, onFilter }: ExploreSidebarP
                   name={item.name}
                   value={props.name}
                   label={props.label}
-                  defaultChecked={values[item.name] === props.name}
+                  defaultChecked={isChecked(values[item.name], props.name)}
                   onCheck={() => handleRadio(item.name, props.name)}
                 />
               )

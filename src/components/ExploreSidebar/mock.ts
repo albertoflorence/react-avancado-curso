@@ -22,9 +22,9 @@ export default [
     ]
   },
   {
-    title: 'System',
+    title: 'Platforms',
     type: 'checkbox',
-    name: 'system',
+    name: 'platforms',
     inputs: [
       { label: 'Windows', name: 'windows' },
       { label: 'Mac', name: 'mac' },

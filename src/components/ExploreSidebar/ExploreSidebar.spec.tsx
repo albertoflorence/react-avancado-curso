@@ -24,7 +24,7 @@ describe('<ExploreSidebar />', () => {
   })
 
   it('should render with initial values', () => {
-    init({ initialValues: { system: ['windows'], sortBy: 'low-to-high' } })
+    init({ initialValues: { platforms: ['windows'], sortBy: 'low-to-high' } })
 
     expect(byRole('checkbox', 'Windows')).toBeChecked()
     expect(byRole('radio', 'Low to high')).toBeChecked()
@@ -43,27 +43,27 @@ describe('<ExploreSidebar />', () => {
 
     expect(onFilter).toHaveBeenCalledWith({
       price: ['free', 'under-150'],
-      system: ['linux'],
+      platforms: ['linux'],
       sortBy: 'high-to-low'
     })
   })
 
   it('should call onFilter with selected values and initial values', () => {
     const onFilter = jest.fn()
-    init({ onFilter, initialValues: { system: ['windows'] } })
+    init({ onFilter, initialValues: { platforms: ['windows'] } })
 
     userEvent.click(byRole('checkbox', 'Mac'))
 
     userEvent.click(byRole('button', 'Filter'))
 
     expect(onFilter).toHaveBeenCalledWith({
-      system: ['windows', 'mac']
+      platforms: ['windows', 'mac']
     })
   })
 
   it('should remove if selected', async () => {
     const onFilter = jest.fn()
-    init({ onFilter, initialValues: { system: ['windows'], sortBy: 'low-to-high' } })
+    init({ onFilter, initialValues: { platforms: ['windows'], sortBy: 'low-to-high' } })
 
     userEvent.click(byRole('checkbox', 'Windows'))
     userEvent.click(byRole('radio', 'High to low'))
@@ -73,7 +73,7 @@ describe('<ExploreSidebar />', () => {
     await waitFor(() => {
       expect(onFilter).toHaveBeenCalledWith({
         sortBy: 'high-to-low',
-        system: []
+        platforms: []
       })
     })
   })
