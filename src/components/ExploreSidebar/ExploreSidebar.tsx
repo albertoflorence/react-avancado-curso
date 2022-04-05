@@ -3,7 +3,7 @@ import Radio from 'components/Radio'
 import Heading from 'components/Heading'
 import * as S from './ExploreSidebarStyles'
 import Button from 'components/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ParsedUrlQueryInput } from 'querystring'
 
 interface InputProps {
@@ -24,6 +24,7 @@ export interface ExploreSidebarProps {
   items: FilterProps[]
   initialValues?: Values
   onFilter: (value: Values) => void
+  onClose?: () => void
 }
 
 const isChecked = (value: unknown, name: string): boolean => {
@@ -31,8 +32,12 @@ const isChecked = (value: unknown, name: string): boolean => {
   return String(value) === String(name)
 }
 
-const ExploreSidebar = ({ items, initialValues = {}, onFilter }: ExploreSidebarProps) => {
+const ExploreSidebar = ({ items, initialValues = {}, onFilter, onClose }: ExploreSidebarProps) => {
   const [values, setValues] = useState(initialValues)
+
+  useEffect(() => {
+    onFilter(values)
+  }, [values, onFilter])
 
   const handleRadio = (field: string, value: string) => {
     setValues(old => ({ ...old, [field]: value }))
@@ -79,7 +84,7 @@ const ExploreSidebar = ({ items, initialValues = {}, onFilter }: ExploreSidebarP
         ))}
       </S.Content>
       <S.ButtonWrapper>
-        <Button fullWidth onClick={() => onFilter(values)}>
+        <Button fullWidth onClick={onClose}>
           Filter
         </Button>
       </S.ButtonWrapper>

@@ -39,7 +39,7 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(byRole('checkbox', 'Under $150'))
     userEvent.click(byRole('radio', 'High to low'))
 
-    userEvent.click(byRole('button', 'Filter'))
+    expect(onFilter).toHaveBeenCalledTimes(5)
 
     expect(onFilter).toHaveBeenCalledWith({
       price: ['free', 'under-150'],
@@ -54,8 +54,6 @@ describe('<ExploreSidebar />', () => {
 
     userEvent.click(byRole('checkbox', 'Mac'))
 
-    userEvent.click(byRole('button', 'Filter'))
-
     expect(onFilter).toHaveBeenCalledWith({
       platforms: ['windows', 'mac']
     })
@@ -68,13 +66,18 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(byRole('checkbox', 'Windows'))
     userEvent.click(byRole('radio', 'High to low'))
 
-    userEvent.click(byRole('button', 'Filter'))
-
     await waitFor(() => {
       expect(onFilter).toHaveBeenCalledWith({
         sortBy: 'high-to-low',
         platforms: []
       })
     })
+  })
+
+  it('should call onClose when filter button is clicked', () => {
+    const onClose = jest.fn()
+    init({ onClose })
+    userEvent.click(byRole('button', 'Filter'))
+    expect(onClose).toHaveBeenCalledTimes(1)
   })
 })

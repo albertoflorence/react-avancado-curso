@@ -66,5 +66,8 @@ export const ItemWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacing(0, 3)};
+    ${media.greaterThan('medium')`
+      display: none;
+    `}
   `}
 `
