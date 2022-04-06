@@ -35,8 +35,7 @@ export const ImageBox = styled(Link)`
 export const Content = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    min-height: 100px;
-    height: 100%;
+    height: 130px;
     padding: ${theme.spacing(1, 2, 2, 2)};
     display: flex;
     flex-wrap: wrap;
@@ -57,6 +56,10 @@ export const Title = styled.h3`
     font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
     font-weight: ${theme.font.bold};
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   `}
 `
 export const Subtitle = styled.h4`
@@ -64,6 +67,10 @@ export const Subtitle = styled.h4`
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.gray2};
     font-weight: ${theme.font.normal};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   `}
 `
 export const BuyBox = styled.div`
