@@ -37,7 +37,8 @@ const ExploreSidebar = ({ items, initialValues = {}, onFilter, onClose }: Explor
 
   useEffect(() => {
     onFilter(values)
-  }, [values, onFilter])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values])
 
   const handleRadio = (field: string, value: string) => {
     setValues(old => ({ ...old, [field]: value }))

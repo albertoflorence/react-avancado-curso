@@ -9,20 +9,31 @@ import Grid from 'components/Grid'
 import GameCard from 'components/GameCard'
 import { useGetGames } from 'services'
 import Loading from 'components/Loading'
+import { useRouter } from 'next/router'
+import { ParsedUrlQueryInput } from 'querystring'
+import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
+import Empty from 'components/Empty'
 
 export interface GamesTemplateProps {
   filters: FilterProps[]
 }
 
 const Games = ({ filters }: GamesTemplateProps) => {
+  const { query, push } = useRouter()
   const [open, setOpen] = useState(false)
 
-  const { data, loading, fetchMore } = useGetGames({ limit: 12 })
+  const { data, loading, fetchMore } = useGetGames({
+    limit: 12,
+    where: parseQueryStringToWhere({ queryString: query, filterItems: filters })
+  })
 
   const games = data || []
 
-  const handleFilter = () => {
-    return
+  const handleFilter = (values: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: values
+    })
   }
 
   const handleShowMore = () => {
@@ -34,7 +45,15 @@ const Games = ({ filters }: GamesTemplateProps) => {
     })
   }
 
-  const sideBar = <ExploreSidebar items={filters} onFilter={handleFilter} />
+  const sideBar = (
+    <ExploreSidebar
+      items={filters}
+      onFilter={handleFilter}
+      initialValues={parseQueryStringToFilter({ queryString: query, filterItems: filters })}
+      onClose={() => setOpen(false)}
+    />
+  )
+
   return (
     <Base>
       <S.Wrapper>
@@ -48,7 +67,7 @@ const Games = ({ filters }: GamesTemplateProps) => {
           </MediaMatch>
           {loading ? (
             <Loading type="linear" />
-          ) : (
+          ) : games.length ? (
             <>
               <Grid>
                 {games.length
@@ -57,8 +76,14 @@ const Games = ({ filters }: GamesTemplateProps) => {
               </Grid>
               <S.ShowMore role="button">
                 <span onClick={handleShowMore}>show more</span>
-              </S.ShowMore>
+              </S.ShowMore>{' '}
             </>
+          ) : (
+            <Empty
+              title=":("
+              description="We couldn't find anything matching your criteria"
+              toHome
+            />
           )}
         </S.Content>
       </S.Wrapper>

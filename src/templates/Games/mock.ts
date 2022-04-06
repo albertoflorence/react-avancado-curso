@@ -1,10 +1,22 @@
 import { MockedResponse } from '@apollo/client/testing'
 import { QUERY_GAMES } from 'graphql/queries'
 
+export const noGamesMock: MockedResponse = {
+  request: {
+    query: QUERY_GAMES,
+    variables: { limit: 12, where: {} }
+  },
+  result: {
+    data: {
+      games: []
+    }
+  }
+}
+
 export const gamesMock: MockedResponse = {
   request: {
     query: QUERY_GAMES,
-    variables: { limit: 12 }
+    variables: { limit: 12, where: {} }
   },
   result: {
     data: {
@@ -28,7 +40,7 @@ export const gamesMock: MockedResponse = {
 export const fetchMoreMock: MockedResponse = {
   request: {
     query: QUERY_GAMES,
-    variables: { limit: 12, start: 1 }
+    variables: { limit: 12, start: 1, where: {} }
   },
   result: {
     data: {
