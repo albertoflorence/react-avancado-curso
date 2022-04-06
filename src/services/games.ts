@@ -27,6 +27,7 @@ export interface UseGetGamesResult {
   previousData?: GameCardProps[]
   loading: boolean
   error?: ApolloError
+  hasMore: boolean
   fetchMore: ({ variables }: { variables: QueryGamesVariables }) => void
 }
 
@@ -40,6 +41,7 @@ export const useGetGames = (
 
   return {
     data: data?.games.map(normalizeGame),
+    hasMore: Boolean(Number(data?.games.length) < Number(data?.gamesConnection?.values?.length)),
     loading,
     error,
     fetchMore,

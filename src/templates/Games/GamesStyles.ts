@@ -17,7 +17,7 @@ interface HasLoading {
 }
 
 export const Content = styled.div<HasLoading>`
-  ${({ isLoading = false }) => css`
+  ${({ isLoading }) => css`
     position: relative;
     ${isLoading &&
     css`

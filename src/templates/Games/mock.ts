@@ -8,7 +8,11 @@ export const noGamesMock: MockedResponse = {
   },
   result: {
     data: {
-      games: []
+      games: [],
+      gamesConnection: {
+        values: [],
+        __typename: 'GameConnection'
+      }
     }
   }
 }
@@ -32,7 +36,11 @@ export const gamesMock: MockedResponse = {
           release_date: 'any date',
           __typename: 'Game'
         }
-      ]
+      ],
+      gamesConnection: {
+        values: [{ id: '1' }, { id: '2' }],
+        __typename: 'GameConnection'
+      }
     }
   }
 }
@@ -56,7 +64,11 @@ export const fetchMoreMock: MockedResponse = {
           release_date: 'another date',
           __typename: 'Game'
         }
-      ]
+      ],
+      gamesConnection: {
+        values: [{ id: '1' }, { id: '2' }],
+        __typename: 'GameConnection'
+      }
     }
   }
 }

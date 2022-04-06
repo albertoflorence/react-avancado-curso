@@ -22,11 +22,12 @@ const Games = ({ filters }: GamesTemplateProps) => {
   const { query, push } = useRouter()
   const [open, setOpen] = useState(false)
 
-  const { data, loading, fetchMore, previousData } = useGetGames({
+  const { data, loading, fetchMore, previousData, hasMore } = useGetGames({
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: 12,
-      where: parseQueryStringToWhere({ queryString: query, filterItems: filters })
+      where: parseQueryStringToWhere({ queryString: query, filterItems: filters }),
+      sort: query.sort as string
     }
   })
 
@@ -63,7 +64,13 @@ const Games = ({ filters }: GamesTemplateProps) => {
         <MediaMatch greaterThan="medium">{sideBar}</MediaMatch>
         <S.Content isLoading={loading}>
           <MediaMatch lessThan="medium">
-            <Icon label="FilterList" size={25} color="white" onClick={() => setOpen(true)} />
+            <Icon
+              label="FilterList"
+              size={25}
+              color="white"
+              onClick={() => setOpen(true)}
+              aria-label="open filter"
+            />
             <Overlay open={open} handleClose={() => setOpen(false)}>
               {sideBar}
             </Overlay>
@@ -75,13 +82,15 @@ const Games = ({ filters }: GamesTemplateProps) => {
                   <GameCard key={props.slug} {...props} />
                 ))}
               </Grid>
-              <S.ShowMore role="button">
-                {loading ? (
-                  <Loading type={'dots'} color="white" />
-                ) : (
-                  <span onClick={handleShowMore}>show more</span>
-                )}
-              </S.ShowMore>
+              {hasMore && (
+                <S.ShowMore role="button">
+                  {loading ? (
+                    <Loading type={'dots'} color="white" />
+                  ) : (
+                    <span onClick={handleShowMore}>show more</span>
+                  )}
+                </S.ShowMore>
+              )}
             </>
           ) : (
             <Empty

@@ -51,7 +51,6 @@ describe('<Games />', () => {
 
   it('should render with data', async () => {
     init([gamesMock])
-    expect(screen.getByLabelText('loading')).toBeInTheDocument()
     expect(await screen.findByRole('button', { name: /show more/i })).toBeInTheDocument()
     expect(screen.getByText('any game')).toBeInTheDocument()
   })
@@ -61,6 +60,7 @@ describe('<Games />', () => {
     expect(await screen.findByText('any game')).toBeInTheDocument()
     userEvent.click(screen.getByRole('button', { name: /show more/i }).firstChild as HTMLElement)
     expect(await screen.findByText('another game')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /show more/i })).not.toBeInTheDocument()
   })
 
   it('should call push with correct value', async () => {
@@ -80,5 +80,24 @@ describe('<Games />', () => {
     expect(
       await screen.findByText(/we couldn't find anything matching your criteria/i)
     ).toBeInTheDocument()
+  })
+
+  it('should handle open/close overlay', async () => {
+    init()
+    const close = await screen.findByLabelText('Close Overlay')
+    const overlay = close.parentElement?.parentElement
+    const openFilter = screen.getByLabelText('open filter')
+
+    expect(overlay).toHaveStyle({ opacity: 0 })
+
+    userEvent.click(openFilter)
+    expect(overlay).toHaveStyle({ opacity: 1 })
+
+    userEvent.click(close)
+    expect(overlay).toHaveStyle({ opacity: 0 })
+
+    userEvent.click(openFilter)
+    userEvent.click(screen.getAllByRole('button', { name: 'Filter', hidden: true })[0])
+    expect(overlay).toHaveStyle({ opacity: 0 })
   })
 })
