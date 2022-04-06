@@ -7,7 +7,7 @@ import { GameProps } from 'templates/Game'
 import { Platform, Rating } from 'components/GameDetails'
 import { getImageUrl, formatPrice } from 'utils/helpers'
 import { GameCardProps } from 'components/GameCard'
-import { ApolloError, useQuery } from '@apollo/client'
+import { ApolloError, QueryHookOptions, useQuery } from '@apollo/client'
 
 export const getGames = async (): Promise<GameCardProps[]> => {
   const client = initializeApollo()
@@ -24,24 +24,26 @@ export const getGames = async (): Promise<GameCardProps[]> => {
 
 export interface UseGetGamesResult {
   data?: GameCardProps[]
+  previousData?: GameCardProps[]
   loading: boolean
   error?: ApolloError
   fetchMore: ({ variables }: { variables: QueryGamesVariables }) => void
 }
 
-export const useGetGames = (options: QueryGamesVariables): UseGetGamesResult => {
-  const { data, loading, error, fetchMore } = useQuery<QueryGames, QueryGamesVariables>(
-    QUERY_GAMES,
-    {
-      variables: options
-    }
-  )
+export const useGetGames = (
+  options: QueryHookOptions<QueryGames, QueryGamesVariables>
+): UseGetGamesResult => {
+  const { data, loading, error, fetchMore, previousData } = useQuery<
+    QueryGames,
+    QueryGamesVariables
+  >(QUERY_GAMES, options)
 
   return {
     data: data?.games.map(normalizeGame),
     loading,
     error,
-    fetchMore
+    fetchMore,
+    previousData: previousData?.games.map(normalizeGame)
   }
 }
 

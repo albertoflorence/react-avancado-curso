@@ -8,11 +8,11 @@ import Icon from 'components/Icon'
 import Grid from 'components/Grid'
 import GameCard from 'components/GameCard'
 import { useGetGames } from 'services'
-import Loading from 'components/Loading'
 import { useRouter } from 'next/router'
 import { ParsedUrlQueryInput } from 'querystring'
 import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
 import Empty from 'components/Empty'
+import Loading from 'components/Loading'
 
 export interface GamesTemplateProps {
   filters: FilterProps[]
@@ -22,12 +22,15 @@ const Games = ({ filters }: GamesTemplateProps) => {
   const { query, push } = useRouter()
   const [open, setOpen] = useState(false)
 
-  const { data, loading, fetchMore } = useGetGames({
-    limit: 12,
-    where: parseQueryStringToWhere({ queryString: query, filterItems: filters })
+  const { data, loading, fetchMore, previousData } = useGetGames({
+    notifyOnNetworkStatusChange: true,
+    variables: {
+      limit: 12,
+      where: parseQueryStringToWhere({ queryString: query, filterItems: filters })
+    }
   })
 
-  const games = data || []
+  const games = (loading ? previousData : data) || []
 
   const handleFilter = (values: ParsedUrlQueryInput) => {
     push({
@@ -58,25 +61,27 @@ const Games = ({ filters }: GamesTemplateProps) => {
     <Base>
       <S.Wrapper>
         <MediaMatch greaterThan="medium">{sideBar}</MediaMatch>
-        <S.Content>
+        <S.Content isLoading={loading}>
           <MediaMatch lessThan="medium">
             <Icon label="FilterList" size={25} color="white" onClick={() => setOpen(true)} />
             <Overlay open={open} handleClose={() => setOpen(false)}>
               {sideBar}
             </Overlay>
           </MediaMatch>
-          {loading ? (
-            <Loading type="linear" />
-          ) : games.length ? (
+          {games.length || loading ? (
             <>
               <Grid>
-                {games.length
-                  ? games.map(props => <GameCard key={props.slug} {...props} />)
-                  : 'Nada Encontrado'}
+                {games.map(props => (
+                  <GameCard key={props.slug} {...props} />
+                ))}
               </Grid>
               <S.ShowMore role="button">
-                <span onClick={handleShowMore}>show more</span>
-              </S.ShowMore>{' '}
+                {loading ? (
+                  <Loading type={'dots'} color="white" />
+                ) : (
+                  <span onClick={handleShowMore}>show more</span>
+                )}
+              </S.ShowMore>
             </>
           ) : (
             <Empty

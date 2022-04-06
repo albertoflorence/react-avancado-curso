@@ -11,13 +11,30 @@ export const Wrapper = styled(Container)`
     `}
   `}
 `
-export const Content = styled.div``
+
+interface HasLoading {
+  isLoading: boolean
+}
+
+export const Content = styled.div<HasLoading>`
+  ${({ isLoading = false }) => css`
+    position: relative;
+    ${isLoading &&
+    css`
+      pointer-events: none;
+      color: white;
+      opacity: 0.5;
+    `}
+  `}
+`
 
 export const ShowMore = styled.div`
   ${({ theme }) => css`
     color: white;
     text-align: center;
     margin-top: ${theme.spacing(8)};
+    height: 80px;
+
     > span {
       cursor: pointer;
       text-transform: uppercase;
