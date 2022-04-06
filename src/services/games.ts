@@ -53,7 +53,8 @@ export const getGameBySlug = async (slug: string): Promise<GameProps | undefined
   const client = initializeApollo()
   const { data } = await client.query<QueryGameBySlug, QueryGameBySlugVariables>({
     query: QUERY_GAME_BY_SLUG,
-    variables: { slug }
+    variables: { slug },
+    fetchPolicy: 'no-cache'
   })
 
   if (!data.games.length) {

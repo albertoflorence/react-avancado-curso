@@ -12,7 +12,8 @@ export const getHome = async (): Promise<HomeTemplateProps> => {
     query: QUERY_HOME,
     variables: {
       date: TODAY
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   const { banners, freeGames, newGames, sections, upComingGames } = data
