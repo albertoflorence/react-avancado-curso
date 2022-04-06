@@ -34,18 +34,17 @@ export interface UseGetGamesResult {
 export const useGetGames = (
   options: QueryHookOptions<QueryGames, QueryGamesVariables>
 ): UseGetGamesResult => {
-  const { data, loading, error, fetchMore, previousData } = useQuery<
-    QueryGames,
-    QueryGamesVariables
-  >(QUERY_GAMES, options)
+  const { data, loading, error, fetchMore } = useQuery<QueryGames, QueryGamesVariables>(
+    QUERY_GAMES,
+    options
+  )
 
   return {
     data: data?.games.map(normalizeGame),
     hasMore: Boolean(Number(data?.games.length) < Number(data?.gamesConnection?.values?.length)),
     loading,
     error,
-    fetchMore,
-    previousData: previousData?.games.map(normalizeGame)
+    fetchMore
   }
 }
 

@@ -22,7 +22,7 @@ const Games = ({ filters }: GamesTemplateProps) => {
   const { query, push } = useRouter()
   const [open, setOpen] = useState(false)
 
-  const { data, loading, fetchMore, previousData, hasMore } = useGetGames({
+  const { data, loading, fetchMore, hasMore } = useGetGames({
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: 12,
@@ -31,7 +31,7 @@ const Games = ({ filters }: GamesTemplateProps) => {
     }
   })
 
-  const games = (loading ? previousData : data) || []
+  const games = data || []
 
   const handleFilter = (values: ParsedUrlQueryInput) => {
     push({
