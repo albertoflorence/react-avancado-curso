@@ -1,13 +1,13 @@
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries'
 import { initializeApollo } from 'utils/apollo'
-import { normalizeGame } from './normalizer'
 import { QueryGameBySlug, QueryGameBySlugVariables } from 'graphql/generated/QueryGameBySlug'
 import { GameProps } from 'templates/Game'
 import { Platform, Rating } from 'components/GameDetails'
 import { getImageUrl, formatPrice } from 'utils/helpers'
 import { GameCardProps } from 'components/GameCard'
 import { ApolloError, QueryHookOptions, useQuery } from '@apollo/client'
+import { mapperGame } from './mappers'
 
 export const getGames = async (): Promise<GameCardProps[]> => {
   const client = initializeApollo()
@@ -19,7 +19,7 @@ export const getGames = async (): Promise<GameCardProps[]> => {
     }
   })
 
-  return data.games.map(normalizeGame)
+  return data.games.map(mapperGame)
 }
 
 export interface UseGetGamesResult {
@@ -40,7 +40,7 @@ export const useGetGames = (
   )
 
   return {
-    data: data?.games.map(normalizeGame),
+    data: data?.games.map(mapperGame),
     hasMore: Boolean(Number(data?.games.length) < Number(data?.gamesConnection?.values?.length)),
     loading,
     error,

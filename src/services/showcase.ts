@@ -5,7 +5,7 @@ import { QueryUpComing, QueryUpComingVariables } from 'graphql/generated/QueryUp
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { QUERY_UPCOMING } from 'graphql/queries/upComing'
 import { initializeApollo } from 'utils/apollo'
-import { normalizeSection } from './normalizer'
+import { mapperSection } from './mappers'
 
 interface ShowcaseProps {
   highlight?: HighlightProps
@@ -20,7 +20,7 @@ export const getRecommended = async (): Promise<ShowcaseProps | undefined> => {
 
   const { highlight, games } = data.recommended.section
 
-  return normalizeSection(highlight, games)
+  return mapperSection(highlight, games)
 }
 
 export const getUpComing = async (): Promise<ShowcaseProps> => {
@@ -33,5 +33,5 @@ export const getUpComing = async (): Promise<ShowcaseProps> => {
     }
   })
 
-  return normalizeSection(data.section?.upComing?.highlight, data.upComingGames)
+  return mapperSection(data.section?.upComing?.highlight, data.upComingGames)
 }

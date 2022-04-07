@@ -6,20 +6,20 @@ import { GameFragment } from 'graphql/generated/GameFragment'
 import { HighlightFragment } from 'graphql/generated/HighlightFragment'
 import { getImageUrl, formatPrice } from 'utils/helpers'
 
-interface NormalizeSectionResult {
+interface MapperSectionResult {
   highlight?: HighlightProps
   gameCards: GameCardProps[]
 }
 
-export const normalizeSection = (
+export const mapperSection = (
   highlight?: HighlightFragment | null,
   gameCards: GameFragment[] = []
-): NormalizeSectionResult => ({
-  ...(highlight && { highlight: normalizeHighlight(highlight) }),
-  gameCards: gameCards.map(normalizeGame)
+): MapperSectionResult => ({
+  ...(highlight && { highlight: mapperHighlight(highlight) }),
+  gameCards: gameCards.map(mapperGame)
 })
 
-export const normalizeHighlight = (highlight: HighlightFragment): HighlightProps => ({
+export const mapperHighlight = (highlight: HighlightFragment): HighlightProps => ({
   title: highlight.title,
   subtitle: highlight.subtitle,
   background: getImageUrl(highlight.background?.url),
@@ -29,7 +29,7 @@ export const normalizeHighlight = (highlight: HighlightFragment): HighlightProps
   reverse: highlight.reverse
 })
 
-export const normalizeGame = (game: GameFragment): GameCardProps => ({
+export const mapperGame = (game: GameFragment): GameCardProps => ({
   title: game.name,
   subtitle: game.developers[0].name,
   slug: game.slug,
@@ -38,7 +38,7 @@ export const normalizeGame = (game: GameFragment): GameCardProps => ({
   favorite: false
 })
 
-export const normalizeBanner = (banner: BannerFragment): BannerProps => ({
+export const mapperBanner = (banner: BannerFragment): BannerProps => ({
   title: banner.title,
   subtitle: banner.subtitle,
   buttonLabel: banner.button?.label as string,
