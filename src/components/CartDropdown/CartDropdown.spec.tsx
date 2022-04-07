@@ -15,8 +15,7 @@ const mockProps = {
 describe('<CartDropdown />', () => {
   it('should render correctly', () => {
     init()
-    expect(screen.getByRole('img', { name: 'Shopping Cart' })).toBeInTheDocument()
-    expect(screen.getByText(mockProps.items.length)).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Open Shopping Cart' })).toBeInTheDocument()
     expect(screen.getByText(mockProps.items[1].title)).toBeInTheDocument()
     expect(screen.getByText('any total')).toBeInTheDocument()
   })

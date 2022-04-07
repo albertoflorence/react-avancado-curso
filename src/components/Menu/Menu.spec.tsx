@@ -21,7 +21,7 @@ describe('<Menu />', () => {
     testElements(makeIcon, [
       ['open menu', 1],
       ['open search', 1],
-      ['open shopping cart', 1]
+      ['open shopping cart', 2]
     ])
     expect(getLogo()).toBeInTheDocument()
   })

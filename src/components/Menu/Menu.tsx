@@ -9,6 +9,7 @@ import * as S from './MenuStyles'
 import Overlay from 'components/Overlay'
 import CartDropdown from 'components/CartDropdown'
 import UserDropdown from 'components/UserDropdown'
+import CartIcon from 'components/CartIcon'
 
 export interface MenuProps {
   username?: string
@@ -43,7 +44,7 @@ const Menu = ({ username }: MenuProps) => {
 
         <MediaMatch lessThan="medium">
           <Link href="/cart">
-            <MenuItem icon="ShoppingCart" aria-label="Open Shopping Cart" />
+            <CartIcon />
           </Link>
         </MediaMatch>
 
@@ -86,7 +87,7 @@ const Menu = ({ username }: MenuProps) => {
 }
 
 interface MenuItemProps extends Omit<IconProps, 'label'> {
-  icon: 'Menu' | 'Search' | 'ShoppingCart'
+  icon: 'Menu' | 'Search'
 }
 
 const MenuItem = ({ icon, ...props }: MenuItemProps) => (
