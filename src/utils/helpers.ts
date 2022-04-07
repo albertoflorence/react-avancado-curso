@@ -6,3 +6,6 @@ export const getImageUrl = (url?: string): string => {
 export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('en', { style: 'currency', currency: 'USD' }).format(price)
 }
+
+export const formattedPriceToNumber = (str: string): number =>
+  Number(str.replace('$', '').replace('.00', ''))
