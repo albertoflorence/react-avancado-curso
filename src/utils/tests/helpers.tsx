@@ -5,19 +5,21 @@ import theme from 'styles/theme'
 import { CartContext, CartContextData, defaultValues } from 'hooks'
 
 type Options = {
-  cartProviderProps?: CartContextData
+  cartProviderProps?: Partial<CartContextData>
 } & RenderOptions
 
 export const customRender = (
   ui: React.ReactNode,
   { cartProviderProps = defaultValues, ...renderOptions }: Options = {}
-): RenderResult =>
-  render(
+): RenderResult => {
+  const cartProps = Object.assign({}, defaultValues, cartProviderProps)
+  return render(
     <ThemeProvider theme={theme}>
-      <CartContext.Provider value={cartProviderProps}>{ui}</CartContext.Provider>
+      <CartContext.Provider value={cartProps}>{ui}</CartContext.Provider>
     </ThemeProvider>,
     renderOptions
   )
+}
 
 export * from '@testing-library/react'
 export { theme }
