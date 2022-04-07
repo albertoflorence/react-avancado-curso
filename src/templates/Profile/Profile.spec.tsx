@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Profile from './Profile'
 
 const init = () => {
-  renderWithTheme(<Profile>children</Profile>)
+  render(<Profile>children</Profile>)
 }
 
 jest.mock('next/router', () => ({

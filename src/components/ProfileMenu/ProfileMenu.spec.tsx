@@ -1,9 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
+
 import ProfileMenu, { ProfileMenuProps } from './ProfileMenu'
 
 const init = (props?: ProfileMenuProps) => {
-  renderWithTheme(<ProfileMenu {...props} />)
+  render(<ProfileMenu {...props} />)
 }
 
 const getLink = (name: string) => screen.getByRole('link', { name: new RegExp(name, 'i') })

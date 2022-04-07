@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Highlight, { HighlightProps } from './Highlight'
 
 const init = (props: HighlightProps) => {
-  renderWithTheme(<Highlight {...props} />)
+  render(<Highlight {...props} />)
   return (name: string, role: string, prop?: string) =>
     screen.getByRole(role, { [prop || 'name']: new RegExp(name, 'i') })
 }
@@ -30,7 +29,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render reversed', () => {
-    const { container } = renderWithTheme(<Highlight {...mockHighlightProps()} reverse />)
+    const { container } = render(<Highlight {...mockHighlightProps()} reverse />)
     expect(container.firstChild).toHaveStyleRule('grid-template-areas', "'content image'")
   })
 })

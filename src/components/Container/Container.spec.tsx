@@ -1,13 +1,14 @@
-import { renderWithTheme } from "utils/tests";
-import Container from "./Container";
+import { render } from 'utils/tests'
 
-describe("<Container />", () => {
-  it("should render", () => {
-    const { container } = renderWithTheme(
+import Container from './Container'
+
+describe('<Container />', () => {
+  it('should render', () => {
+    const { container } = render(
       <Container>
         <span>Won Games</span>
       </Container>
-    );
+    )
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {
@@ -33,6 +34,6 @@ describe("<Container />", () => {
           Won Games
         </span>
       </div>
-    `);
-  });
-});
+    `)
+  })
+})

@@ -1,7 +1,5 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Game, { GameTemplateProps } from './Game'
-
 import gameCardsMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
 import gameDetailsMock from 'components/GameDetails/mock'
@@ -36,7 +34,7 @@ const makeMock = (testid: string) => ({
 
 describe('<Game />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<Game {...props} />)
+    render(<Game {...props} />)
     expect(screen.getByTestId('Mock Base')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Gallery')).toBeInTheDocument()
     expect(screen.getByTestId('Mock GameDetails')).toBeInTheDocument()
@@ -48,12 +46,12 @@ describe('<Game />', () => {
   })
 
   it('should not render the gallery if there is no images', () => {
-    renderWithTheme(<Game {...props} gallery={undefined} />)
+    render(<Game {...props} gallery={undefined} />)
     expect(screen.queryByTestId('Mock Gallery')).not.toBeInTheDocument()
   })
 
   it('should not render the gallery if is on mobile', () => {
-    renderWithTheme(<Game {...props} />)
+    render(<Game {...props} />)
     expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyle({ display: 'none' })
     expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyleRule('display', 'block', {
       media: '(min-width: 768px)'

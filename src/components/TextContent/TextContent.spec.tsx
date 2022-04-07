@@ -1,9 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
+
 import TextContent, { TextContentProps } from './TextContent'
 
 const init = (props?: Partial<TextContentProps>) => {
-  renderWithTheme(<TextContent {...mockProps} {...props} />)
+  render(<TextContent {...mockProps} {...props} />)
 }
 
 const mockProps = {

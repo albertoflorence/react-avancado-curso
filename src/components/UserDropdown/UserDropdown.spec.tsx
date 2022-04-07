@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import UserDropdown from './UserDropdown'
 
 const init = () => {
-  renderWithTheme(<UserDropdown username="any user" />)
+  render(<UserDropdown username="any user" />)
 }
 
 const getByRole = (role: string) => (name: string) =>

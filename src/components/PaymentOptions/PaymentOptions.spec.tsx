@@ -1,11 +1,10 @@
-import { screen, waitFor } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen, waitFor } from 'utils/tests'
 import PaymentOptions, { PaymentOptionsProps } from './PaymentOptions'
 import mockCards from './mock'
 import userEvent from '@testing-library/user-event'
 
 const init = (props?: Partial<PaymentOptionsProps>) => {
-  renderWithTheme(<PaymentOptions cards={mockCards} handlePayment={jest.fn} {...props} />)
+  render(<PaymentOptions cards={mockCards} handlePayment={jest.fn} {...props} />)
 }
 
 describe('<PaymentOptions />', () => {

@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Icon, { IconProps } from './Icon'
 
 const init = (props?: Partial<IconProps>) => {
-  renderWithTheme(<Icon label="Add" title="icon" {...props} />)
+  render(<Icon label="Add" title="icon" {...props} />)
 }
 
 const getIcon = () => screen.getByRole('img', { name: 'icon' })

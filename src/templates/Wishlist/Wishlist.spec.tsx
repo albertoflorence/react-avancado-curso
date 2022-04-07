@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Wishlist, { WishlistTemplateProps } from './Wishlist'
 
 import mockGameCards from 'components/GameCardSlider/mock'
@@ -26,7 +25,7 @@ const makeMock = (testid: string) => ({
 
 describe('<Wishlist />', () => {
   it('should render', () => {
-    renderWithTheme(<Wishlist {...props} />)
+    render(<Wishlist {...props} />)
 
     expect(screen.getByTestId('Mock Base')).toBeInTheDocument()
     expect(screen.getAllByTestId('Mock GameCard')).toHaveLength(mockGameCards.length)
@@ -35,7 +34,7 @@ describe('<Wishlist />', () => {
   })
 
   it('should not render GameCard if there is no games ', () => {
-    renderWithTheme(<Wishlist {...props} games={[]} />)
+    render(<Wishlist {...props} games={[]} />)
 
     expect(screen.queryByTestId('Mock GameCard')).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Your wishlist is empty' })).toBeInTheDocument()

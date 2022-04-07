@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Ribbon, { RibbonProps } from './Ribbon'
 
 const init = (props?: Partial<RibbonProps>) => {
-  renderWithTheme(<Ribbon {...props}>Won Games</Ribbon>)
+  render(<Ribbon {...props}>Won Games</Ribbon>)
   return screen.getByText(/won games/i)
 }
 

@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import GameDetails, { GameDetailsProps } from './GameDetails'
 
 const init = (props?: Partial<GameDetailsProps>) => {
-  renderWithTheme(<GameDetails {...mockProps} {...props} />)
+  render(<GameDetails {...mockProps} {...props} />)
 }
 
 const mockProps: GameDetailsProps = {

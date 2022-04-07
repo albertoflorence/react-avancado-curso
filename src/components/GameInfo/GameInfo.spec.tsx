@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import GameInfo, { GameInfoProps } from './GameInfo'
 
 const init = (props: GameInfoProps) => {
-  renderWithTheme(<GameInfo {...props} />)
+  render(<GameInfo {...props} />)
 }
 
 const mockProps = {

@@ -1,10 +1,10 @@
-import { screen } from '@testing-library/react'
+import { render, screen } from 'utils/tests'
+
 import mockCartList from 'components/CartList/mock'
-import { renderWithTheme } from 'utils/tests'
 import CartDropdown from './CartDropdown'
 
 const init = () => {
-  renderWithTheme(<CartDropdown {...mockProps} />)
+  render(<CartDropdown {...mockProps} />)
 }
 
 const mockProps = {

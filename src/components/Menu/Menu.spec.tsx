@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Menu, { MenuProps } from './Menu'
 
 const init = (props?: MenuProps) => {
-  renderWithTheme(<Menu {...props} />)
+  render(<Menu {...props} />)
 }
 
 type MakeLink = (name: string) => Element[]

@@ -1,16 +1,14 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
-import 'jest-styled-components'
+import { render, screen, theme } from 'utils/tests'
 import Logo, { LogoProps } from './Logo'
 
 const init = (props?: LogoProps) => {
-  renderWithTheme(<Logo {...props} />)
+  render(<Logo {...props} />)
   return screen.getByLabelText(/won games/i).parentElement
 }
 
 describe('<Logo />', () => {
   it('should render logo with id', () => {
-    const { container } = renderWithTheme(<Logo id="my_id" />)
+    const { container } = render(<Logo id="my_id" />)
     expect(container.querySelector('#my_id')).toBeInTheDocument()
   })
 

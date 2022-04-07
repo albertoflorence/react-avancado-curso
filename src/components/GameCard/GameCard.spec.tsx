@@ -1,9 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
+
 import GameCard, { GameCardProps } from './GameCard'
 
 const init = (props: GameCardProps) => {
-  renderWithTheme(<GameCard {...props} />)
+  render(<GameCard {...props} />)
   return (name: string, role: string) => screen.getByRole(role, { name: new RegExp(name, 'i') })
 }
 

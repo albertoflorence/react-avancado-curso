@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Cart, { CartTemplateProps } from './Cart'
 
 import mockHighlight from 'components/Highlight/mock'
@@ -8,7 +7,7 @@ import mockCartList from 'components/CartList/mock'
 import mockPayments from 'components/PaymentOptions/mock'
 
 const init = (props?: Partial<CartTemplateProps>) => {
-  renderWithTheme(<Cart {...mockProps} {...props} />)
+  render(<Cart {...mockProps} {...props} />)
 }
 
 const mockProps: CartTemplateProps = {

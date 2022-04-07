@@ -1,10 +1,9 @@
-import { screen, waitFor } from '@testing-library/react'
+import { render, screen, theme, waitFor } from 'utils/tests'
 import userEvent from '@testing-library/user-event'
-import { renderWithTheme, theme } from 'utils/tests'
 import Radio, { RadioProps } from './Radio'
 
 const init = (props?: RadioProps) => {
-  renderWithTheme(<Radio {...props} />)
+  render(<Radio {...props} />)
 }
 
 describe('<Radio />', () => {

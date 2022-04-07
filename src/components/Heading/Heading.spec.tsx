@@ -1,10 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
-
+import { render, screen, theme } from 'utils/tests'
 import Heading, { HeadingProps } from './Heading'
 
 const init = (props?: Partial<HeadingProps>) => {
-  renderWithTheme(<Heading {...props}>Won Games</Heading>)
+  render(<Heading {...props}>Won Games</Heading>)
   return screen.getByRole('heading', { name: /won games/i })
 }
 

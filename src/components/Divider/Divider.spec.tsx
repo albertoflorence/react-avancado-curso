@@ -1,9 +1,10 @@
-import { renderWithTheme } from "utils/tests";
-import Divider from "./Divider";
+import { render } from 'utils/tests'
 
-describe("<Divider />", () => {
-  it("should render correctly", () => {
-    const { container } = renderWithTheme(<Divider />);
+import Divider from './Divider'
+
+describe('<Divider />', () => {
+  it('should render correctly', () => {
+    const { container } = render(<Divider />)
     expect(container).toMatchInlineSnapshot(`
       .c0 {
         background: rgba(181,181,181,0.3);
@@ -24,6 +25,6 @@ describe("<Divider />", () => {
           class="c0"
         />
       </div>
-    `);
-  });
-});
+    `)
+  })
+})

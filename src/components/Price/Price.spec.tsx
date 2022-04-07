@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Price, { PriceProps } from './Price'
 
 const init = (props?: Partial<PriceProps>) => {
-  renderWithTheme(<Price {...props}>R$200,00</Price>)
+  render(<Price {...props}>R$200,00</Price>)
   return screen.getByText('R$200,00')
 }
 

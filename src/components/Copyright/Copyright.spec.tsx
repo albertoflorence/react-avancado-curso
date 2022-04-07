@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Copyright, { CopyrightProps } from './Copyright'
 
 const init = (props?: CopyrightProps) => {
-  renderWithTheme(<Copyright {...props} />)
+  render(<Copyright {...props} />)
   const currentYear = new Date().getFullYear()
   return screen.getByText(`Won Games ${currentYear} © All rights reserved`)
 }

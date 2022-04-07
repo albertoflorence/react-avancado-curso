@@ -1,10 +1,9 @@
-import { fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from 'utils/tests'
+import { fireEvent, render, screen } from 'utils/tests'
 import DropDown from './Dropdown'
 
 const init = () => {
-  renderWithTheme(<DropDown title="title">content</DropDown>)
+  render(<DropDown title="title">content</DropDown>)
 }
 
 describe('<DropDown />', () => {

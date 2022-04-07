@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import CardsList, { CardsListProps } from './CardsList'
 
 const init = (props?: CardsListProps) => {
-  renderWithTheme(<CardsList {...props} />)
+  render(<CardsList {...props} />)
 }
 
 const mockProps: CardsListProps = {

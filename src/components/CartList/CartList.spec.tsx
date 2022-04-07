@@ -1,10 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import CartList, { CartListProps } from './CartList'
 import mockItems from './mock'
 
 const init = (props?: Partial<CartListProps>) => {
-  renderWithTheme(<CartList items={mockItems} total="any total" {...props} />)
+  render(<CartList items={mockItems} total="any total" {...props} />)
 }
 
 describe('<CartList />', () => {

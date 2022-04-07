@@ -1,10 +1,9 @@
-import { screen, waitFor } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme, waitFor } from 'utils/tests'
 import Checkbox, { CheckboxProps } from './Checkbox'
 import userEvent from '@testing-library/user-event'
 
 const init = (props?: CheckboxProps) => {
-  renderWithTheme(<Checkbox {...props} />)
+  render(<Checkbox {...props} />)
 }
 
 describe('<Checkbox />', () => {

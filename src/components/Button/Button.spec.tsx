@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Button, { ButtonProps } from './Button'
 import Icon from 'components/Icon'
 
 const makeIcon = (id: string) => <Icon label="AddShoppingCart" data-testid={id} />
 
 const init = (props?: ButtonProps, role = 'button') => {
-  renderWithTheme(<Button {...props}>Won Games</Button>)
+  render(<Button {...props}>Won Games</Button>)
   return screen.getByRole(role, { name: /won games/i })
 }
 

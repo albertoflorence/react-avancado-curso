@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Banner, { BannerProps } from './Banner'
 
 const init = (props: BannerProps) => {
-  renderWithTheme(<Banner {...props} />)
+  render(<Banner {...props} />)
   return (name: string, role: string, prop?: string) =>
     screen.getByRole(role, { [prop || 'name']: new RegExp(name, 'i') })
 }

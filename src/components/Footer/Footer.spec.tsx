@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Footer from './Footer'
 
 const init = () => {
-  renderWithTheme(<Footer />)
+  render(<Footer />)
   return (text: string) => screen.getByRole('heading', { name: new RegExp(text, 'i') })
 }
 

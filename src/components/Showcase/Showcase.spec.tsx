@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Showcase, { ShowcaseProps } from './Showcase'
 import gameCards from 'components/GameCardSlider/mock'
 import highlight from 'components/Highlight/mock'
 
 const init = (props?: Partial<ShowcaseProps>) => {
-  renderWithTheme(<Showcase {...props} />)
+  render(<Showcase {...props} />)
 }
 
 const heading = (name: string) => screen.getByRole('heading', { name })

@@ -1,9 +1,8 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { fireEvent, render, screen } from 'utils/tests'
 import Overlay, { OverlayProps } from './Overlay'
 
 const init = (props?: Partial<OverlayProps>) => {
-  return renderWithTheme(<Overlay {...props}>children</Overlay>).container.firstChild as HTMLElement
+  return render(<Overlay {...props}>children</Overlay>).container.firstChild as HTMLElement
 }
 
 const getClose = () => screen.getByLabelText('Close Overlay')

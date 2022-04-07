@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Base, { BaseProps } from './Base'
 
 const init = (props?: BaseProps) => {
-  renderWithTheme(<Base {...props}>children</Base>)
+  render(<Base {...props}>children</Base>)
 }
 
 const makeMock = (testid: string) => ({

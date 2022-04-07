@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Loading, { LoadingProps } from './Loading'
 
 const init = (props: LoadingProps) => {
-  renderWithTheme(<Loading {...props} />)
+  render(<Loading {...props} />)
 }
 
 const getLoading = () => screen.getByLabelText('loading')

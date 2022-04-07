@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import BannerSlider from './BannerSlider'
 
 const items = [
@@ -22,7 +21,7 @@ const items = [
 ]
 
 const init = () => {
-  const { container } = renderWithTheme(<BannerSlider items={items} />)
+  const { container } = render(<BannerSlider items={items} />)
   return container
 }
 

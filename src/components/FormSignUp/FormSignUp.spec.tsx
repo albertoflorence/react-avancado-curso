@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import FormSignUp from './FormSignUp'
 
 const init = () => {
-  renderWithTheme(<FormSignUp />)
+  render(<FormSignUp />)
 }
 
 const textField = (name: string) => screen.getByPlaceholderText(name)

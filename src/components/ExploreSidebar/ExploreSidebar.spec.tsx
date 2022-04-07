@@ -1,13 +1,10 @@
-import { screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from 'utils/tests'
 import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from 'utils/tests'
 import ExploreSidebar, { ExploreSidebarProps, FilterProps } from './ExploreSidebar'
 import mockItems from './mock'
 
 const init = (props?: Partial<ExploreSidebarProps>) => {
-  renderWithTheme(
-    <ExploreSidebar items={mockItems as FilterProps[]} onFilter={jest.fn()} {...props} />
-  )
+  render(<ExploreSidebar items={mockItems as FilterProps[]} onFilter={jest.fn()} {...props} />)
 }
 
 const byRole = (role: string, name: string) => screen.getByRole(role, { name })

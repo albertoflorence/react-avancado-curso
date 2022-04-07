@@ -1,16 +1,13 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import {{pascalCase name}}, { {{pascalCase name}}Props } from './{{pascalCase name}}'
 
 const init = (props?: {{pascalCase name}}Props) => {
-  renderWithTheme(<{{pascalCase name}} {...props} />)
-  return screen.getByLabelText(/won games/i)
+  return render(<{{pascalCase name}} {...props} />)
 }
-
 
 describe('<{{pascalCase name}} />', () => {
   it('should render', () => {
-    const sut = init()
+    init()
 
     expect(sut).toBeTruthy
   })

@@ -1,9 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
+
 import GameCardSlider, { GameCardSliderProps } from './GameCardSlider'
 
 const init = (props?: GameCardSliderProps) => {
-  const { container } = renderWithTheme(<GameCardSlider {...props} items={items} />)
+  const { container } = render(<GameCardSlider {...props} items={items} />)
   return container
 }
 

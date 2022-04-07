@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import Home from './Home'
 import gameCards from 'components/GameCardSlider/mock'
 import banners from 'components/BannerSlider/mock'
@@ -14,7 +13,7 @@ const props = {
 }
 
 const init = () => {
-  renderWithTheme(<Home {...props} />)
+  render(<Home {...props} />)
 }
 
 jest.mock('templates/Base/Base', () => makeMock('Mock Base'))

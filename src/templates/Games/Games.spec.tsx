@@ -1,7 +1,6 @@
-import { screen } from '@testing-library/react'
+import { render, screen } from 'utils/tests'
 import { FilterProps } from 'components/ExploreSidebar'
 import filtersMock from 'components/ExploreSidebar/mock'
-import { renderWithTheme } from 'utils/tests'
 import Games, { GamesTemplateProps } from './Games'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { noGamesMock, fetchMoreMock, gamesMock } from './mock'
@@ -20,7 +19,7 @@ useRouter.mockImplementation(() => ({
 
 const init = (mocks: MockedResponse[] = [noGamesMock]) => {
   apolloCache.reset()
-  renderWithTheme(
+  render(
     <MockedProvider mocks={mocks} cache={apolloCache}>
       <Games {...mockProps} />
     </MockedProvider>

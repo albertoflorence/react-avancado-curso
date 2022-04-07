@@ -1,8 +1,8 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { fireEvent, render, screen } from 'utils/tests'
+
 import Gallery from './Gallery'
 
-const init = () => renderWithTheme(<Gallery {...props} />)
+const init = () => render(<Gallery {...props} />)
 
 const props = {
   items: [

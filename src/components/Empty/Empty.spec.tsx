@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme, theme } from 'utils/tests'
+import { render, screen, theme } from 'utils/tests'
 import Empty, { EmptyProps } from './Empty'
 
 const init = (props?: Partial<EmptyProps>) => {
-  renderWithTheme(<Empty title="any title" description="any description" {...props} />)
+  render(<Empty title="any title" description="any description" {...props} />)
 }
 
 const getTitle = () => screen.getByRole('heading', { name: 'any title' })

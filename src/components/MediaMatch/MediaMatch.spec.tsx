@@ -1,6 +1,4 @@
-import { render, screen } from '@testing-library/react'
-import { theme } from 'utils/tests'
-
+import { render, screen, theme } from 'utils/tests'
 import MediaMatch, { MediaMatchProps } from './MediaMatch'
 
 type Type = 'mobile' | 'desktop'

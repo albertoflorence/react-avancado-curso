@@ -1,9 +1,8 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests'
+import { render, screen } from 'utils/tests'
 import FormProfile, { FormProfileProps } from './FormProfile'
 
 const init = (props?: FormProfileProps) => {
-  renderWithTheme(<FormProfile {...props} />)
+  render(<FormProfile {...props} />)
 }
 
 const makeRole = (role: string) => (name: string) => screen.getByRole(role, { name })
