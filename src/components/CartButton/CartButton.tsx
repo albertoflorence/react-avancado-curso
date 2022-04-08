@@ -15,16 +15,24 @@ const icons = {
 
 export interface CartButtonProps {
   slug: string
+  size?: 'small' | 'large'
+  hasText?: boolean
 }
-const CartButton = ({ slug }: CartButtonProps) => {
+const CartButton = ({ slug, size = 'small', hasText }: CartButtonProps) => {
   const { hasItem, addItem, removeItem } = useCart()
-  const iconProps = icons[hasItem(slug) ? 'remove' : 'add'] as IconProps
+  const isInCart = hasItem(slug)
+  const iconProps = icons[isInCart ? 'remove' : 'add'] as IconProps
+  const text = isInCart ? 'Remove from cart' : 'Add to cart'
 
   const handleClick = () => {
-    hasItem(slug) ? removeItem(slug) : addItem(slug)
+    isInCart ? removeItem(slug) : addItem(slug)
   }
 
-  return <Button onClick={handleClick} startIcon={<Icon {...iconProps} />} size="small" />
+  return (
+    <Button onClick={handleClick} startIcon={<Icon {...iconProps} />} size={size}>
+      {hasText && text}
+    </Button>
+  )
 }
 
 export default CartButton
