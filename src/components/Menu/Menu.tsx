@@ -43,9 +43,9 @@ const Menu = ({ username }: MenuProps) => {
         </MediaMatch>
 
         <MediaMatch lessThan="medium">
-          <Link href="/cart">
+          <S.CartIconWrapper href="/cart">
             <CartIcon />
-          </Link>
+          </S.CartIconWrapper>
         </MediaMatch>
 
         <MediaMatch greaterThan="medium">

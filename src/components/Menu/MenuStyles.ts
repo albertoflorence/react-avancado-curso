@@ -129,3 +129,9 @@ export const SignUp = styled(Link)`
     border-bottom: 2px solid ${theme.colors.primary};
   `}
 `
+export const CartIconWrapper = styled(Link)`
+  ${({ theme }) => css`
+    text-decoration: none;
+    color: ${theme.colors.white};
+  `}
+`
