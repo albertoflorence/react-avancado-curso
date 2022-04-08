@@ -1,5 +1,6 @@
 import { Menu } from '@styled-icons/material-outlined/Menu'
 import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import { RemoveShoppingCart } from '@styled-icons/material-outlined/RemoveShoppingCart'
 import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
 import { Search } from '@styled-icons/material-outlined/Search'
 import { Close } from '@styled-icons/material-outlined/Close'
@@ -46,7 +47,8 @@ const icons = {
   List: FormatListBulleted,
   ExitToApp,
   KeyboardArrowDown,
-  FilterList
+  FilterList,
+  RemoveShoppingCart
 }
 
 export type Color = 'primary' | 'secondary' | 'white' | 'black' | 'gray'
