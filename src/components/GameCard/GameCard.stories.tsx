@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react'
+import { CartContextData } from 'hooks'
 import GameCard, { GameCardProps } from './GameCard'
 
 export default {
@@ -20,6 +21,12 @@ export default {
 } as Meta
 
 export const Default: Story<GameCardProps> = args => <GameCard {...args} />
+
+export const HasItem: Story<GameCardProps & CartContextData> = args => <GameCard {...args} />
+
+HasItem.args = {
+  hasItem: () => true
+}
 
 export const Discount: Story<GameCardProps> = args => <GameCard {...args} />
 Discount.args = {

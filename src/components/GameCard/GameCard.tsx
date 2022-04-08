@@ -1,4 +1,4 @@
-import Button from 'components/Button'
+import CartButton from 'components/CartButton'
 import Icon from 'components/Icon'
 import Image from 'components/Image'
 import Price from 'components/Price'
@@ -47,7 +47,7 @@ const GameCard = ({
         {discount && <Price discount>{price}</Price>}
         <div>
           <Price>{discount || price}</Price>
-          <Button startIcon={<Icon label="AddShoppingCart" />} size="small" />
+          <CartButton slug={slug} />
         </div>
       </S.BuyBox>
     </S.Content>
