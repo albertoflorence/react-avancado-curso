@@ -75,6 +75,11 @@ export const Input = styled.input`
     &::placeholder {
       color: ${theme.colors.gray};
     }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacing(3)} ${theme.colors.lightGray} inset;
+      filter: none;
+    }
   `}
 `
 
