@@ -49,6 +49,7 @@ export const GameContent = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacing(2)};
+    width: 100%;
   `}
 `
 
@@ -72,4 +73,18 @@ export const Payment = styled.div`
     }
   `}
 `
+
 export const CardInfo = styled.div``
+
+export const Remove = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacing(1)};
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+  `}
+`

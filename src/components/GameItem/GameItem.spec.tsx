@@ -1,14 +1,18 @@
-import { render, screen } from 'utils/tests'
+import { CartContextData } from 'hooks'
+import { fireEvent, render, screen } from 'utils/tests'
 import GameItem, { GameItemProps } from './GameItem'
 
-const init = (props?: Partial<GameItemProps>) => {
-  render(<GameItem {...mockProps} {...props} />)
+const init = (props?: Partial<GameItemProps>, cartProviderProps?: Partial<CartContextData>) => {
+  render(<GameItem {...mockProps} {...props} />, {
+    cartProviderProps
+  })
 }
 
 const mockProps = {
   title: 'any name',
   price: 'any price',
-  image: 'any image'
+  image: 'any image',
+  slug: 'any-slug'
 }
 
 describe('<GameItem />', () => {
@@ -42,5 +46,17 @@ describe('<GameItem />', () => {
     expect(screen.getByText('any number')).toBeInTheDocument()
     expect(screen.getByText('any date')).toBeInTheDocument()
     expect(screen.getByAltText('any flag')).toHaveAttribute('src', 'any image')
+  })
+
+  it('should show remove', () => {
+    init({}, { hasItem: () => true })
+    expect(screen.getByText('Remove')).toBeInTheDocument()
+  })
+
+  it('should remove an item', () => {
+    const removeItem = jest.fn()
+    init({}, { removeItem, hasItem: () => true })
+    fireEvent.click(screen.getByText('Remove'))
+    expect(removeItem).toHaveBeenCalledWith('any-slug')
   })
 })
