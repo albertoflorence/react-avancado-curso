@@ -19,16 +19,9 @@ const handleFullWidth = () => css`
   width: 100%;
 `
 
-const handleIcon = (theme: DefaultTheme) => css`
+const handleIcon = () => css`
   svg {
     width: 1em;
-    & + span {
-      margin-left: ${theme.spacing(1)};
-    }
-  }
-
-  span + svg {
-    margin-left: ${theme.spacing(1)};
   }
 `
 
@@ -55,10 +48,11 @@ export const Wrapper = styled.button<WrapperProps>`
     text-decoration: none;
     font-weight: ${theme.font.normal};
     height: 2.5em;
+    gap: ${theme.spacing(1)};
 
     ${size && sizes[size](theme)}
     ${fullWidth && handleFullWidth}
-    ${hasIcon && handleIcon(theme)}
+    ${hasIcon && handleIcon}
     ${text && handleText(theme)}
 
     &:hover {

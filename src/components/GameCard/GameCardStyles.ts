@@ -87,7 +87,7 @@ export const BuyBox = styled.div`
   flex-wrap: wrap;
 
   button {
-    height: 22px;
+    height: 25px;
     border-radius: 2px;
   }
 `
