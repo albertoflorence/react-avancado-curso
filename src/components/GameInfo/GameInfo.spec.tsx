@@ -8,7 +8,8 @@ const init = (props: GameInfoProps) => {
 const mockProps = {
   title: 'title',
   description: 'description',
-  price: 'R$200,00'
+  price: 'R$200,00',
+  slug: 'slug'
 }
 
 describe('<GameInfo />', () => {
