@@ -7,7 +7,8 @@ export default {
   component: CartDropdown,
   args: {
     items: mockCartList,
-    total: 'R$300,00'
+    total: 'R$300,00',
+    quantity: mockCartList.length
   },
   parameters: {
     backgrounds: {
