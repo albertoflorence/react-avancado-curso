@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
+import NextNProgress from 'nextjs-progressbar'
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState)
@@ -21,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
             <meta name="description" content="A simple project" />
           </Head>
           <GlobalStyles />
+          <NextNProgress color={theme.colors.primary} height={3} />
           <Component {...pageProps} />
         </CartProvider>
       </ThemeProvider>
