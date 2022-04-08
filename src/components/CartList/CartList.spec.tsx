@@ -1,9 +1,16 @@
+import { CartContextData } from 'hooks'
 import { render, screen } from 'utils/tests'
 import CartList, { CartListProps } from './CartList'
 import mockItems from './mock'
 
-const init = (props?: Partial<CartListProps>) => {
-  render(<CartList items={mockItems} total="any total" {...props} />)
+const init = (props?: Partial<CartListProps>, context?: Partial<CartContextData>) => {
+  render(<CartList {...props} />, {
+    cartProviderProps: {
+      items: mockItems,
+      total: 'any total',
+      ...(context && context)
+    }
+  })
 }
 
 describe('<CartList />', () => {
@@ -20,7 +27,7 @@ describe('<CartList />', () => {
   })
 
   it('should render Empty if there are no games', () => {
-    init({ items: undefined })
+    init({}, { items: [] })
 
     expect(screen.getByRole('heading', { name: /your cart is empty/i })).toBeInTheDocument()
   })
