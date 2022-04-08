@@ -7,10 +7,22 @@ const init = (props: LoadingProps) => {
 
 const getLoading = () => screen.getByLabelText('loading')
 describe('<Loading />', () => {
-  it('should render', () => {
+  it('should render linear', () => {
     init({ type: 'linear' })
 
     expect(getLoading()).toBeInTheDocument()
+  })
+
+  it('should render dots', () => {
+    init({ type: 'dots' })
+
+    expect(getLoading().firstChild).toBeInTheDocument()
+  })
+
+  it('should render circular', () => {
+    init({ type: 'circular' })
+
+    expect(getLoading().firstChild).toBeInTheDocument()
   })
 
   it('should render with primary color as default', () => {

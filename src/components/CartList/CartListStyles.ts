@@ -10,6 +10,15 @@ export const EmptyWrapper = styled(Wrapper)`
     padding-bottom: ${theme.spacing(4)};
   `}
 `
+
+export const LoadingWrapper = styled(Wrapper)`
+  ${({ theme }) => css`
+    padding: ${theme.spacing(7)};
+    display: flex;
+    justify-content: center;
+  `}
+`
+
 export const Total = styled.div`
   ${({ theme }) => css`
     display: flex;

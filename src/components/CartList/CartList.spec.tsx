@@ -31,4 +31,9 @@ describe('<CartList />', () => {
 
     expect(screen.getByRole('heading', { name: /your cart is empty/i })).toBeInTheDocument()
   })
+
+  it('should render loading', () => {
+    init({}, { loading: true })
+    expect(screen.getByLabelText('loading')).toBeInTheDocument()
+  })
 })

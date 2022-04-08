@@ -2,6 +2,7 @@ import Button from 'components/Button'
 import Empty from 'components/Empty'
 import GameItem from 'components/GameItem'
 import Link from 'components/Link'
+import Loading from 'components/Loading'
 import { useCart } from 'hooks'
 import * as S from './CartListStyles'
 
@@ -10,7 +11,15 @@ export interface CartListProps {
 }
 
 const CartList = ({ hasButton }: CartListProps) => {
-  const { items, total } = useCart()
+  const { items, total, loading } = useCart()
+
+  if (loading) {
+    return (
+      <S.LoadingWrapper>
+        <Loading type="circular" color="primary" />
+      </S.LoadingWrapper>
+    )
+  }
 
   if (!items.length) {
     return (
