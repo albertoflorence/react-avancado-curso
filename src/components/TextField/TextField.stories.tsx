@@ -11,7 +11,7 @@ export default {
     disabled: false
   },
   argTypes: {
-    onInput: { action: 'changed' }
+    onInputChange: { action: 'changed' }
   }
 } as Meta
 

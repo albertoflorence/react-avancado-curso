@@ -3,7 +3,7 @@ import * as S from './TextFieldStyles'
 
 export type TextFieldProps = {
   label?: string
-  onInput?: (value: string) => void
+  onInputChange?: (value: string) => void
   initialValue?: string
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
@@ -13,7 +13,7 @@ export type TextFieldProps = {
 const TextField = ({
   label,
   id,
-  onInput,
+  onInputChange,
   initialValue = '',
   startIcon,
   endIcon,
@@ -28,7 +28,7 @@ const TextField = ({
     if (disabled) return
     const newValue = event.currentTarget.value
     setValue(newValue)
-    onInput && onInput(newValue)
+    onInputChange && onInputChange(newValue)
   }
 
   const Input = (
