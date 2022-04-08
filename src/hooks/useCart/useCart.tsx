@@ -29,7 +29,7 @@ export const defaultValues: CartContextData = {
   addItem: () => undefined,
   removeItem: () => undefined,
   clear: () => undefined,
-  loading: true
+  loading: false
 }
 
 export const CartContext = createContext<CartContextData>(defaultValues)
@@ -53,6 +53,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, [cartItems])
 
   const { data, loading } = useGetGames({
+    skip: cartItems.length < 1,
     variables: {
       where: {
         slug: cartItems

@@ -31,7 +31,7 @@ describe('useCart()', () => {
     expect(result.current.items).toEqual([])
     expect(result.current.total).toBe('$0.00')
     expect(result.current.quantity).toBe(0)
-    expect(result.current.loading).toBe(true)
+    expect(result.current.loading).toBe(false)
     expect(result.current.hasItem('')).toBe(false)
   })
 

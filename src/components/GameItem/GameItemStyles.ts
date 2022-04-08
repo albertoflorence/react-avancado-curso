@@ -64,7 +64,7 @@ export const Payment = styled.div`
     ${media.lessThan('medium')`
       flex-direction: column-reverse;
       text-align: start;
-      margin-top: ${theme.spacing(1)}
+      margin-top: ${theme.spacing(1)};
     `}
 
     span {

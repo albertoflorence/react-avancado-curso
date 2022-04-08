@@ -1,8 +1,22 @@
 import { CartListStyles } from 'components/CartList'
-import styled from 'styled-components'
+import { GameItemStyles } from 'components/GameItem'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
-  ${CartListStyles.Wrapper} {
-    width: 560px;
-  }
+  ${({ theme }) => css`
+    ${CartListStyles.Wrapper} {
+      width: 560px;
+      ${GameItemStyles.Title} {
+        font-size: ${theme.font.sizes.medium};
+      }
+      ${GameItemStyles.Wrapper} {
+        padding: ${theme.spacing(2)};
+      }
+
+      ${CartListStyles.Content} {
+        max-height: 500px;
+        overflow-y: scroll;
+      }
+    }
+  `}
 `

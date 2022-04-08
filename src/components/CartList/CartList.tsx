@@ -27,14 +27,16 @@ const CartList = ({ hasButton }: CartListProps) => {
 
   return (
     <S.Wrapper>
-      {items.map(item => (
-        <GameItem key={item.title} {...item} />
-      ))}
+      <S.Content>
+        {items.map(item => (
+          <GameItem key={item.title} {...item} />
+        ))}
+      </S.Content>
       <S.Total>
         {!hasButton && <span>Total: </span>}
         <S.TotalText>{total}</S.TotalText>
         {hasButton && (
-          <Button as={Link} href="#">
+          <Button as={Link} href="/cart">
             Buy it now
           </Button>
         )}

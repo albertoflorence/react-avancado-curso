@@ -23,7 +23,7 @@ describe('<CartList />', () => {
   it('should render with button', () => {
     init({ hasButton: true })
 
-    expect(screen.getByRole('link', { name: /buy it now/i })).toHaveAttribute('href', '/#')
+    expect(screen.getByRole('link', { name: /buy it now/i })).toHaveAttribute('href', '/cart')
   })
 
   it('should render Empty if there are no games', () => {

@@ -27,3 +27,4 @@ export const TotalText = styled.span`
     color: ${theme.colors.primary};
   `}
 `
+export const Content = styled.div``
