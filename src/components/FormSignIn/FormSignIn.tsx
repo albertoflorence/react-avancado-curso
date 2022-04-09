@@ -2,7 +2,9 @@ import Button from 'components/Button'
 import Icon from 'components/Icon'
 import Link from 'components/Link'
 import TextField from 'components/TextField'
-import { FormLink, FormWrapper } from 'components/Form'
+import { FormError, FormLink, FormWrapper } from 'components/Form'
+
+import { loginValidate, LoginErrorsValues } from 'utils/validations'
 
 import * as S from './FormSignInStyles'
 
@@ -12,6 +14,8 @@ import { useRouter } from 'next/router'
 
 const FormSignIn = () => {
   const [values, setValues] = useState({ email: '', password: '' })
+  const [fieldErrors, setFieldErrors] = useState<LoginErrorsValues>()
+  const [formError, setFormError] = useState('')
   const [loading, setLoading] = useState(false)
 
   const { push } = useRouter()
@@ -24,6 +28,13 @@ const FormSignIn = () => {
   }
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+
+    const errors = loginValidate(values)
+    if (errors) {
+      setFieldErrors(errors)
+      return
+    }
+
     setLoading(true)
     const result = await signIn<'credentials'>('credentials', {
       redirect: false,
@@ -33,6 +44,13 @@ const FormSignIn = () => {
     })
     setLoading(false)
 
+    if (result?.error) {
+      setFormError('invalid email or password')
+      return
+    }
+
+    setFormError('')
+
     if (result?.url) {
       push(result.url)
     }
@@ -41,12 +59,14 @@ const FormSignIn = () => {
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit}>
+        {formError && <FormError>{formError}</FormError>}
         <TextField
           startIcon={<Icon label="Email" />}
           placeholder="Email"
           name="email"
           type="email"
           onInputChange={handleInput('email')}
+          error={fieldErrors?.email}
         />
         <TextField
           startIcon={<Icon label="Lock" />}
@@ -54,13 +74,14 @@ const FormSignIn = () => {
           type="password"
           name="password"
           onInputChange={handleInput('password')}
+          error={fieldErrors?.password}
         />
         <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
         <Button fullWidth size="large" type="submit" loading={loading}>
           Sign in now
         </Button>
         <FormLink>
-          Don&apos; t have an account?<Link href="/signup">Sign Up</Link>
+          Don&apos; t have an account?<Link href="/signup"> Sign Up</Link>
         </FormLink>
       </form>
     </FormWrapper>
