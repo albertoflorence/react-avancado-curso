@@ -1,12 +1,12 @@
-import { sigInValidate, SigInValues, signUpValidate, SigUpValues } from './validations'
+import { loginValidate, LoginErrorsValues, signUpValidate, SignUpErrorsValues } from './validations'
 
-const SigInValuesMock = (values?: Partial<SigInValues>) => ({
+const SigInValuesMock = (values?: LoginErrorsValues) => ({
   email: 'valid@mail.com',
   password: 'Password1',
   ...values
 })
 
-const SigUpValuesMock = (values?: Partial<SigUpValues>) => ({
+const SigUpValuesMock = (values?: SignUpErrorsValues) => ({
   username: 'username',
   email: 'valid@mail.com',
   password: 'Password1',
@@ -17,7 +17,7 @@ const SigUpValuesMock = (values?: Partial<SigUpValues>) => ({
 describe('sigInValidate()', () => {
   it('should validate empty fields', () => {
     const values = { email: '', password: '' }
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual({
       email: 'email is not allowed to be empty',
       password: 'password is not allowed to be empty'
@@ -26,7 +26,7 @@ describe('sigInValidate()', () => {
 
   it('should validate the email', () => {
     const values = SigInValuesMock({ email: 'invalid-email' })
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual({
       email: 'email must be a valid email'
     })
@@ -34,7 +34,7 @@ describe('sigInValidate()', () => {
 
   it('should validate the password min length', () => {
     const values = SigInValuesMock({ password: '12345' })
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual({
       password: 'password length must be at least 6 characters long'
     })
@@ -42,7 +42,7 @@ describe('sigInValidate()', () => {
 
   it('should validate the password max length', () => {
     const values = SigInValuesMock({ password: '1'.repeat(101) })
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual({
       password: 'password length must be less than or equal to 100 characters long'
     })
@@ -50,7 +50,7 @@ describe('sigInValidate()', () => {
 
   it('should validate the password pattern', () => {
     const values = SigInValuesMock({ password: 'password' })
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual({
       password: 'password must have uppercase letters and numbers'
     })
@@ -58,7 +58,7 @@ describe('sigInValidate()', () => {
 
   it('should return undefined when valid is provided', () => {
     const values = SigInValuesMock()
-    const sut = sigInValidate(values)
+    const sut = loginValidate(values)
     expect(sut).toEqual(undefined)
   })
 })

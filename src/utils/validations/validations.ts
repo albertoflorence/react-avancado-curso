@@ -10,36 +10,35 @@ const fieldValidations = {
     .max(100)
     .messages({ 'string.pattern.base': 'password must have uppercase letters and numbers' })
     .required(),
-  confirmPassword: Joi.string()
-    .valid(Joi.ref('password'))
-    .required()
-    .messages({ 'any.only': 'confirm password must match the password' }),
+  confirmPassword: Joi.valid(Joi.ref('password')).messages({
+    'any.only': 'confirm password must match the password'
+  }),
   username: Joi.string().min(5).max(16).required()
 }
 
-export interface SigInValues {
-  email: string
-  password: string
+export interface LoginErrorsValues {
+  email?: string
+  password?: string
 }
 
-export function sigInValidate(values: SigInValues) {
+export function loginValidate(values: LoginErrorsValues) {
   const { password, email } = fieldValidations
   const schema = Joi.object({ password, email })
-  return getError<SigInValues>(schema.validate(values, { abortEarly: false }))
+  return getError<LoginErrorsValues>(schema.validate(values, { abortEarly: false }))
 }
 
-export interface SigUpValues {
-  email: string
-  password: string
-  confirmPassword: string
-  username: string
+export interface SignUpErrorsValues {
+  email?: string
+  password?: string
+  confirmPassword?: string
+  username?: string
 }
 
-export function signUpValidate(values: SigUpValues) {
+export function signUpValidate(values: SignUpErrorsValues) {
   const { password, email, username, confirmPassword } = fieldValidations
   const schema = Joi.object({ password, email, username, confirmPassword })
 
-  return getError<SigUpValues>(schema.validate(values, { abortEarly: false }))
+  return getError<SignUpErrorsValues>(schema.validate(values, { abortEarly: false }))
 }
 
 const getError = <T>({ error }: ValidationResult): T | undefined =>
