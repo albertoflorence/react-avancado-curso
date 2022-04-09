@@ -1,4 +1,5 @@
 import * as S from './ButtonStyles'
+import Loading from 'components/Loading'
 
 type ButtonTypes = React.ComponentPropsWithoutRef<'button'> | React.ComponentPropsWithoutRef<'a'>
 
@@ -9,12 +10,14 @@ export type ButtonProps = {
   endIcon?: React.ReactNode
   as?: React.ElementType
   text?: boolean
+  loading?: boolean
+  disabled?: boolean
 } & ButtonTypes
 
-const Button = ({ children, startIcon, endIcon, ...props }: ButtonProps) => (
-  <S.Wrapper {...props} hasIcon={Boolean(startIcon || endIcon)}>
+const Button = ({ children, startIcon, endIcon, loading, disabled, ...props }: ButtonProps) => (
+  <S.Wrapper {...props} hasIcon={Boolean(startIcon || endIcon)} disabled={disabled || loading}>
     {startIcon}
-    {children && <span> {children} </span>}
+    {loading ? <Loading type="dots" color="white" /> : <span> {children} </span>}
     {endIcon}
   </S.Wrapper>
 )

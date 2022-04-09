@@ -1,7 +1,6 @@
-import { render, screen, waitFor } from 'utils/tests'
+import { fireEvent, render, screen, waitFor } from 'utils/tests'
 import PaymentOptions, { PaymentOptionsProps } from './PaymentOptions'
 import mockCards from './mock'
-import userEvent from '@testing-library/user-event'
 
 const init = (props?: Partial<PaymentOptionsProps>) => {
   render(<PaymentOptions cards={mockCards} handlePayment={jest.fn} {...props} />)
@@ -20,7 +19,7 @@ describe('<PaymentOptions />', () => {
   it('should check the radio when card is clicked', async () => {
     init()
     const item = /4325/
-    userEvent.click(screen.getByLabelText(item))
+    fireEvent.click(screen.getByLabelText(item))
     await waitFor(() => {
       expect(screen.getByRole('radio', { name: item })).toBeChecked()
     })
@@ -30,7 +29,7 @@ describe('<PaymentOptions />', () => {
     const handlePayment = jest.fn()
     init({ handlePayment })
 
-    userEvent.click(screen.getByText('Buy now'))
+    fireEvent.click(screen.getByText('Buy now'))
 
     expect(handlePayment).not.toHaveBeenCalled()
   })
@@ -39,8 +38,8 @@ describe('<PaymentOptions />', () => {
     const handlePayment = jest.fn()
     init({ handlePayment })
 
-    userEvent.click(screen.getByLabelText(/4325/))
-    userEvent.click(screen.getByRole('button', { name: 'Buy now' }))
+    fireEvent.click(screen.getByLabelText(/4325/))
+    fireEvent.click(screen.getByRole('button', { name: 'Buy now' }))
 
     expect(handlePayment).toHaveBeenCalled()
   })

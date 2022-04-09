@@ -35,7 +35,7 @@ type WrapperProps = {
 } & ButtonProps
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, size = 'medium', fullWidth = false, hasIcon, text }) => css`
+  ${({ theme, size = 'medium', fullWidth = false, hasIcon, text, disabled }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -58,10 +58,10 @@ export const Wrapper = styled.button<WrapperProps>`
     &:hover {
       filter: brightness(95%);
     }
-
-    &:disabled {
-      cursor: not-allowed;
-      filter: saturate(30%);
-    }
+    ${disabled &&
+    css`
+      filter: saturate(20%);
+      pointer-events: none;
+    `}
   `}
 `

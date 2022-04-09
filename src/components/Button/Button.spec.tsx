@@ -4,65 +4,84 @@ import Icon from 'components/Icon'
 
 const makeIcon = (id: string) => <Icon label="AddShoppingCart" data-testid={id} />
 
-const init = (props?: ButtonProps, role = 'button') => {
+const init = (props?: ButtonProps) => {
   render(<Button {...props}>Won Games</Button>)
-  return screen.getByRole(role, { name: /won games/i })
 }
+
+const getButton = (role = 'button') => screen.getByRole(role, { name: /won games/i })
 
 describe('<Button />', () => {
   it('should render medium size by default', () => {
-    const sut = init()
-    expect(sut).toHaveStyle({
+    init()
+    expect(getButton()).toHaveStyle({
       fontSize: theme.font.sizes.medium,
       padding: theme.spacing(1, 4)
     })
   })
 
   it('should render small size', () => {
-    const sut = init({ size: 'small' })
-    expect(sut).toHaveStyle({
+    init({ size: 'small' })
+    expect(getButton()).toHaveStyle({
       fontSize: theme.font.sizes.small,
       padding: theme.spacing(1)
     })
   })
 
   it('should render large size', () => {
-    const sut = init({ size: 'large' })
-    expect(sut).toHaveStyle({
+    init({ size: 'large' })
+    expect(getButton()).toHaveStyle({
       fontSize: theme.font.sizes.large,
       padding: theme.spacing(1, 6)
     })
   })
 
   it('should render fullWidth', () => {
-    const sut = init({ fullWidth: true })
-    expect(sut).toHaveStyle({
+    init({ fullWidth: true })
+    expect(getButton()).toHaveStyle({
       width: '100%'
     })
   })
 
   it('should render an icon at start', () => {
-    const sut = init({ startIcon: makeIcon('startIcon') })
-    expect(sut).toBeInTheDocument()
+    init({ startIcon: makeIcon('startIcon') })
+    expect(getButton()).toBeInTheDocument()
     expect(screen.getByTestId('startIcon')).toBeInTheDocument()
   })
 
   it('should render an icon in the end', () => {
-    const sut = init({ endIcon: makeIcon('endIcon') })
-    expect(sut).toBeInTheDocument()
+    init({ endIcon: makeIcon('endIcon') })
+    expect(getButton()).toBeInTheDocument()
     expect(screen.getByTestId('endIcon')).toBeInTheDocument()
   })
 
   it('should render as a link', () => {
-    const sut = init({ as: 'a', href: '/link' }, 'link')
-    expect(sut).toHaveAttribute('href', '/link')
+    init({ as: 'a', href: '/link' })
+    expect(getButton('link')).toHaveAttribute('href', '/link')
   })
 
   it('should render a text button', () => {
-    const sut = init({ text: true })
-    expect(sut).toHaveStyle({
+    init({ text: true })
+    expect(getButton()).toHaveStyle({
       background: 'none',
       color: theme.colors.primary
     })
+  })
+
+  it('should render disabled', () => {
+    init({ disabled: true })
+    expect(getButton()).toHaveStyle({
+      filter: 'saturate(20%)',
+      pointerEvents: 'none'
+    })
+  })
+
+  it('should render loading', () => {
+    init({ loading: true })
+
+    expect(screen.getByRole('button')).toHaveStyle({
+      filter: 'saturate(20%)',
+      pointerEvents: 'none'
+    })
+    expect(screen.getByLabelText('loading')).toBeInTheDocument()
   })
 })
