@@ -22,7 +22,7 @@ const options: NextAuthOptions = {
         const data = await response.json()
 
         if (data.user) {
-          return { ...data.user, jwt: data.jw }
+          return { ...data.user, jwt: data.jwt }
         }
 
         return null
@@ -30,18 +30,18 @@ const options: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async session({ session, user }) {
-      session.jwt = user.jwt
-      session.id = user.id
-
+    async session({ session, token }) {
+      session.jwt = token.jwt
       return Promise.resolve(session)
     },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.email = user.username as string
+        token.email = user.email
+        token.name = user.username as string
         token.jwt = user.jwt
       }
+
       return Promise.resolve(token)
     }
   }

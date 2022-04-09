@@ -3,25 +3,30 @@ import Container from 'components/Container'
 import Footer from 'components/Footer'
 
 import * as S from './BaseStyles'
+import { useSession } from 'next-auth/react'
 
 export interface BaseProps {
   children: React.ReactNode
 }
 
-const Base = ({ children }: BaseProps) => (
-  <S.Wrapper>
-    <Container>
-      <Menu />
-    </Container>
+const Base = ({ children }: BaseProps) => {
+  const { data, status } = useSession()
 
-    <S.Content>{children}</S.Content>
-
-    <S.Footer>
+  return (
+    <S.Wrapper>
       <Container>
-        <Footer />
+        {status !== 'loading' && <Menu username={data?.user?.name as string} />}
       </Container>
-    </S.Footer>
-  </S.Wrapper>
-)
+
+      <S.Content>{children}</S.Content>
+
+      <S.Footer>
+        <Container>
+          <Footer />
+        </Container>
+      </S.Footer>
+    </S.Wrapper>
+  )
+}
 
 export default Base

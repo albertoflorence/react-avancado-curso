@@ -10,6 +10,12 @@ const makeMock = (testid: string) => ({
   default: () => <div data-testid={testid} />
 })
 
+jest.mock('next-auth/react', () => ({
+  useSession: jest.fn(() => {
+    return [{ session: null }]
+  })
+}))
+
 jest.mock('components/Menu/Menu', () => makeMock('Mock Menu'))
 jest.mock('components/Footer/Footer', () => makeMock('Mock Footer'))
 
