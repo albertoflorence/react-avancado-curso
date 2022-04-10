@@ -33,6 +33,7 @@ describe('<Menu />', () => {
       ['explore', 2],
       ['log in now', 1],
       ['sign in', 1],
+      ['sign up', 1],
       ['my account', 0],
       ['wishlist', 0]
     ])
@@ -46,7 +47,21 @@ describe('<Menu />', () => {
       ['my account', 2],
       ['wishlist', 2],
       ['log in now', 0],
-      ['sign in', 0]
+      ['sign in', 0],
+      ['sign up', 0]
+    ])
+  })
+
+  it('should not show elements while loading', () => {
+    init({ loading: true })
+    testElements(makeLink, [
+      ['home', 2],
+      ['explore', 2],
+      ['my account', 0],
+      ['wishlist', 0],
+      ['log in now', 0],
+      ['sign in', 0],
+      ['sign up', 0]
     ])
   })
 })

@@ -15,7 +15,7 @@ const Base = ({ children }: BaseProps) => {
   return (
     <S.Wrapper>
       <Container>
-        {status !== 'loading' && <Menu username={data?.user?.name as string} />}
+        <Menu username={data?.user?.name as string} loading={status === 'loading'} />
       </Container>
 
       <S.Content>{children}</S.Content>
