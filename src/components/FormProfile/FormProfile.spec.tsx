@@ -16,7 +16,7 @@ describe('<FormProfile />', () => {
 
     expect(byHeading('My Profile')).toBeInTheDocument()
 
-    expect(byTextBox('Name')).toBeInTheDocument()
+    expect(byTextBox('Username')).toBeInTheDocument()
     expect(byTextBox('E-mail')).toBeInTheDocument()
     expect(screen.getByLabelText('Password')).toBeInTheDocument()
     expect(screen.getByLabelText('New Password')).toBeInTheDocument()
@@ -24,9 +24,9 @@ describe('<FormProfile />', () => {
   })
 
   it('should render with initial value', () => {
-    init({ userName: 'any name', email: 'any email' })
+    init({ username: 'any name', email: 'any email' })
 
-    expect(byTextBox('Name')).toHaveValue('any name')
+    expect(byTextBox('Username')).toHaveValue('any name')
     expect(byTextBox('E-mail')).toHaveValue('any email')
   })
 })

@@ -4,11 +4,11 @@ import TextField from 'components/TextField'
 import Button from 'components/Button'
 
 export interface FormProfileProps {
-  userName?: string
+  username?: string
   email?: string
 }
 
-const FormProfile = ({ userName, email }: FormProfileProps) => {
+const FormProfile = ({ username, email }: FormProfileProps) => {
   return (
     <S.Wrapper>
       <Heading line="bottom" lineColor="primary" color="black" size="small">
@@ -16,7 +16,7 @@ const FormProfile = ({ userName, email }: FormProfileProps) => {
       </Heading>
 
       <S.Content>
-        <TextField name="userName" label="Name" initialValue={userName} />
+        <TextField name="username" label="Username" initialValue={username} />
         <TextField name="email" label="E-mail" type="email" initialValue={email} disabled />
         <TextField
           name="password"
