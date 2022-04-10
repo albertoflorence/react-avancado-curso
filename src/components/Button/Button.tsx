@@ -17,7 +17,7 @@ export type ButtonProps = {
 const Button = ({ children, startIcon, endIcon, loading, disabled, ...props }: ButtonProps) => (
   <S.Wrapper {...props} hasIcon={Boolean(startIcon || endIcon)} disabled={disabled || loading}>
     {startIcon}
-    {loading ? <Loading type="dots" color="white" /> : <span> {children} </span>}
+    {loading ? <Loading type="dots" color="white" /> : children && <span> {children} </span>}
     {endIcon}
   </S.Wrapper>
 )
