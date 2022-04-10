@@ -1,6 +1,6 @@
 export const getImageUrl = (url?: string): string => {
   if (!url) return 'https://source.unsplash.com/random'
-  return `http://localhost:1337${url}`
+  return process.env.NEXT_PUBLIC_API_URL + url
 }
 
 export const formatPrice = (price: number): string => {
