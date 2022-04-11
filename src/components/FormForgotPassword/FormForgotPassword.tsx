@@ -11,10 +11,7 @@ import FormMessage, { FormMessageProps } from 'components/FormMessage'
 const FormForgotPassword = () => {
   const [values, setValues] = useState({ email: '' })
   const [fieldErrors, setFieldErrors] = useState<ForgotPasswordErrorsValues>()
-  const [formMessage, setFormMessage] = useState<FormMessageProps>({
-    type: 'success',
-    children: ''
-  })
+  const [formMessage, setFormMessage] = useState<FormMessageProps>({})
   const [loading, setLoading] = useState(false)
 
   const handleInput = (value: string) => {
@@ -46,18 +43,22 @@ const FormForgotPassword = () => {
     <FormWrapper>
       <form onSubmit={handleSubmit}>
         <FormMessage {...formMessage} />
-        <TextField
-          startIcon={<Icon label="Email" />}
-          placeholder="Email"
-          name="email"
-          type="email"
-          onInputChange={handleInput}
-          error={fieldErrors?.email}
-        />
+        {!(formMessage.type === 'success') && (
+          <>
+            <TextField
+              startIcon={<Icon label="Email" />}
+              placeholder="Email"
+              name="email"
+              type="email"
+              onInputChange={handleInput}
+              error={fieldErrors?.email}
+            />
 
-        <Button fullWidth size="large" type="submit" loading={loading}>
-          Send email
-        </Button>
+            <Button fullWidth size="large" type="submit" loading={loading}>
+              Send email
+            </Button>
+          </>
+        )}
       </form>
     </FormWrapper>
   )

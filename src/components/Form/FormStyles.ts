@@ -29,11 +29,3 @@ export const FormLink = styled.div`
     }
   `}
 `
-
-export const FormError = styled.div`
-  ${({ theme }) => css`
-    text-align: center;
-    color: ${theme.colors.red};
-    font-size: ${theme.font.sizes.small};
-  `}
-`

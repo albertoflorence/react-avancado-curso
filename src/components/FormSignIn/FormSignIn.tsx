@@ -2,7 +2,7 @@ import Button from 'components/Button'
 import Icon from 'components/Icon'
 import Link from 'components/Link'
 import TextField from 'components/TextField'
-import { FormError, FormLink, FormWrapper } from 'components/Form'
+import { FormLink, FormWrapper } from 'components/Form'
 
 import { loginValidate, LoginErrorsValues } from 'utils/validations'
 
@@ -11,6 +11,7 @@ import * as S from './FormSignInStyles'
 import React, { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import FormMessage from 'components/FormMessage'
 
 const FormSignIn = () => {
   const [values, setValues] = useState({ email: '', password: '' })
@@ -54,7 +55,7 @@ const FormSignIn = () => {
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit}>
-        {formError && <FormError>{formError}</FormError>}
+        <FormMessage type="error">{formError}</FormMessage>
         <TextField
           startIcon={<Icon label="Email" />}
           placeholder="Email"

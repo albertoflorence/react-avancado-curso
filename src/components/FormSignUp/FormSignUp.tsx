@@ -2,11 +2,12 @@ import Button from 'components/Button'
 import Icon from 'components/Icon'
 import Link from 'components/Link'
 import TextField from 'components/TextField'
-import { FormWrapper, FormLink, FormError } from 'components/Form'
+import { FormWrapper, FormLink } from 'components/Form'
 import React, { useState } from 'react'
 
 import { signUpValidate, SignUpErrorsValues } from 'utils/validations'
 import { useSignUp } from 'services'
+import FormMessage from 'components/FormMessage'
 
 const FormSignUp = () => {
   const [values, setValues] = useState({
@@ -55,7 +56,7 @@ const FormSignUp = () => {
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit}>
-        {formError && <FormError>{formError}</FormError>}
+        <FormMessage type="error">{formError}</FormMessage>
         <TextField
           startIcon={<Icon label="AccountCircle" />}
           placeholder="Username"
