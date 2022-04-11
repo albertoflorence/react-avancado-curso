@@ -52,6 +52,18 @@ export function forgotPasswordValidate(values: ForgotPasswordErrorsValues) {
   return getError<ForgotPasswordErrorsValues>(schema.validate(values, { abortEarly: false }))
 }
 
+export interface ResetPasswordErrorsValues {
+  password?: string
+  confirmPassword?: string
+}
+
+export function resetPasswordValidate(values: ResetPasswordErrorsValues) {
+  const { email } = fieldValidations
+  const schema = Joi.object({ email })
+
+  return getError<ResetPasswordErrorsValues>(schema.validate(values, { abortEarly: false }))
+}
+
 const getError = <T>({ error }: ValidationResult): T | undefined =>
   error &&
   error.details.reduce(
