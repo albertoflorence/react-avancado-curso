@@ -3,19 +3,27 @@ import { FormWrapper } from 'components/Form/FormStyles'
 import TextField from 'components/TextField'
 import Icon from 'components/Icon'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { forgotPasswordValidate, ForgotPasswordErrorsValues } from 'utils/validations'
+import { sendEmailForgotPassword } from 'services'
+import FormMessage, { FormMessageProps } from 'components/FormMessage'
 
 const FormForgotPassword = () => {
   const [values, setValues] = useState({ email: '' })
   const [fieldErrors, setFieldErrors] = useState<ForgotPasswordErrorsValues>()
+  const [formMessage, setFormMessage] = useState<FormMessageProps>({
+    type: 'success',
+    children: ''
+  })
   const [loading, setLoading] = useState(false)
 
   const handleInput = (value: string) => {
     setValues({ email: value })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+
     const errors = forgotPasswordValidate(values)
     if (errors) {
       setFieldErrors(errors)
@@ -23,11 +31,21 @@ const FormForgotPassword = () => {
     }
     setFieldErrors({})
     setLoading(true)
+    const result = await sendEmailForgotPassword(values.email)
+    setLoading(false)
+
+    if (result.error) {
+      setFormMessage({ type: 'error', children: result.error })
+      return
+    }
+
+    setFormMessage({ type: 'success', children: 'You just received an email!' })
   }
 
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit}>
+        <FormMessage {...formMessage} />
         <TextField
           startIcon={<Icon label="Email" />}
           placeholder="Email"

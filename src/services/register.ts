@@ -30,3 +30,12 @@ export const useSignUp = (
 
   return [fn, { error, ...rest }]
 }
+
+export const sendEmailForgotPassword = async (email: string) =>
+  await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/forgot-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  })
+    .then(r => r.json())
+    .then(result => (result.message ? { error: result.message[0].messages[0].message } : result))
