@@ -1,110 +1,50 @@
-import { loginValidate, LoginErrorsValues, signUpValidate, SignUpErrorsValues } from './validations'
+import {
+  loginValidate,
+  signUpValidate,
+  forgotPasswordValidate,
+  resetPasswordValidate
+} from './validations'
 
-const SigInValuesMock = (values?: LoginErrorsValues) => ({
-  email: 'valid@mail.com',
-  password: 'Password1',
-  ...values
-})
+const mockValues = (obj: object) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _obj: any = {}
+  for (const key in obj) {
+    _obj[key] =
+      key === 'confirmPassword'
+        ? 'confirm password must match the password'
+        : key + ' is not allowed to be empty'
+  }
+  return _obj
+}
 
-const SigUpValuesMock = (values?: SignUpErrorsValues) => ({
-  username: 'username',
-  email: 'valid@mail.com',
-  password: 'Password1',
-  confirmPassword: 'Password1',
-  ...values
-})
-
-describe('sigInValidate()', () => {
-  it('should validate empty fields', () => {
+describe('loginValidate()', () => {
+  it('should validate correctly', () => {
     const values = { email: '', password: '' }
     const sut = loginValidate(values)
-    expect(sut).toEqual({
-      email: 'email is not allowed to be empty',
-      password: 'password is not allowed to be empty'
-    })
-  })
-
-  it('should validate the email', () => {
-    const values = SigInValuesMock({ email: 'invalid-email' })
-    const sut = loginValidate(values)
-    expect(sut).toEqual({
-      email: 'email must be a valid email'
-    })
-  })
-
-  it('should validate the password min length', () => {
-    const values = SigInValuesMock({ password: '12345' })
-    const sut = loginValidate(values)
-    expect(sut).toEqual({
-      password: 'password length must be at least 6 characters long'
-    })
-  })
-
-  it('should validate the password max length', () => {
-    const values = SigInValuesMock({ password: '1'.repeat(101) })
-    const sut = loginValidate(values)
-    expect(sut).toEqual({
-      password: 'password length must be less than or equal to 100 characters long'
-    })
-  })
-
-  it('should validate the password pattern', () => {
-    const values = SigInValuesMock({ password: 'password' })
-    const sut = loginValidate(values)
-    expect(sut).toEqual({
-      password: 'password must have uppercase letters and numbers'
-    })
-  })
-
-  it('should return undefined when valid is provided', () => {
-    const values = SigInValuesMock()
-    const sut = loginValidate(values)
-    expect(sut).toEqual(undefined)
+    expect(sut).toEqual(mockValues(values))
   })
 })
 
 describe('signUpValidate()', () => {
-  it('validate empty fields', () => {
-    const values = { username: '', email: '', password: '', confirmPassword: '' }
+  it('should validate correctly', () => {
+    const values = { username: '', email: '', password: '', confirmPassword: ' ' }
     const sut = signUpValidate(values)
-    expect(sut).toEqual({
-      email: 'email is not allowed to be empty',
-      password: 'password is not allowed to be empty',
-      username: 'username is not allowed to be empty'
-    })
+    expect(sut).toEqual(mockValues(values))
   })
+})
 
-  it('validate username min length', () => {
-    const values = SigUpValuesMock({ username: '1234' })
-
-    const sut = signUpValidate(values)
-    expect(sut).toEqual({
-      username: 'username length must be at least 5 characters long'
-    })
+describe('forgotPasswordValidate()', () => {
+  it('should validate correctly', () => {
+    const values = { email: '' }
+    const sut = forgotPasswordValidate(values)
+    expect(sut).toEqual(mockValues(values))
   })
+})
 
-  it('validate username max length', () => {
-    const values = SigUpValuesMock({ username: '1'.repeat(17) })
-
-    const sut = signUpValidate(values)
-    expect(sut).toEqual({
-      username: 'username length must be less than or equal to 16 characters long'
-    })
-  })
-
-  it('validate confirmPassword', () => {
-    const values = SigUpValuesMock({ confirmPassword: 'password1' })
-
-    const sut = signUpValidate(values)
-    expect(sut).toEqual({
-      confirmPassword: 'confirm password must match the password'
-    })
-  })
-
-  it('should return undefined when valid is provided', () => {
-    const values = SigUpValuesMock()
-
-    const sut = signUpValidate(values)
-    expect(sut).toEqual(undefined)
+describe('resetPasswordValidate()', () => {
+  it('should validate correctly', () => {
+    const values = { password: '', confirmPassword: ' ' }
+    const sut = resetPasswordValidate(values)
+    expect(sut).toEqual(mockValues(values))
   })
 })

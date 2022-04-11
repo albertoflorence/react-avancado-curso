@@ -1,31 +1,11 @@
-import Joi, { ValidationResult } from 'joi'
-
-const fieldValidations = {
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required(),
-  password: Joi.string()
-    .pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,100}$/)
-    .min(6)
-    .max(100)
-    .messages({ 'string.pattern.base': 'password must have uppercase letters and numbers' })
-    .required(),
-  confirmPassword: Joi.valid(Joi.ref('password')).messages({
-    'any.only': 'confirm password must match the password'
-  }),
-  username: Joi.string().min(5).max(16).required()
-}
+import { makeValidation } from './setup'
 
 export interface LoginErrorsValues {
   email?: string
   password?: string
 }
 
-export function loginValidate(values: LoginErrorsValues) {
-  const { password, email } = fieldValidations
-  const schema = Joi.object({ password, email })
-  return getError<LoginErrorsValues>(schema.validate(values, { abortEarly: false }))
-}
+export const loginValidate = makeValidation<LoginErrorsValues>(['password', 'email'])
 
 export interface SignUpErrorsValues {
   email?: string
@@ -34,42 +14,25 @@ export interface SignUpErrorsValues {
   username?: string
 }
 
-export function signUpValidate(values: SignUpErrorsValues) {
-  const { password, email, username, confirmPassword } = fieldValidations
-  const schema = Joi.object({ password, email, username, confirmPassword })
-
-  return getError<SignUpErrorsValues>(schema.validate(values, { abortEarly: false }))
-}
+export const signUpValidate = makeValidation<SignUpErrorsValues>([
+  'email',
+  'password',
+  'confirmPassword',
+  'username'
+])
 
 export interface ForgotPasswordErrorsValues {
   email?: string
 }
 
-export function forgotPasswordValidate(values: ForgotPasswordErrorsValues) {
-  const { email } = fieldValidations
-  const schema = Joi.object({ email })
-
-  return getError<ForgotPasswordErrorsValues>(schema.validate(values, { abortEarly: false }))
-}
+export const forgotPasswordValidate = makeValidation<ForgotPasswordErrorsValues>(['email'])
 
 export interface ResetPasswordErrorsValues {
   password?: string
   confirmPassword?: string
 }
 
-export function resetPasswordValidate(values: ResetPasswordErrorsValues) {
-  const { email } = fieldValidations
-  const schema = Joi.object({ email })
-
-  return getError<ResetPasswordErrorsValues>(schema.validate(values, { abortEarly: false }))
-}
-
-const getError = <T>({ error }: ValidationResult): T | undefined =>
-  error &&
-  error.details.reduce(
-    (obj, { message, path }) => ({
-      ...obj,
-      [path.join('')]: message.replace(/"/g, '')
-    }),
-    {} as T
-  )
+export const resetPasswordValidate = makeValidation<ResetPasswordErrorsValues>([
+  'password',
+  'confirmPassword'
+])
