@@ -41,6 +41,17 @@ export function signUpValidate(values: SignUpErrorsValues) {
   return getError<SignUpErrorsValues>(schema.validate(values, { abortEarly: false }))
 }
 
+export interface ForgotPasswordErrorsValues {
+  email?: string
+}
+
+export function forgotPasswordValidate(values: ForgotPasswordErrorsValues) {
+  const { email } = fieldValidations
+  const schema = Joi.object({ email })
+
+  return getError<ForgotPasswordErrorsValues>(schema.validate(values, { abortEarly: false }))
+}
+
 const getError = <T>({ error }: ValidationResult): T | undefined =>
   error &&
   error.details.reduce(
