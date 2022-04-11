@@ -6,16 +6,7 @@ import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { noGamesMock, fetchMoreMock, gamesMock } from './mock'
 import userEvent from '@testing-library/user-event'
 import { apolloCache } from 'utils/apollo'
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const push = jest.fn()
-useRouter.mockImplementation(() => ({
-  push,
-  query: '',
-  asPath: '',
-  route: '/'
-}))
+import { push } from '../../../.jest/useRouter.mock'
 
 const init = (mocks: MockedResponse[] = [noGamesMock]) => {
   apolloCache.reset()

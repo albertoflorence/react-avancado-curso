@@ -2,16 +2,6 @@ import { MockedProvider } from '@apollo/client/testing'
 import { render, screen } from 'utils/tests'
 import FormForgotPassword from './FormResetPassword'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const push = jest.fn()
-useRouter.mockImplementation(() => ({
-  push,
-  query: '',
-  asPath: '',
-  route: '/'
-}))
-
 const init = () => {
   return render(
     <MockedProvider>

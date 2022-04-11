@@ -5,16 +5,6 @@ const init = () => {
   render(<FormSignIn />)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const push = jest.fn()
-useRouter.mockImplementation(() => ({
-  push,
-  query: '',
-  asPath: '',
-  route: '/'
-}))
-
 const textField = (name: string) => screen.getByPlaceholderText(name)
 const link = (name: string) => screen.getByRole('link', { name: new RegExp(name, 'i') })
 const button = (name: string) => screen.getByRole('button', { name: new RegExp(name, 'i') })
