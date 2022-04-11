@@ -50,7 +50,9 @@ const FormSignUp = () => {
         }
       }
     })
-    setLoading(false)
+    if (formError) {
+      setLoading(false)
+    }
   }
 
   return (

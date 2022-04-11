@@ -32,6 +32,7 @@ const FormResetPassword = () => {
       setFieldErrors(errors)
       return
     }
+    setFieldErrors({})
 
     setLoading(true)
     const result = await sendResetPassword({

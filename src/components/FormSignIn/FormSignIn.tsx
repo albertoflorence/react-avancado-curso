@@ -35,6 +35,7 @@ const FormSignIn = () => {
       setFieldErrors(errors)
       return
     }
+    setFieldErrors({})
 
     setLoading(true)
     const result = await signIn<'credentials'>('credentials', {
@@ -43,9 +44,9 @@ const FormSignIn = () => {
       callbackUrl: window.location.origin + (query.callbackUrl || ''),
       redirect: false
     })
-    setLoading(false)
 
     if (result?.error) {
+      setLoading(false)
       setFormError('invalid email or password')
       return
     }
