@@ -18,6 +18,8 @@ import { FormatListBulleted } from '@styled-icons/material-outlined/FormatListBu
 import { ExitToApp } from '@styled-icons/material-outlined/ExitToApp'
 import { KeyboardArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
+import { ErrorOutline } from '@styled-icons/material-outlined/ErrorOutline'
+import { CheckCircleOutline } from '@styled-icons/material-outlined/CheckCircleOutline'
 
 import { Windows } from '@styled-icons/fa-brands/Windows'
 import { Apple } from '@styled-icons/fa-brands/Apple'
@@ -48,10 +50,12 @@ const icons = {
   ExitToApp,
   KeyboardArrowDown,
   FilterList,
-  RemoveShoppingCart
+  RemoveShoppingCart,
+  ErrorCircle: ErrorOutline,
+  CheckCircle: CheckCircleOutline
 }
 
-export type Color = 'primary' | 'secondary' | 'white' | 'black' | 'gray'
+export type Color = 'primary' | 'secondary' | 'white' | 'black' | 'gray' | 'green' | 'red'
 
 export type IconProps = {
   label: keyof typeof icons

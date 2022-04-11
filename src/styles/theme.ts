@@ -40,7 +40,8 @@ export default {
     gray2: '#BBBBBB',
     gray3: '#C7C7C7C7',
     darkGray: '#2E2F42',
-    red: '#FF6347'
+    red: '#FF6347',
+    green: '#2e7d32'
   },
   gradients: {
     primary: 'linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%)'
