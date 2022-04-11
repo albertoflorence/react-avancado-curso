@@ -18,8 +18,7 @@ describe('<FormProfile />', () => {
 
     expect(byTextBox('Username')).toBeInTheDocument()
     expect(byTextBox('E-mail')).toBeInTheDocument()
-    expect(screen.getByLabelText('Password')).toBeInTheDocument()
-    expect(screen.getByLabelText('New Password')).toBeInTheDocument()
+
     expect(byButton('SAVE')).toBeInTheDocument()
   })
 

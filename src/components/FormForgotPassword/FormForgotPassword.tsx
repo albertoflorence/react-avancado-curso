@@ -3,16 +3,24 @@ import { FormWrapper } from 'components/Form/FormStyles'
 import TextField from 'components/TextField'
 import Icon from 'components/Icon'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { forgotPasswordValidate, ForgotPasswordErrorsValues } from 'utils/validations'
 import { sendEmailForgotPassword } from 'services'
 import FormMessage, { FormMessageProps } from 'components/FormMessage'
+import { useRouter } from 'next/router'
 
 const FormForgotPassword = () => {
+  const { query } = useRouter()
   const [values, setValues] = useState({ email: '' })
   const [fieldErrors, setFieldErrors] = useState<ForgotPasswordErrorsValues>()
   const [formMessage, setFormMessage] = useState<FormMessageProps>({})
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (typeof query.email === 'string') {
+      setValues({ email: query.email })
+    }
+  }, [query.email])
 
   const handleInput = (value: string) => {
     setValues({ email: value })
@@ -50,6 +58,7 @@ const FormForgotPassword = () => {
               placeholder="Email"
               name="email"
               type="email"
+              value={values.email}
               onInputChange={handleInput}
               error={fieldErrors?.email}
             />

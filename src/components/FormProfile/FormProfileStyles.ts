@@ -4,11 +4,6 @@ import media from 'styled-media-query'
 export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
-  ${media.greaterThan('medium')`
-    > :last-child {
-      align-self: flex-end;
-    }
-  `}
 `
 
 export const Content = styled.div`
@@ -21,5 +16,17 @@ export const Content = styled.div`
       gap: ${theme.spacing(4)};
       margin-bottom: ${theme.spacing(4)}
     `};
+  `}
+`
+
+export const Buttons = styled.div`
+  ${({ theme }) => css`
+    align-self: flex-end;
+    display: flex;
+    gap: ${theme.spacing(1)};
+    ${media.lessThan('medium')`
+      flex-direction: column;
+      align-self: auto;
+    `}
   `}
 `
