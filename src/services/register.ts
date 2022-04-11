@@ -39,3 +39,18 @@ export const sendEmailForgotPassword = async (email: string) =>
   })
     .then(r => r.json())
     .then(result => (result.message ? { error: result.message[0].messages[0].message } : result))
+
+export interface ResetPasswordProps {
+  password: string
+  passwordConfirmation: string
+  code: string
+}
+
+export const sendResetPassword = async (props: ResetPasswordProps) =>
+  await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/reset-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(props)
+  })
+    .then(r => r.json())
+    .then(result => (result.message ? { error: result.message[0].messages[0].message } : result))
