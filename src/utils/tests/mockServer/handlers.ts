@@ -18,7 +18,7 @@ export const handlers = [
           })
         )
       } else {
-        res(
+        return res(
           ctx.status(200),
           ctx.json({
             ok: true
