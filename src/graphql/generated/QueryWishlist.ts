@@ -7,35 +7,31 @@
 // GraphQL query operation: QueryWishlist
 // ====================================================
 
-export interface QueryWishlist_wishlists_games_cover {
+export interface QueryWishlist_wishlist_games_cover {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryWishlist_wishlists_games_developers {
+export interface QueryWishlist_wishlist_games_developers {
   __typename: "Developer";
   name: string;
 }
 
-export interface QueryWishlist_wishlists_games {
+export interface QueryWishlist_wishlist_games {
   __typename: "Game";
   release_date: any | null;
   name: string;
   slug: string;
-  cover: QueryWishlist_wishlists_games_cover | null;
+  cover: QueryWishlist_wishlist_games_cover | null;
   price: number;
-  developers: QueryWishlist_wishlists_games_developers[];
+  developers: QueryWishlist_wishlist_games_developers[];
 }
 
-export interface QueryWishlist_wishlists {
+export interface QueryWishlist_wishlist {
   __typename: "Wishlist";
-  games: QueryWishlist_wishlists_games[];
+  games: QueryWishlist_wishlist_games[];
 }
 
 export interface QueryWishlist {
-  wishlists: QueryWishlist_wishlists[];
-}
-
-export interface QueryWishlistVariables {
-  email: string;
+  wishlist: QueryWishlist_wishlist | null;
 }

@@ -10,6 +10,7 @@ import { CartProvider } from 'hooks'
 import { useApollo } from 'utils/apollo'
 import { AppProps } from 'next/app'
 import theme from 'styles/theme'
+import { WishlistProvider } from 'hooks/useWishlist/useWishlist'
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState)
@@ -18,16 +19,18 @@ function App({ Component, pageProps }: AppProps) {
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
           <CartProvider>
-            <Head>
-              <title>React Avançado</title>
-              <link rel="shortcut icon" href="/img/icon-512.png" />
-              <link rel="apple-touch-icon" href="/img/icon-512.png" />
-              <link rel="manifest" href="/manifest.json" />
-              <meta name="description" content="A simple project" />
-            </Head>
-            <GlobalStyles />
-            <NextNProgress color={theme.colors.primary} height={3} />
-            <Component {...pageProps} />
+            <WishlistProvider>
+              <Head>
+                <title>React Avançado</title>
+                <link rel="shortcut icon" href="/img/icon-512.png" />
+                <link rel="apple-touch-icon" href="/img/icon-512.png" />
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="description" content="A simple project" />
+              </Head>
+              <GlobalStyles />
+              <NextNProgress color={theme.colors.primary} height={3} />
+              <Component {...pageProps} />
+            </WishlistProvider>
           </CartProvider>
         </ThemeProvider>
       </ApolloProvider>

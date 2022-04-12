@@ -11,8 +11,8 @@ function createApolloClient(session?: Session | null) {
     uri: process.env.NEXT_PUBLIC_API_URL + '/graphql'
   })
 
-  const authLink = setContext((_, { headers }) => {
-    const { jwt } = (session as never) || {}
+  const authLink = setContext((_, { headers, session: clientSession }) => {
+    const jwt = session?.jwt || clientSession?.jwt || ''
 
     return {
       headers: {

@@ -1,7 +1,13 @@
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { getStorageItem, setStorageItem } from 'utils/localStorage'
 import { useWishlist, WishlistProvider, WishlistProviderProps } from './useWishlist'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
+import { wishlistMock } from './mock'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useSession = jest.spyOn(require('next-auth/react'), 'useSession')
+useSession.mockImplementation(() => ({
+  jwt: '123'
+}))
 
 const init = (props: MockedResponse[]) => {
   const wrapper = ({ children }: WishlistProviderProps) => (
@@ -13,48 +19,41 @@ const init = (props: MockedResponse[]) => {
   return renderHook(() => useWishlist(), { wrapper })
 }
 
+const mockGame = () => [
+  {
+    slug: 'any-slug',
+    title: 'any game',
+    image: 'http://localhost:1337/any_url',
+    price: '$100.00',
+    subtitle: 'any developer',
+    favorite: false
+  },
+  {
+    slug: 'another-slug',
+    title: 'another game',
+    image: 'http://localhost:1337/any_url',
+    price: '$200.00',
+    subtitle: 'another developer',
+    favorite: false
+  }
+]
+
 describe('useWishlist()', () => {
-  beforeEach(() => {
-    localStorage.clear()
+  it('should return wishlist', async () => {
+    const { result, waitForNextUpdate } = init([wishlistMock])
+    expect(result.current.loading).toBe(true)
+
+    await waitForNextUpdate()
+
+    expect(result.current.loading).toBe(false)
+    expect(result.current.items).toEqual(mockGame())
   })
 
-  it('should return wishlist', () => {
-    setStorageItem('wishlist', ['1', '2'])
-    const { result } = init([])
-    expect(result.current.items).toEqual(['1', '2'])
-  })
+  it('should return true/false if wishlist item exist', async () => {
+    const { result, waitForNextUpdate } = init([wishlistMock])
 
-  it('should return true when wishlist has the item ', () => {
-    setStorageItem('wishlist', ['1', '2'])
-
-    const { result } = init([])
-    const sut = result.current.hasItem('1')
-    expect(sut).toBe(true)
-  })
-
-  it('should return true/false if wishlist item exist', () => {
-    setStorageItem('wishlist', ['1', '2'])
-    const { result } = init([])
-    expect(result.current.hasItem('1')).toBe(true)
-    expect(result.current.hasItem('3')).toBe(false)
-  })
-
-  it('should add a item', () => {
-    const { result } = init([])
-    act(() => {
-      result.current.addItem('1')
-    })
-
-    expect(getStorageItem('wishlist')).toEqual(['1'])
-  })
-
-  it('should remove a item', () => {
-    setStorageItem('wishlist', ['1', '2', '3'])
-    const { result } = init([])
-    act(() => {
-      result.current.removeItem('2')
-    })
-
-    expect(getStorageItem('wishlist')).toEqual(['1', '3'])
+    await waitForNextUpdate()
+    expect(result.current.hasItem('another-slug')).toBe(true)
+    expect(result.current.hasItem('invalid-slug')).toBe(false)
   })
 })

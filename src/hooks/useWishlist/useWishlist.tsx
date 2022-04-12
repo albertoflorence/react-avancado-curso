@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { GameCardProps } from 'components/GameCard'
+import { createContext, useContext } from 'react'
 import { useGetWishlist } from 'services/wishlist'
-import { getStorageItem, setStorageItem } from 'utils/localStorage'
 
 export interface WishlistContextData {
-  items: string[]
+  items: GameCardProps[]
   hasItem: (id: string) => boolean
   addItem: (id: string) => void
   removeItem: (id: string) => void
@@ -25,28 +25,16 @@ export interface WishlistProviderProps {
 }
 
 export const WishlistProvider = ({ children }: WishlistProviderProps) => {
-  const [wishlist, setWishlist] = useState<string[]>([])
-  useEffect(() => {
-    const data = getStorageItem<string[]>('wishlist')
-    if (data) {
-      setWishlist(data)
-    }
-  }, [])
+  const { games, loading } = useGetWishlist()
 
-  useEffect(() => {
-    setStorageItem('wishlist', wishlist)
-  }, [wishlist])
-
-  const hasItem = (id: string) => wishlist.includes(id)
-  const addItem = (id: string) => setWishlist(s => s.concat(id))
-  const removeItem = (id: string) => setWishlist(s => s.filter(item => item !== id))
-
-  const { loading } = useGetWishlist({})
+  const hasItem = (slug: string) => games.some(item => item.slug === slug)
+  const addItem = (slug: string) => slug
+  const removeItem = (slug: string) => slug
 
   return (
     <WishlistContext.Provider
       value={{
-        items: wishlist,
+        items: games,
         hasItem,
         addItem,
         removeItem,
