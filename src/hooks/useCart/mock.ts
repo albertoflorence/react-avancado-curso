@@ -10,6 +10,7 @@ export const gamesMock: MockedResponse = {
     data: {
       games: [
         {
+          id: '1',
           name: 'any game',
           slug: 'any-slug',
           cover: {
@@ -21,6 +22,7 @@ export const gamesMock: MockedResponse = {
           __typename: 'Game'
         },
         {
+          id: '2',
           name: 'another game',
           slug: 'another-slug',
           cover: {

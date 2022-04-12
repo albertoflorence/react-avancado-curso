@@ -48,6 +48,7 @@ export interface QueryHome_newGames_developers {
 
 export interface QueryHome_newGames {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;
@@ -68,6 +69,7 @@ export interface QueryHome_upComingGames_developers {
 
 export interface QueryHome_upComingGames {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;
@@ -88,6 +90,7 @@ export interface QueryHome_freeGames_developers {
 
 export interface QueryHome_freeGames {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;
@@ -183,6 +186,7 @@ export interface QueryHome_sections_mostPopular_games_developers {
 
 export interface QueryHome_sections_mostPopular_games {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;

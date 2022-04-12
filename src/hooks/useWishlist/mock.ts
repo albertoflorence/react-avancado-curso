@@ -11,6 +11,7 @@ export const wishlistMock: MockedResponse = {
       wishlist: {
         games: [
           {
+            id: '1',
             name: 'any game',
             slug: 'any-slug',
             cover: {
@@ -22,6 +23,7 @@ export const wishlistMock: MockedResponse = {
             __typename: 'Game'
           },
           {
+            id: '2',
             name: 'another game',
             slug: 'another-slug',
             cover: {

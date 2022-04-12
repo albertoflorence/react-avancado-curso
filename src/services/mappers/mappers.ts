@@ -30,6 +30,7 @@ export const mapperHighlight = (highlight: HighlightFragment): HighlightProps =>
 })
 
 export const mapperGame = (game: GameFragment): GameCardProps => ({
+  id: game.id,
   title: game.name,
   subtitle: game.developers[0].name,
   slug: game.slug,

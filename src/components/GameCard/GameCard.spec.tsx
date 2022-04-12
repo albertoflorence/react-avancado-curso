@@ -8,6 +8,7 @@ const init = (props: GameCardProps) => {
 }
 
 const mockGameCardProps = () => ({
+  id: '1',
   image: 'https://i.ibb.co/zPFXfK4/image.png',
   title: 'Population Zero',
   subtitle: 'Rockstar Games',

@@ -6,6 +6,7 @@ import Ribbon from 'components/Ribbon'
 import * as S from './GameCardStyles'
 
 export interface GameCardProps {
+  id: string
   slug: string
   image: string
   title: string

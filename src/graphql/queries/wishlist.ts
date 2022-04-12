@@ -3,7 +3,7 @@ import { GameFragment } from 'graphql/fragments'
 
 export const QUERY_WISHLIST = gql`
   query QueryWishlist {
-    wishlist {
+    wishlist(id: 0) {
       games {
         ...GameFragment
       }

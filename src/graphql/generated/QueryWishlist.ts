@@ -19,6 +19,7 @@ export interface QueryWishlist_wishlist_games_developers {
 
 export interface QueryWishlist_wishlist_games {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;

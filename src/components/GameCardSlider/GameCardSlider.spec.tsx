@@ -9,6 +9,7 @@ const init = (props?: GameCardSliderProps) => {
 
 const items = [
   {
+    id: '1',
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
@@ -17,6 +18,7 @@ const items = [
     slug: 'population-zero'
   },
   {
+    id: '2',
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     title: 'Population Zero 2',
     subtitle: 'Rockstar Games',

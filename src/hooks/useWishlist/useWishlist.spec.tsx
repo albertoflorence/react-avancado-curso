@@ -21,6 +21,7 @@ const init = (props: MockedResponse[]) => {
 
 const mockGame = () => [
   {
+    id: '1',
     slug: 'any-slug',
     title: 'any game',
     image: 'http://localhost:1337/any_url',
@@ -29,6 +30,7 @@ const mockGame = () => [
     favorite: false
   },
   {
+    id: '2',
     slug: 'another-slug',
     title: 'another game',
     image: 'http://localhost:1337/any_url',

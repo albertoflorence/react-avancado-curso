@@ -26,6 +26,7 @@ export const gamesMock: MockedResponse = {
     data: {
       games: [
         {
+          id: '1',
           name: 'any game',
           slug: 'any-slug',
           cover: {
@@ -54,6 +55,7 @@ export const fetchMoreMock: MockedResponse = {
     data: {
       games: [
         {
+          id: '2',
           name: 'another game',
           slug: 'another-slug',
           cover: {

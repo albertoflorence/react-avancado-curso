@@ -40,6 +40,7 @@ export interface QueryRecommended_recommended_section_games_developers {
 
 export interface QueryRecommended_recommended_section_games {
   __typename: "Game";
+  id: string;
   release_date: any | null;
   name: string;
   slug: string;

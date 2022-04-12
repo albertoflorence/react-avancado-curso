@@ -11,14 +11,11 @@ interface UseGetWishlistResult {
 }
 export const useGetWishlist = (): UseGetWishlistResult => {
   const session = useSession()
-  console.log('session: ', session)
 
   const { data, loading } = useQuery<QueryWishlist>(QUERY_WISHLIST, {
     skip: session.status === 'unauthenticated',
     context: { session }
   })
-
-  console.log('data: ', data)
 
   return {
     games: data?.wishlist?.games.map(mapperGame) || [],

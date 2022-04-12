@@ -13,7 +13,7 @@ const types = {
 export const Wrapper = styled.div<FormMessageProps>`
   ${({ theme, type }) => css`
     font-size: ${theme.font.sizes.small};
-    ${types[type](theme)}
+    ${type && types[type](theme)}
     display: flex;
     gap: ${theme.spacing(0.5)};
     justify-content: center;
