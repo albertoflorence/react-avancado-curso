@@ -80,8 +80,7 @@ export const mockGames = () => [
     title: 'any game',
     image: 'http://localhost:1337/any_url',
     price: '$100.00',
-    subtitle: 'any developer',
-    favorite: false
+    subtitle: 'any developer'
   },
   {
     id: '2',
@@ -89,8 +88,7 @@ export const mockGames = () => [
     title: 'any game',
     image: 'http://localhost:1337/any_url',
     price: '$200.00',
-    subtitle: 'any developer',
-    favorite: false
+    subtitle: 'any developer'
   },
   {
     id: '3',
@@ -98,7 +96,6 @@ export const mockGames = () => [
     title: 'any game',
     image: 'http://localhost:1337/any_url',
     price: '$300.00',
-    subtitle: 'any developer',
-    favorite: false
+    subtitle: 'any developer'
   }
 ]

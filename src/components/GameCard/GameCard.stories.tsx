@@ -10,8 +10,7 @@ export default {
     image: 'https://i.ibb.co/zPFXfK4/image.png',
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
-    price: 'R$215,00',
-    favorite: false
+    price: 'R$215,00'
   },
   parameters: {
     backgrounds: {

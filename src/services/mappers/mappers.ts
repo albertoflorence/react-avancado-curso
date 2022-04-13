@@ -35,8 +35,7 @@ export const mapperGame = (game: GameFragment): GameCardProps => ({
   subtitle: game.developers[0].name,
   slug: game.slug,
   image: getImageUrl(game.cover?.url),
-  price: formatPrice(game.price),
-  favorite: false
+  price: formatPrice(game.price)
 })
 
 export const mapperBanner = (banner: BannerFragment): BannerProps => ({

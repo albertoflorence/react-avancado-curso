@@ -88,8 +88,7 @@ describe('mapperGame()', () => {
       subtitle: 'any developer',
       slug: 'any_slug',
       image: 'http://localhost:1337/any_url',
-      price: '$100.00',
-      favorite: false
+      price: '$100.00'
     })
   })
 })
@@ -128,8 +127,7 @@ describe('mapperSection()', () => {
           subtitle: 'any developer',
           slug: 'any_slug',
           image: 'http://localhost:1337/any_url',
-          price: '$100.00',
-          favorite: false
+          price: '$100.00'
         }
       ]
     })

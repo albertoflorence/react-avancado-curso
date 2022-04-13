@@ -93,9 +93,13 @@ export const BuyBox = styled.div`
 `
 
 export const FavButton = styled.div`
-  ${({ theme }) => css`
-    width: 24px;
-    height: 24px;
-    color: ${theme.colors.primary};
-  `}
+  width: 24px;
+  height: 24px;
+  button,
+  svg {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
 `

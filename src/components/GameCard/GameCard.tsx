@@ -1,8 +1,8 @@
 import CartButton from 'components/CartButton'
-import Icon from 'components/Icon'
 import Image from 'components/Image'
 import Price from 'components/Price'
 import Ribbon from 'components/Ribbon'
+import WishlistButton from 'components/WishlistButton'
 import * as S from './GameCardStyles'
 
 export interface GameCardProps {
@@ -13,20 +13,10 @@ export interface GameCardProps {
   subtitle: string
   price: string
   discount?: string
-  favorite: boolean
   ribbon?: string
 }
 
-const GameCard = ({
-  title,
-  subtitle,
-  image,
-  price,
-  discount,
-  favorite,
-  ribbon,
-  slug
-}: GameCardProps) => (
+const GameCard = ({ id, title, subtitle, image, price, discount, ribbon, slug }: GameCardProps) => (
   <S.Wrapper>
     {ribbon && <Ribbon size="small">{ribbon}</Ribbon>}
     <S.ImageBox href={`/game/${slug}`}>
@@ -37,12 +27,8 @@ const GameCard = ({
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
       </S.Info>
-      <S.FavButton role="button">
-        {favorite ? (
-          <Icon aria-label="Remove from Wishlist" label="Favorite" />
-        ) : (
-          <Icon aria-label="Add to Wishlist" label="FavoriteBorder" />
-        )}
+      <S.FavButton>
+        <WishlistButton id={id} />
       </S.FavButton>
       <S.BuyBox>
         {discount && <Price discount>{price}</Price>}

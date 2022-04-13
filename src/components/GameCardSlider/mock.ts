@@ -5,7 +5,6 @@ export default [
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   },
   {
@@ -14,7 +13,6 @@ export default [
     title: 'Population Zero 2',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   },
   {
@@ -23,7 +21,6 @@ export default [
     title: 'Population Zero 3',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: true,
     discount: 'R$185,00',
     ribbon: 'Promoção',
     slug: 'population-zero'
@@ -34,7 +31,6 @@ export default [
     title: 'Population Zero 4',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   },
   {
@@ -43,7 +39,6 @@ export default [
     title: 'Population Zero 5',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   }
 ]

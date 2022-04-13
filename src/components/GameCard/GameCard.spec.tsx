@@ -13,7 +13,6 @@ const mockGameCardProps = () => ({
   title: 'Population Zero',
   subtitle: 'Rockstar Games',
   price: 'R$215,00',
-  favorite: false,
   slug: 'population-zero'
 })
 
@@ -26,7 +25,7 @@ describe('<GameCard />', () => {
     expect(makeElement(props.title, 'heading')).toBeInTheDocument()
     expect(makeElement(props.subtitle, 'heading')).toBeInTheDocument()
     expect(screen.getByText(props.price)).toBeInTheDocument()
-    expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /add to wishlist/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
       'href',
       `/game/${props.slug}`
@@ -38,17 +37,5 @@ describe('<GameCard />', () => {
     init(props)
     expect(screen.getByText(props.discount)).not.toHaveStyle({ textDecoration: 'line-through' })
     expect(screen.getByText(props.price)).toHaveStyle({ textDecoration: 'line-through' })
-  })
-
-  it('should render a filled Favorite icon', () => {
-    const props = { ...mockGameCardProps(), favorite: true }
-    init(props)
-    expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
-  })
-
-  it('should render with ribbon', () => {
-    const props = { ...mockGameCardProps(), favorite: true }
-    init(props)
-    expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
   })
 })

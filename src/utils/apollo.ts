@@ -4,6 +4,22 @@ import { concatPagination } from '@apollo/client/utilities'
 import { Session } from 'next-auth'
 import { useMemo } from 'react'
 
+const getJwt = (session?: Session): string => {
+  if (session) {
+    if (typeof session.jwt === 'string') {
+      return session.jwt
+    }
+    if (
+      session.data instanceof Object &&
+      'jwt' in session.data &&
+      typeof session.data['jwt'] === 'string'
+    ) {
+      return session.data['jwt']
+    }
+  }
+  return ''
+}
+
 let apolloClient: ApolloClient<NormalizedCacheObject>
 
 function createApolloClient(session?: Session | null) {
@@ -12,7 +28,7 @@ function createApolloClient(session?: Session | null) {
   })
 
   const authLink = setContext((_, { headers, session: clientSession }) => {
-    const jwt = session?.jwt || clientSession?.jwt || ''
+    const jwt = getJwt(session || clientSession)
 
     return {
       headers: {

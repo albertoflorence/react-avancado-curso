@@ -36,7 +36,7 @@ const WishlistButton = ({ id, hasText }: WishlistButtonProps) => {
   const buttonText = isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'
 
   return (
-    <Button text size="small" onClick={handleClick} startIcon={<Icon {...iconProps} />}>
+    <Button text onClick={handleClick} startIcon={<Icon {...iconProps} />}>
       {hasText && buttonText}
     </Button>
   )

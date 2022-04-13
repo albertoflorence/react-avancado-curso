@@ -14,7 +14,6 @@ const items = [
     title: 'Population Zero',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   },
   {
@@ -23,7 +22,6 @@ const items = [
     title: 'Population Zero 2',
     subtitle: 'Rockstar Games',
     price: 'R$215,00',
-    favorite: false,
     slug: 'population-zero'
   }
 ]
