@@ -2,20 +2,25 @@ import { ThemeProvider } from 'styled-components'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 
 import theme from 'styles/theme'
-import { CartContext, CartContextData, defaultValues } from 'hooks'
+import { CartContext, CartContextData, cartDefaultValues } from 'hooks/useCart'
+import { WishlistContext, WishlistContextData, wishlistDefaultValues } from 'hooks/useWishlist'
 
 type Options = {
   cartProviderProps?: Partial<CartContextData>
+  wishlistProviderProps?: Partial<WishlistContextData>
 } & RenderOptions
 
 export const customRender = (
   ui: React.ReactNode,
-  { cartProviderProps = defaultValues, ...renderOptions }: Options = {}
+  { cartProviderProps, wishlistProviderProps, ...renderOptions }: Options = {}
 ): RenderResult => {
-  const cartProps = Object.assign({}, defaultValues, cartProviderProps)
+  const cartProps = Object.assign({}, cartDefaultValues, cartProviderProps)
+  const wishlistProps = Object.assign({}, wishlistDefaultValues, wishlistProviderProps)
   return render(
     <ThemeProvider theme={theme}>
-      <CartContext.Provider value={cartProps}>{ui}</CartContext.Provider>
+      <CartContext.Provider value={cartProps}>
+        <WishlistContext.Provider value={wishlistProps}>{ui}</WishlistContext.Provider>
+      </CartContext.Provider>
     </ThemeProvider>,
     renderOptions
   )

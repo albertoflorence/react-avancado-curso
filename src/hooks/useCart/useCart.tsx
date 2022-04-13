@@ -21,7 +21,7 @@ export type CartContextData = {
   clear: () => void
 }
 
-export const defaultValues: CartContextData = {
+export const cartDefaultValues: CartContextData = {
   items: [],
   total: '$0.00',
   quantity: 0,
@@ -32,7 +32,7 @@ export const defaultValues: CartContextData = {
   loading: false
 }
 
-export const CartContext = createContext<CartContextData>(defaultValues)
+export const CartContext = createContext<CartContextData>(cartDefaultValues)
 
 export interface CartProviderProps {
   children: React.ReactNode
