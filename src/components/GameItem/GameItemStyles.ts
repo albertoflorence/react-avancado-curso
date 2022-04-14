@@ -49,7 +49,6 @@ export const GameContent = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacing(2)};
-    width: 100%;
   `}
 `
 

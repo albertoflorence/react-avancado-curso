@@ -3,14 +3,12 @@ import Cart, { CartTemplateProps } from './Cart'
 
 import mockHighlight from 'components/Highlight/mock'
 import mockGameCards from 'components/GameCardSlider/mock'
-import mockPayments from 'components/PaymentOptions/mock'
 
 const init = (props?: Partial<CartTemplateProps>) => {
   render(<Cart {...mockProps} {...props} />)
 }
 
 const mockProps: CartTemplateProps = {
-  paymentOptions: { cards: mockPayments },
   recommended: {
     gameCards: mockGameCards,
     highlight: mockHighlight
@@ -25,8 +23,7 @@ const makeMock = (testid: string) => ({
 })
 
 jest.mock('templates/Base', () => makeMock('Mock Base'))
-jest.mock('components/CartList', () => makeMock('Mock CartList'))
-jest.mock('components/PaymentOptions', () => makeMock('Mock PaymentOptions'))
+jest.mock('components/PaymentForm', () => makeMock('Mock PaymentForm'))
 jest.mock('components/Showcase', () => makeMock('Mock Showcase'))
 
 const testElements = (testIds: string[]) =>
@@ -35,7 +32,7 @@ const testElements = (testIds: string[]) =>
 describe('<Cart />', () => {
   it('should render correctly', () => {
     init()
-    testElements(['Mock Base', 'Mock CartList', 'Mock PaymentOptions', 'Mock Showcase'])
+    testElements(['Mock Base', 'Mock PaymentForm', 'Mock Showcase'])
     expect(screen.getByRole('heading', { name: /my cart/i })).toBeInTheDocument()
   })
 })

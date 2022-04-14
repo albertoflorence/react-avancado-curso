@@ -5,7 +5,6 @@ import media from 'styled-media-query'
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.white};
-    padding: ${theme.spacing(3)};
   `}
 `
 
@@ -14,20 +13,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${theme.spacing(1)};
-    margin: ${theme.spacing(5, 0)};
-  `}
-`
-export const Row = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    padding: ${theme.spacing(1.5)};
-    gap: ${theme.spacing(1)};
-    background: ${theme.colors.lightGray};
-    cursor: pointer;
-
-    > :nth-child(2) {
-      flex: 1;
-    }
+    padding: ${theme.spacing(2)};
   `}
 `
 

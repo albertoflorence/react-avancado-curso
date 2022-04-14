@@ -1,7 +1,7 @@
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
 import CartList from 'components/CartList'
-import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
+import PaymentForm from 'components/PaymentForm'
 import Heading from 'components/Heading'
 import Showcase from 'components/Showcase'
 import Divider from 'components/Divider'
@@ -15,10 +15,9 @@ export interface CartTemplateProps {
     gameCards: GameCardProps[]
     highlight?: HighlightProps
   }
-  paymentOptions: Omit<PaymentOptionsProps, 'handlePayment'>
 }
 
-const Cart = ({ recommended, paymentOptions }: CartTemplateProps) => {
+const Cart = ({ recommended }: CartTemplateProps) => {
   const handlePayment = () => ({})
   return (
     <Base>
@@ -29,7 +28,7 @@ const Cart = ({ recommended, paymentOptions }: CartTemplateProps) => {
 
         <S.Content>
           <CartList />
-          <PaymentOptions {...paymentOptions} handlePayment={handlePayment} />
+          <PaymentForm handlePayment={handlePayment} />
         </S.Content>
 
         <Divider />

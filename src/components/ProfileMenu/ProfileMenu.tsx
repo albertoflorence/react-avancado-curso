@@ -36,11 +36,6 @@ const items: ItemProps[] = [
     link: '/profile/me'
   },
   {
-    icon: 'CreditCard',
-    title: 'My Cards',
-    link: '/profile/cards'
-  },
-  {
     title: 'My Orders',
     icon: 'List',
     link: '/profile/orders'
