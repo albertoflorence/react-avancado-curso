@@ -1,6 +1,5 @@
 import FormProfile, { FormProfileProps } from 'components/FormProfile'
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
-import { getProfile } from 'services'
+import { GetServerSidePropsContext } from 'next'
 import Profile from 'templates/Profile'
 import protectedRoutes from 'utils/protectedRoutes'
 
@@ -12,17 +11,15 @@ export default function Index(props: FormProfileProps) {
   )
 }
 
-export async function getServerSideProps(
-  context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<FormProfileProps>> {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
   if (!session) return { props: {} }
 
-  const data = await getProfile(session)
-
   return {
     props: {
-      ...data
+      session,
+      username: session.user?.name,
+      email: session.user?.email
     }
   }
 }
