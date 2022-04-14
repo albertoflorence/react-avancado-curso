@@ -5,7 +5,6 @@ import mockGameCards from 'components/GameCardSlider/mock'
 import mockHighlight from 'components/Highlight/mock'
 
 const props: WishlistTemplateProps = {
-  games: mockGameCards,
   recommended: {
     gameCards: mockGameCards,
     highlight: mockHighlight
@@ -25,7 +24,11 @@ const makeMock = (testid: string) => ({
 
 describe('<Wishlist />', () => {
   it('should render', () => {
-    render(<Wishlist {...props} />)
+    render(<Wishlist {...props} />, {
+      wishlistProviderProps: {
+        items: mockGameCards
+      }
+    })
 
     expect(screen.getByTestId('Mock Base')).toBeInTheDocument()
     expect(screen.getAllByTestId('Mock GameCard')).toHaveLength(mockGameCards.length)
@@ -33,8 +36,8 @@ describe('<Wishlist />', () => {
     expect(screen.getByRole('heading', { name: 'Wishlist' })).toBeInTheDocument()
   })
 
-  it('should not render GameCard if there is no games ', () => {
-    render(<Wishlist {...props} games={[]} />)
+  it('should not render Empty if there is no games ', () => {
+    render(<Wishlist {...props} />)
 
     expect(screen.queryByTestId('Mock GameCard')).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Your wishlist is empty' })).toBeInTheDocument()

@@ -8,46 +8,49 @@ import { HighlightProps } from 'components/Highlight'
 import Base from 'templates/Base'
 
 import * as S from './WishlistStyles'
+import { useWishlist } from 'hooks/useWishlist'
 
 export interface WishlistTemplateProps {
-  games?: GameCardProps[]
   recommended?: {
     gameCards: GameCardProps[]
     highlight?: HighlightProps
   }
 }
 
-const Wishlist = ({ games = [], recommended }: WishlistTemplateProps) => (
-  <Base>
-    <S.Wrapper>
-      <Heading line="left" lineColor="secondary">
-        Wishlist
-      </Heading>
-      {games.length ? (
-        <Grid>
-          {games.map(props => (
-            <GameCard key={props.title} {...props} />
-          ))}
-        </Grid>
-      ) : (
-        <Empty
-          title="Your wishlist is empty"
-          description="Games added to your wishlist will appear here"
-          toHome
-        />
-      )}
+const Wishlist = ({ recommended }: WishlistTemplateProps) => {
+  const { items } = useWishlist()
+  return (
+    <Base>
+      <S.Wrapper>
+        <Heading line="left" lineColor="secondary">
+          Wishlist
+        </Heading>
+        {items.length ? (
+          <Grid>
+            {items.map(items => (
+              <GameCard key={items.title} {...items} />
+            ))}
+          </Grid>
+        ) : (
+          <Empty
+            title="Your wishlist is empty"
+            description="Games added to your wishlist will appear here"
+            toHome
+          />
+        )}
 
-      <Divider />
+        <Divider />
 
-      {recommended && (
-        <Showcase
-          title="You may like these games"
-          gameCards={recommended.gameCards}
-          highlight={recommended.highlight}
-        />
-      )}
-    </S.Wrapper>
-  </Base>
-)
+        {recommended && (
+          <Showcase
+            title="You may like these games"
+            gameCards={recommended.gameCards}
+            highlight={recommended.highlight}
+          />
+        )}
+      </S.Wrapper>
+    </Base>
+  )
+}
 
 export default Wishlist
