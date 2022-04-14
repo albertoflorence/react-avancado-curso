@@ -1,19 +1,19 @@
-import Button from 'components/Button'
 import Heading from 'components/Heading'
-import Icon from 'components/Icon'
 import Price from 'components/Price'
 import CartButton from 'components/CartButton'
 
 import * as S from './GameInfoStyles'
+import WishlistButton from 'components/WishlistButton'
 
 export interface GameInfoProps {
+  id: string
   title: string
   description: string
   price: string
   slug: string
 }
 
-const GameInfo = ({ title, description, price, slug }: GameInfoProps) => (
+const GameInfo = ({ title, description, price, slug, id }: GameInfoProps) => (
   <S.Wrapper>
     <Heading line="bottom" lineColor="primary" color="black">
       {title}
@@ -22,9 +22,7 @@ const GameInfo = ({ title, description, price, slug }: GameInfoProps) => (
 
     <Price>{price}</Price>
     <S.ButtonsWrapper>
-      <Button size="large" startIcon={<Icon label="FavoriteBorder" />} text>
-        Wishlist
-      </Button>
+      <WishlistButton id={id} size="large" hasText />
       <CartButton size="large" slug={slug} hasText />
     </S.ButtonsWrapper>
   </S.Wrapper>

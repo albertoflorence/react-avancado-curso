@@ -65,6 +65,7 @@ export const getGameBySlug = async (slug: string): Promise<GameProps | undefined
   return {
     cover: getImageUrl(game.cover?.url),
     gameInfo: {
+      id: game.id,
       title: game.name,
       price: formatPrice(game.price),
       description: game.short_description,

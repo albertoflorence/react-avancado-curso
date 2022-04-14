@@ -1,5 +1,5 @@
 import { WishlistContextData } from 'hooks/useWishlist'
-import { fireEvent, render, screen } from 'utils/tests'
+import { fireEvent, render, screen, waitFor } from 'utils/tests'
 import { push } from '../../../.jest/useRouter.mock'
 import WishlistButton, { WishlistButtonProps } from './WishlistButton'
 
@@ -31,9 +31,11 @@ describe('<WishlistButton />', () => {
   it('should handle add item to wishlist', async () => {
     const addItem = jest.fn()
     init({ id: 'any id' }, { addItem })
-
     fireEvent.click(addButton())
-    expect(addItem).toHaveBeenCalledWith('any id')
+
+    await waitFor(() => {
+      expect(addItem).toHaveBeenCalledWith('any id')
+    })
   })
 
   it('should handle remove item from wishlist', async () => {
@@ -41,7 +43,10 @@ describe('<WishlistButton />', () => {
     init({ id: 'any id' }, { hasItem: () => true, removeItem })
 
     fireEvent.click(removeButton())
-    expect(removeItem).toHaveBeenCalledWith('any id')
+
+    await waitFor(() => {
+      expect(removeItem).toHaveBeenCalledWith('any id')
+    })
   })
 
   it('should render button with text', () => {
@@ -63,11 +68,12 @@ describe('<WishlistButton />', () => {
     expect(container.firstChild).not.toBeInTheDocument()
   })
 
-  it('should redirect to login when user is unauthenticated', () => {
+  it('should redirect to login when user is unauthenticated', async () => {
     useSession.mockImplementationOnce(() => ({ status: 'unauthenticated' }))
     init()
-
     fireEvent.click(addButton())
-    expect(push).toHaveBeenCalledWith('/login')
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('/login')
+    })
   })
 })

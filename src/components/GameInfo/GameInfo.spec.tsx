@@ -6,6 +6,7 @@ const init = (props: GameInfoProps) => {
 }
 
 const mockProps = {
+  id: '1',
   title: 'title',
   description: 'description',
   price: 'R$200,00',

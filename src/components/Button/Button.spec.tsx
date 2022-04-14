@@ -76,12 +76,14 @@ describe('<Button />', () => {
   })
 
   it('should render loading', () => {
-    init({ loading: true })
+    init({ loading: true, startIcon: makeIcon('start-icon'), endIcon: makeIcon('end-icon') })
 
     expect(screen.getByRole('button')).toHaveStyle({
       filter: 'saturate(20%)',
       pointerEvents: 'none'
     })
-    expect(screen.getByLabelText('loading')).toBeInTheDocument()
+    expect(screen.getAllByText('loading')).toHaveLength(2)
+    expect(screen.queryByTestId('start-icon')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('end-icon')).not.toBeInTheDocument()
   })
 })
