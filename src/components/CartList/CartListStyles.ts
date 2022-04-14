@@ -16,6 +16,8 @@ export const LoadingWrapper = styled(Wrapper)`
     padding: ${theme.spacing(7)};
     display: flex;
     justify-content: center;
+    width: 400px;
+    height: 200px;
   `}
 `
 
