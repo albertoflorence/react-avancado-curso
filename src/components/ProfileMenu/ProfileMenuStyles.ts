@@ -38,7 +38,7 @@ export const Item = styled(Link)<ItemProps>`
 
     ${media.lessThan('medium')`
       justify-content: center;
-      > span {
+      > p {
         display: none;
       }
     `}

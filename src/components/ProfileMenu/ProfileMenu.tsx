@@ -25,7 +25,7 @@ interface ItemProps {
 const Item = ({ title, icon, link, active }: ItemProps) => (
   <S.Item href={link} active={active}>
     <Icon title={title} size={24} label={icon} />
-    <span>{title}</span>
+    <p>{title}</p>
   </S.Item>
 )
 
