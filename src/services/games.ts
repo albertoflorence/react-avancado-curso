@@ -8,6 +8,7 @@ import { getImageUrl, formatPrice } from 'utils/helpers'
 import { GameCardProps } from 'components/GameCard'
 import { ApolloError, QueryHookOptions, useQuery } from '@apollo/client'
 import { mapperGame } from './mappers'
+import { useEffect, useState } from 'react'
 
 export const getGames = async (): Promise<GameCardProps[]> => {
   const client = initializeApollo()
@@ -34,13 +35,20 @@ export interface UseGetGamesResult {
 export const useGetGames = (
   options: QueryHookOptions<QueryGames, QueryGamesVariables>
 ): UseGetGamesResult => {
+  const [games, setGames] = useState<GameCardProps[]>([])
   const { data, loading, error, fetchMore } = useQuery<QueryGames, QueryGamesVariables>(
     QUERY_GAMES,
     options
   )
 
+  useEffect(() => {
+    if (!loading && data) {
+      setGames(data.games.map(mapperGame))
+    }
+  }, [data, loading])
+
   return {
-    data: data?.games.map(mapperGame),
+    data: games,
     hasMore: Boolean(Number(data?.games.length) < Number(data?.gamesConnection?.values?.length)),
     loading,
     error,

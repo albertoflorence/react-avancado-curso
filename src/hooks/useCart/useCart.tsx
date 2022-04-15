@@ -1,9 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { useGetGames } from 'services'
 import { formatPrice, formattedPriceToNumber } from 'utils/helpers'
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
 
 interface CartItem {
+  id: string
   title: string
   image: string
   price: string
@@ -65,13 +66,17 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     data?.reduce((total, { price }) => total + formattedPriceToNumber(price), 0) || 0
   )
 
-  const items =
-    data?.map(game => ({
-      image: game.image,
-      price: game.price,
-      title: game.title,
-      slug: game.slug
-    })) || []
+  const items = useMemo(
+    () =>
+      data?.map(game => ({
+        id: game.id,
+        image: game.image,
+        price: game.price,
+        title: game.title,
+        slug: game.slug
+      })) || [],
+    [data]
+  )
 
   const quantity = cartItems.length
   const hasItem = (slug: string) => cartItems.includes(slug)

@@ -45,12 +45,14 @@ describe('useCart()', () => {
     expect(result.current.loading).toBe(false)
     expect(result.current.items).toEqual([
       {
+        id: '1',
         slug: 'any-slug',
         title: 'any game',
         image: 'http://localhost:1337/any_url',
         price: '$100.00'
       },
       {
+        id: '2',
         slug: 'another-slug',
         title: 'another game',
         image: 'http://localhost:1337/any_url',
