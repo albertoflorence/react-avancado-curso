@@ -1,3 +1,6 @@
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
 import CartList from 'components/CartList'
@@ -17,6 +20,8 @@ export interface CartTemplateProps {
   }
 }
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string)
+
 const Cart = ({ recommended }: CartTemplateProps) => {
   const handlePayment = () => ({})
   return (
@@ -28,7 +33,9 @@ const Cart = ({ recommended }: CartTemplateProps) => {
 
         <S.Content>
           <CartList />
-          <PaymentForm handlePayment={handlePayment} />
+          <Elements stripe={stripePromise}>
+            <PaymentForm handlePayment={handlePayment} />
+          </Elements>
         </S.Content>
 
         <Divider />
