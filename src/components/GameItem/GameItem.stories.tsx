@@ -13,8 +13,9 @@ export default {
       number: '**** **** **** 4325',
       purchaseDate: 'Purchase made on 10/02/2022 at 20:32',
       flag: 'MasterCard',
-      image: 'https://i.ibb.co/YPhQnGB/Master-Card.jpg'
-    }
+      image: '/img/cards/mastercard.png'
+    },
+    hasItem: () => false
   }
 } as Meta
 

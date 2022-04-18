@@ -9,6 +9,7 @@ const init = (props?: Partial<GameItemProps>, cartProviderProps?: Partial<CartCo
 }
 
 const mockProps = {
+  id: 'string',
   title: 'any name',
   price: 'any price',
   image: 'any image',
@@ -46,6 +47,19 @@ describe('<GameItem />', () => {
     expect(screen.getByText('any number')).toBeInTheDocument()
     expect(screen.getByText('any date')).toBeInTheDocument()
     expect(screen.getByAltText('any flag')).toHaveAttribute('src', 'any image')
+  })
+
+  it('should render with free game', () => {
+    init({
+      paymentInfo: {
+        flag: 'visa',
+        image: null,
+        number: 'free game',
+        purchaseDate: 'any date'
+      }
+    })
+
+    expect(screen.queryByAltText('visa')).not.toBeInTheDocument()
   })
 
   it('should show remove', () => {

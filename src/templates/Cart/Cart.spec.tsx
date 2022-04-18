@@ -8,7 +8,11 @@ const init = (props?: Partial<CartTemplateProps>) => {
   render(<Cart {...mockProps} {...props} />)
 }
 
-const mockProps: CartTemplateProps = {
+const mockProps = {
+  session: {
+    expires: '0',
+    jwt: '123'
+  },
   recommended: {
     gameCards: mockGameCards,
     highlight: mockHighlight

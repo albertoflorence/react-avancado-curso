@@ -8,12 +8,14 @@ const init = (props?: OrdersListProps) => {
 const mockProps: OrdersListProps = {
   items: [
     {
+      id: 'any id',
       slug: 'any-slug',
       image: 'any img',
       price: 'any price',
       title: 'any title'
     },
     {
+      id: 'any id',
       slug: 'any-slug',
       image: 'any img',
       price: 'any price',

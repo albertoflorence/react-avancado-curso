@@ -5,6 +5,7 @@ import Icon from 'components/Icon'
 import { useCart } from 'hooks'
 
 export interface GameItemProps {
+  id: string
   title: string
   price: string
   image: string
@@ -12,8 +13,8 @@ export interface GameItemProps {
   slug: string
   paymentInfo?: {
     number: string
-    flag: string
-    image: string
+    flag: string | null
+    image: string | null
     purchaseDate: string
   }
 }
@@ -51,7 +52,9 @@ const GameItem = ({ title, price, image, downloadLink, paymentInfo, slug }: Game
         <S.Payment>
           <S.CardInfo>
             <span>{paymentInfo.number}</span>
-            <Image src={paymentInfo.image} width={38} height={24} alt={paymentInfo.flag} />
+            {paymentInfo.image && (
+              <Image src={paymentInfo.image} width={38} height={24} alt={paymentInfo.flag || ''} />
+            )}
           </S.CardInfo>
           <p> {paymentInfo.purchaseDate} </p>
         </S.Payment>

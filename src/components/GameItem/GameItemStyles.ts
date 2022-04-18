@@ -61,11 +61,12 @@ export const Payment = styled.div`
     text-align: end;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    align-items: flex-end;
+    flex: 1 0 auto;
 
     ${media.lessThan('medium')`
       flex-direction: column-reverse;
-      text-align: start;
+      align-items: start;
       margin-top: ${theme.spacing(1)};
     `}
 
@@ -75,7 +76,10 @@ export const Payment = styled.div`
   `}
 `
 
-export const CardInfo = styled.div``
+export const CardInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 export const Remove = styled.div`
   ${({ theme }) => css`
