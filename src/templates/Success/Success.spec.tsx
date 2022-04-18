@@ -1,10 +1,13 @@
 import gameCardsMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
+import { CartContextData } from 'hooks'
 import { render, screen } from 'utils/tests'
 import Success, { SuccessTemplateProps } from './Success'
 
-const init = (props?: SuccessTemplateProps) => {
-  render(<Success {...props} />)
+const init = (props?: SuccessTemplateProps, cartProviderProps?: Partial<CartContextData>) => {
+  render(<Success {...props} />, {
+    cartProviderProps
+  })
 }
 
 const makeMock = (testid: string) => ({
@@ -38,5 +41,11 @@ describe('<Success />', () => {
     })
     expect(screen.getByTestId('Mock GameCardSlider')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Highlight')).toBeInTheDocument()
+  })
+
+  it('should clear the cart', () => {
+    const clear = jest.fn()
+    init({}, { clear })
+    expect(clear).toHaveBeenCalled()
   })
 })

@@ -2,7 +2,9 @@ import Container from 'components/Container'
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
 import Showcase from 'components/Showcase'
+import { useCart } from 'hooks'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import Base from 'templates/Base'
 import * as S from './SuccessStyles'
 
@@ -14,6 +16,13 @@ export interface SuccessTemplateProps {
 }
 
 const Success = ({ recommended }: SuccessTemplateProps) => {
+  const { clear } = useCart()
+
+  useEffect(() => {
+    clear()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Base>
       <Container>
