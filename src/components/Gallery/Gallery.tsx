@@ -45,27 +45,17 @@ const modalSettings: SliderSettings = {
 
 const Gallery = ({ items, ...props }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isDragging, setIsDragging] = useState(false)
 
   const handleOpen = (index: number) => {
-    if (isDragging) return
     setIsOpen(true)
     slider.current?.slickGoTo(index, true)
   }
   const handleClose = () => setIsOpen(false)
-  const handleStartDrag = () => setIsDragging(true)
-  const handleEndDrag = () => setIsDragging(false)
-
   const slider = useRef<SlickSlider>(null)
 
   return (
     <S.Wrapper {...props}>
-      <Slider
-        beforeChange={handleStartDrag}
-        afterChange={handleEndDrag}
-        ref={slider}
-        settings={settings}
-      >
+      <Slider ref={slider} settings={settings}>
         {items.map(({ alt, src }, index) => (
           <Image
             width={295}
