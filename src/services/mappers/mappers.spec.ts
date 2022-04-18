@@ -1,7 +1,7 @@
 import { BannerFragment } from 'graphql/generated/BannerFragment'
 import { GameFragment } from 'graphql/generated/GameFragment'
 import { HighlightFragment } from 'graphql/generated/HighlightFragment'
-import { mapperBanner, mapperGame, mapperHighlight, mapperSection } from './mappers'
+import { mapperBanner, mapperGame, mapperHighlight, mapperOrder, mapperSection } from './mappers'
 
 const bannerMock = () =>
   ({
@@ -30,7 +30,8 @@ const gameMock = () =>
     name: 'any name',
     price: 100,
     release_date: 'any date',
-    slug: 'any_slug'
+    slug: 'any_slug',
+    id: 'any_id'
   } as GameFragment)
 
 const highlightMock = () =>
@@ -84,6 +85,7 @@ describe('mapperGame()', () => {
   it('should map correctly', () => {
     const sut = mapperGame(gameMock())
     expect(sut).toEqual({
+      id: 'any_id',
       title: 'any name',
       subtitle: 'any developer',
       slug: 'any_slug',
@@ -123,6 +125,7 @@ describe('mapperSection()', () => {
       },
       gameCards: [
         {
+          id: 'any_id',
           title: 'any name',
           subtitle: 'any developer',
           slug: 'any_slug',
@@ -138,5 +141,60 @@ describe('mapperSection()', () => {
     expect(sut).toEqual({
       gameCards: []
     })
+  })
+})
+
+describe('mapperOrder()', () => {
+  it('should map correctly', () => {
+    const sut = mapperOrder({
+      __typename: 'Order',
+      id: 'any id',
+      card_brand: 'visa',
+      card_last4: '4242',
+      created_at: '2022-04-18T14:53:48.358Z',
+      games: [gameMock()]
+    })
+    expect(sut).toEqual([
+      {
+        id: 'any_id',
+        title: 'any name',
+        price: '$100.00',
+        image: 'http://localhost:1337/any_url',
+        downloadLink: '',
+        slug: 'any_slug',
+        paymentInfo: {
+          number: '**** **** **** 4242',
+          image: '/img/cards/visa.png',
+          flag: 'visa',
+          purchaseDate: 'Purchased made on Apr 18, 2022'
+        }
+      }
+    ])
+  })
+  it('should handle free game', () => {
+    const sut = mapperOrder({
+      __typename: 'Order',
+      id: 'any id',
+      card_brand: null,
+      card_last4: null,
+      created_at: '2022-04-18T14:53:48.358Z',
+      games: [gameMock()]
+    })
+    expect(sut).toEqual([
+      {
+        id: 'any_id',
+        title: 'any name',
+        price: '$100.00',
+        image: 'http://localhost:1337/any_url',
+        downloadLink: '',
+        slug: 'any_slug',
+        paymentInfo: {
+          number: 'Free Game',
+          image: null,
+          flag: null,
+          purchaseDate: 'Purchased made on Apr 18, 2022'
+        }
+      }
+    ])
   })
 })

@@ -1,9 +1,11 @@
 import { BannerProps } from 'components/Banner'
 import { GameCardProps } from 'components/GameCard'
+import { GameItemProps } from 'components/GameItem'
 import { HighlightProps } from 'components/Highlight'
 import { BannerFragment } from 'graphql/generated/BannerFragment'
 import { GameFragment } from 'graphql/generated/GameFragment'
 import { HighlightFragment } from 'graphql/generated/HighlightFragment'
+import { QueryOrders_orders } from 'graphql/generated/QueryOrders'
 import { getImageUrl, formatPrice } from 'utils/helpers'
 
 interface MapperSectionResult {
@@ -49,3 +51,26 @@ export const mapperBanner = (banner: BannerFragment): BannerProps => ({
     ribbonColor: banner.ribbon.color || undefined
   })
 })
+
+export const mapperOrder = (order: QueryOrders_orders): GameItemProps[] => {
+  return order.games.map(game => ({
+    id: game.id,
+    title: game.name,
+    price: formatPrice(game.price),
+    image: getImageUrl(game.cover?.url),
+    downloadLink: '',
+    slug: game.slug,
+    paymentInfo: {
+      number: order.card_last4 ? '**** '.repeat(3) + order.card_last4 : 'Free Game',
+      flag: order.card_brand,
+      image: order.card_brand ? '/img/cards/' + order.card_brand + '.png' : null,
+      purchaseDate:
+        'Purchased made on ' +
+        new Intl.DateTimeFormat('en-US', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        }).format(new Date(order.created_at))
+    }
+  }))
+}
