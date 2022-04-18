@@ -1,14 +1,13 @@
 import { rest } from 'msw'
 import { ResetPasswordProps } from 'services/register'
-
-const getUrl = (url: string): string => process.env.NEXT_PUBLIC_API_URL + url
+import { getApiUrl } from 'utils/helpers'
 
 interface LoginReqBody {
   email: string
 }
 
 const forgotPassword = rest.post<LoginReqBody>(
-  process.env.NEXT_PUBLIC_API_URL + '/auth/forgot-password',
+  getApiUrl('/auth/forgot-password'),
   (req, res, ctx) => {
     const { email } = req.body
 
@@ -31,7 +30,7 @@ const forgotPassword = rest.post<LoginReqBody>(
 )
 
 const resetPassword = rest.post<ResetPasswordProps>(
-  getUrl('/auth/reset-password'),
+  getApiUrl('/auth/reset-password'),
   (req, res, ctx) => {
     const { code, password, passwordConfirmation } = req.body
 

@@ -39,13 +39,13 @@ const GameItem = ({ title, price, image, downloadLink, paymentInfo, slug }: Game
           </S.Title>
           <Price light>{price}</Price>
         </div>
-
-        {hasItem(slug) && (
-          <S.Remove role="button" onClick={() => removeItem(slug)}>
-            Remove
-          </S.Remove>
-        )}
       </S.GameContent>
+
+      {hasItem(slug) && (
+        <S.Remove role="button" onClick={() => removeItem(slug)}>
+          Remove
+        </S.Remove>
+      )}
 
       {paymentInfo && (
         <S.Payment>

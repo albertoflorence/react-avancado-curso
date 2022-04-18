@@ -5,10 +5,12 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacing(2)};
     border-bottom: 1px solid ${theme.colors.lightGray};
+
     ${media.greaterThan('medium')`
       display: flex;
       padding: ${theme.spacing(3)};
       gap: ${theme.spacing(2)};
+      justify-content: space-between;
     `}
   `}
 `
@@ -81,8 +83,6 @@ export const Remove = styled.div`
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacing(1)};
     display: flex;
-    flex: 1 0 auto;
-    justify-content: end;
     align-items: center;
     cursor: pointer;
   `}

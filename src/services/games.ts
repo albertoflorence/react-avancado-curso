@@ -42,8 +42,8 @@ export const useGetGames = (
   )
 
   useEffect(() => {
-    if (!loading && data) {
-      setGames(data.games.map(mapperGame))
+    if (!loading) {
+      setGames(data?.games.map(mapperGame) || [])
     }
   }, [data, loading])
 

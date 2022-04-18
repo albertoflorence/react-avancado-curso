@@ -9,3 +9,5 @@ export const formatPrice = (price: number): string => {
 
 export const formattedPriceToNumber = (str: string): number =>
   Number(str.replace('$', '').replace('.00', ''))
+
+export const getApiUrl = (url: string) => process.env.NEXT_PUBLIC_API_URL + url

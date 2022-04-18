@@ -1,8 +1,9 @@
 import { ButtonStyles } from 'components/Button'
+import { FormMessageStyles } from 'components/FormMessage'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   ${({ theme }) => css`
     background: ${theme.colors.white};
   `}
@@ -12,8 +13,15 @@ export const Content = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
-    gap: ${theme.spacing(1)};
     padding: ${theme.spacing(2)};
+    min-height: 180px;
+    gap: ${theme.spacing(1)};
+    > :first-child {
+      margin-bottom: ${theme.spacing(4)};
+    }
+    ${FormMessageStyles.Wrapper} {
+      justify-content: start;
+    }
   `}
 `
 

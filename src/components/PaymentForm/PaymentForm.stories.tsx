@@ -3,12 +3,7 @@ import PaymentForm, { PaymentFormProps } from './PaymentForm'
 
 export default {
   title: 'PaymentForm',
-  component: PaymentForm,
-  argTypes: {
-    handlePayment: {
-      action: 'clicked'
-    }
-  }
+  component: PaymentForm
 } as Meta
 
 export const Default: Story<PaymentFormProps> = args => (

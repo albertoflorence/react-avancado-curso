@@ -12,8 +12,10 @@ import Container from 'components/Container'
 import Base from 'templates/Base'
 
 import * as S from './CartStyles'
+import { Session } from 'next-auth'
 
 export interface CartTemplateProps {
+  session: Session
   recommended?: {
     gameCards: GameCardProps[]
     highlight?: HighlightProps
@@ -22,8 +24,7 @@ export interface CartTemplateProps {
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string)
 
-const Cart = ({ recommended }: CartTemplateProps) => {
-  const handlePayment = () => ({})
+const Cart = ({ recommended, session }: CartTemplateProps) => {
   return (
     <Base>
       <Container>
@@ -34,7 +35,7 @@ const Cart = ({ recommended }: CartTemplateProps) => {
         <S.Content>
           <CartList />
           <Elements stripe={stripePromise}>
-            <PaymentForm handlePayment={handlePayment} />
+            <PaymentForm session={session} />
           </Elements>
         </S.Content>
 
