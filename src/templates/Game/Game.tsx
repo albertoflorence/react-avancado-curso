@@ -1,3 +1,5 @@
+import { NextSeo } from 'next-seo'
+
 import Base from 'templates/Base'
 import Image from 'components/Image'
 import MediaMatch from 'components/MediaMatch'
@@ -40,6 +42,15 @@ const Game = ({
   recommended
 }: GameTemplateProps) => (
   <Base>
+    <NextSeo
+      title={gameInfo.title + ' - Won Games'}
+      description={gameInfo.description}
+      openGraph={{
+        title: gameInfo.title + ' - Won Games',
+        description: gameInfo.description,
+        images: [{ url: cover, alt: gameInfo.title }]
+      }}
+    />
     <S.Cover>
       <Image src={cover} objectFit="cover" layout="fill" />
     </S.Cover>

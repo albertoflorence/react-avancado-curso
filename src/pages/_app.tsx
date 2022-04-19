@@ -2,6 +2,9 @@ import Head from 'next/head'
 import GlobalStyles from 'styles/global'
 import NextNProgress from 'nextjs-progressbar'
 
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
+
 import { SessionProvider } from 'next-auth/react'
 import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from 'styled-components'
@@ -27,6 +30,7 @@ function App({ Component, pageProps }: AppProps) {
                 <link rel="manifest" href="/manifest.json" />
                 <meta name="description" content="A simple project" />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextNProgress color={theme.colors.primary} height={3} />
               <Component {...pageProps} />
