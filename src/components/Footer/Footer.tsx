@@ -37,11 +37,11 @@ interface FooterLink {
 
 const FooterItem = ({ links, title, labelledby }: FooterItemProps) => {
   return (
-    <S.Column>
+    <S.Column aria-labelledby={labelledby}>
       <Heading color="black" line="bottom" lineColor="secondary" size="small">
         {title.toUpperCase()}
       </Heading>
-      <nav aria-labelledby={labelledby}>
+      <nav id={labelledby}>
         {links.map(link =>
           link.href ? (
             link.internal ? (
@@ -65,7 +65,7 @@ const FooterItem = ({ links, title, labelledby }: FooterItemProps) => {
 const Items = [
   {
     title: 'CONTACT US',
-    labelledby: 'footer contact',
+    labelledby: 'contact',
     links: [
       { text: 'suporte@wongames.gg', href: '#' },
       { text: '+55 21 33283719', href: '#' }
@@ -83,9 +83,9 @@ const Items = [
   },
   {
     title: 'LINKS',
-    labelledby: 'footer resources',
+    labelledby: 'resources',
     links: [
-      { text: 'Loja', href: '/store', internal: true },
+      { text: 'Loja', href: '/', internal: true },
       { text: 'Explorar', href: '/games', internal: true },
       { text: 'Buscar', href: '/search', internal: true },
       { text: 'FAQ', href: '/faq', internal: true }
@@ -93,7 +93,7 @@ const Items = [
   },
   {
     title: 'LOCATION',
-    labelledby: 'footer address',
+    labelledby: 'address',
     links: [
       { text: 'Rua 7 de Maio' },
       { text: '527  - 89020330' },

@@ -23,6 +23,7 @@ export const ImageBox = styled.div`
     width: 100%;
     height: 230px;
     background-color: ${theme.colors.lightGray};
+    position: relative;
 
     ${media.greaterThan('medium')`
       height: 580px;

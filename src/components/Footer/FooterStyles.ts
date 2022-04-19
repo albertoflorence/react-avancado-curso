@@ -24,11 +24,12 @@ export const Column = styled.div`
     nav {
       display: flex;
       flex-direction: column;
+      margin-top: ${theme.spacing(2)};
       a,
       span {
         text-decoration: none;
-        color: ${theme.colors.gray};
-        font-size: ${theme.font.sizes.small};
+        color: #6a6a6a;
+        font-size: ${theme.font.sizes.medium};
         margin-top: ${theme.spacing(0.5)};
       }
       a:hover {
