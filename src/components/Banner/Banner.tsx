@@ -1,6 +1,7 @@
 import Ribbon from 'components/Ribbon'
 import Button from 'components/Button'
 import * as S from './BannerStyles'
+import Image from 'components/Image'
 
 export interface BannerProps {
   image: string
@@ -23,7 +24,9 @@ const Banner = ({
 }: BannerProps) => (
   <S.Wrapper>
     {ribbon && <Ribbon color={ribbonColor}>{ribbon}</Ribbon>}
-    <S.Image src={image} role="img" aria-label={title} />
+    <S.ImageBox>
+      <Image src={image} layout="fill" objectFit="cover" aria-label={title} />
+    </S.ImageBox>
     <S.Caption>
       <S.Title>{title}</S.Title>
       <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
