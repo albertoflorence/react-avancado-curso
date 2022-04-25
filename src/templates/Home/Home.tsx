@@ -56,10 +56,7 @@ const Home = ({ banners, newGames, mostPopular, upComing, freeGames }: HomeTempl
       </Container>
 
       <Container>
-        <Showcase
-          title="Up Coming Games"
-          gameCards={sliceHalf<GameCardProps>(upComing.gameCards)}
-        />
+        <Showcase title="Upcoming Games" gameCards={sliceHalf<GameCardProps>(upComing.gameCards)} />
       </Container>
 
       <Container>

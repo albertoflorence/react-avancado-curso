@@ -14,7 +14,7 @@ export interface ShowcaseProps {
 }
 
 const Showcase = ({ highlight, gameCards, title, arrowColor, reverse }: ShowcaseProps) => (
-  <S.Section>
+  <S.Section data-cy={title || 'showcase'}>
     {title && (
       <Heading line="left" lineColor="secondary">
         {title}

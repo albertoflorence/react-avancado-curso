@@ -21,7 +21,7 @@ const Highlight = ({
   buttonLink,
   reverse
 }: HighlightProps) => (
-  <S.Wrapper reverse={reverse}>
+  <S.Wrapper reverse={reverse} data-cy="highlight">
     <S.Image src={image} alt="floating" />
     <S.Content>
       <S.Title>{title}</S.Title>
