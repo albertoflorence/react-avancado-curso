@@ -41,6 +41,7 @@
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
+    "@jackfranklin/test-data-bot": "^1.0.0",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/builder-webpack5": "^6.4.19",
     "@storybook/manager-webpack5": "^6.4.19",

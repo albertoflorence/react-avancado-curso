@@ -88,3 +88,9 @@ Cypress.Commands.add('getFirstGameCard', cb => {
       cb()
     })
 })
+
+Cypress.Commands.add('login', ({ email = 'test@test.com', password = 'Senha12345' } = {}) => {
+  cy.findByPlaceholderText(/email/i).type(email)
+  cy.findByPlaceholderText(/^password/i).type(password)
+  cy.findByRole('button', { name: /sign in now/i }).click()
+})
