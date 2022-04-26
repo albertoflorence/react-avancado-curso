@@ -63,3 +63,28 @@ Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false }) => {
 Cypress.Commands.add('getByDataCy', selector => {
   cy.get(`[data-cy="${selector}"]`)
 })
+
+Cypress.Commands.add('priceGreaterThan', value => {
+  cy.findByText(/^\$\d+.\d{1,2}/)
+    .invoke('text')
+    .then(el => el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.gt', value)
+})
+
+Cypress.Commands.add('priceLessThan', value => {
+  cy.findByText(/^\$\d+.\d{1,2}/)
+    .invoke('text')
+    .then(el => el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.lt', value)
+})
+
+Cypress.Commands.add('getFirstGameCard', cb => {
+  cy.wait(10)
+    .getByDataCy('game-card')
+    .first()
+    .within(() => {
+      cb()
+    })
+})

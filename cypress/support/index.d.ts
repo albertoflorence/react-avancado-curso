@@ -10,5 +10,8 @@ declare namespace Cypress {
     shouldRenderBanner: () => Chainable<Element>
     shouldRenderShowcase: (attrs: ShowcaseAttributes) => Chainable<Element>
     getByDataCy: (selector: string) => Chainable<Element>
+    priceGreaterThan: (value: number) => Chainable<Element>
+    priceLessThan: (value: number) => Chainable<Element>
+    getFirstGameCard: (cb: Function) => Chainable<Element>
   }
 }

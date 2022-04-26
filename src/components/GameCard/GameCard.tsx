@@ -17,7 +17,7 @@ export interface GameCardProps {
 }
 
 const GameCard = ({ id, title, subtitle, image, price, discount, ribbon, slug }: GameCardProps) => (
-  <S.Wrapper>
+  <S.Wrapper data-cy="game-card">
     {ribbon && <Ribbon size="small">{ribbon}</Ribbon>}
     <S.ImageBox href={`/game/${slug}`}>
       <Image src={image} layout="fill" objectFit="cover" alt={title} />
