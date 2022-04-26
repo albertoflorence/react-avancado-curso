@@ -35,7 +35,7 @@ const CartList = ({ hasButton }: CartListProps) => {
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="cart-list">
       <S.Content>
         {items.map(item => (
           <GameItem key={item.title} {...item} />
