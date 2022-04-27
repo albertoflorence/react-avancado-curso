@@ -13,7 +13,7 @@ export const getOrders = async (id: number, session: Session) => {
     fetchPolicy: 'no-cache'
   })
   const mappedOrder = data.orders.reduce(
-    (arr, order) => arr.concat(...order.games.map(() => mapperOrder(order))),
+    (arr, order) => arr.concat(...mapperOrder(order)),
     [] as GameItemProps[]
   )
 

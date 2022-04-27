@@ -13,7 +13,7 @@ const OrdersList = ({ items = [] }: OrdersListProps) => (
       My Orders
     </Heading>
     {items.length ? (
-      items.map(props => <GameItem key={props.title} {...props} />)
+      items.map((props, i) => <GameItem key={props.title + i} {...props} />)
     ) : (
       <Empty
         title="You have no orders yet"
