@@ -21,5 +21,7 @@ declare namespace Cypress {
     login: (credentials?: LoginParams) => Chainable<Element>
     addToShoppingCart: (cartNumber?: number) => Chainable<Element>
     removeFromShoppingCart: (cartNumber?: number) => Chainable<Element>
+    addToWishlist: (cartNumber?: number) => Chainable<Element>
+    removeFromWishlist: (cartNumber?: number) => Chainable<Element>
   }
 }

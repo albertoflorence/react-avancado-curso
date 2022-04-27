@@ -15,3 +15,11 @@ export const Text = styled.span`
     color: ${theme.colors.white};
   `}
 `
+
+export const Content = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing(4)};
+  `}
+`

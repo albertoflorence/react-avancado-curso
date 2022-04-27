@@ -18,26 +18,30 @@ export interface WishlistTemplateProps {
 }
 
 const Wishlist = ({ recommended }: WishlistTemplateProps) => {
-  const { items } = useWishlist()
+  const { items, loading } = useWishlist()
   return (
     <Base>
       <S.Wrapper>
-        <Heading line="left" lineColor="secondary">
-          Wishlist
-        </Heading>
-        {items.length ? (
-          <Grid>
-            {items.map(items => (
-              <GameCard key={items.title} {...items} />
-            ))}
-          </Grid>
-        ) : (
-          <Empty
-            title="Your wishlist is empty"
-            description="Games added to your wishlist will appear here"
-            toHome
-          />
-        )}
+        <S.Content data-cy="my-wishlist">
+          <Heading line="left" lineColor="secondary">
+            Wishlist
+          </Heading>
+          {items.length ? (
+            <Grid data-cy="my-wishlist">
+              {items.map(items => (
+                <GameCard key={items.title} {...items} />
+              ))}
+            </Grid>
+          ) : (
+            !loading && (
+              <Empty
+                title="Your wishlist is empty"
+                description="Games added to your wishlist will appear here"
+                toHome
+              />
+            )
+          )}
+        </S.Content>
 
         <Divider />
 

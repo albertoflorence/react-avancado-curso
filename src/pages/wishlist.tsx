@@ -15,7 +15,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) return { props: {} }
 
   const client = initializeApollo(undefined, session)
-  await client.query<QueryWishlist>({ query: QUERY_WISHLIST })
+  await client.query<QueryWishlist>({ query: QUERY_WISHLIST, fetchPolicy: 'no-cache' })
 
   const recommended = await getRecommended()
 
