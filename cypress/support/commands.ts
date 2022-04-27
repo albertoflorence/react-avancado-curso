@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands'
+import { User } from './generate'
 
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
@@ -87,6 +88,14 @@ Cypress.Commands.add('getFirstGameCard', cb => {
     .within(() => {
       cb()
     })
+})
+
+Cypress.Commands.add('signUp', ({ email, password, username }: User) => {
+  cy.findByPlaceholderText(/username/i).type(username)
+  cy.findByPlaceholderText(/email/i).type(email)
+  cy.findByPlaceholderText(/^password/i).type(password)
+  cy.findByPlaceholderText(/confirm password/i).type(password)
+  cy.findByRole('button', { name: /sign up now/i }).click()
 })
 
 Cypress.Commands.add('login', ({ email = 'test@test.com', password = 'Senha12345' } = {}) => {

@@ -1,6 +1,6 @@
 import { build, fake } from '@jackfranklin/test-data-bot'
 
-interface User {
+export interface User {
   username: string
   email: string
   password: string

@@ -5,16 +5,12 @@ import { createUser } from '../support/generate'
 describe('User', () => {
   it('should sign up', () => {
     cy.visit('/signup')
-    const { email, password, username } = createUser()
+    const user = createUser()
 
-    cy.findByPlaceholderText(/username/i).type(username)
-    cy.findByPlaceholderText(/email/i).type(email)
-    cy.findByPlaceholderText(/^password/i).type(password)
-    cy.findByPlaceholderText(/confirm password/i).type(password)
-    cy.findByRole('button', { name: /sign up now/i }).click()
+    cy.signUp(user)
 
     cy.url().should('eq', Cypress.config().baseUrl + '/')
-    cy.findByText(username).should('exist')
+    cy.findByText(user.username).should('exist')
   })
 
   it('should login and sign out', () => {
