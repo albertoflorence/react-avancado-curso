@@ -19,5 +19,7 @@ declare namespace Cypress {
     priceLessThan: (value: number) => Chainable<Element>
     getFirstGameCard: (cb: Function) => Chainable<Element>
     login: (credentials?: LoginParams) => Chainable<Element>
+    addToShoppingCart: (cartNumber?: number) => Chainable<Element>
+    removeFromShoppingCart: (cartNumber?: number) => Chainable<Element>
   }
 }
