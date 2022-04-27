@@ -5,7 +5,7 @@ const fieldValidations = {
     .email({ tlds: { allow: false } })
     .required(),
   password: Joi.string()
-    .pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,100}$/)
+    .pattern(/^(?=.*[A-Za-z])(?=.*\d).{8,100}$/)
     .min(6)
     .max(100)
     .messages({ 'string.pattern.base': 'password must have uppercase letters and numbers' })
