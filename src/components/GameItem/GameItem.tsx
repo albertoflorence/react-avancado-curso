@@ -23,7 +23,7 @@ const GameItem = ({ title, price, image, downloadLink, paymentInfo, slug }: Game
   const { removeItem, hasItem } = useCart()
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="game-item">
       <S.GameContent>
         <S.Thumbnail>
           <Image layout="fill" src={image} alt={`Thumbnail - ${title}`} objectFit="cover" />
