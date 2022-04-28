@@ -6,13 +6,16 @@ describe('Wishlist', () => {
     cy.login()
 
     cy.findByText('Your wishlist is empty').should('exist')
-
-    cy.addToWishlist(0)
-    cy.addToWishlist(1)
+    cy.getByDataCy('You may like these games').within(() => {
+      cy.addToWishlist(0)
+      cy.wait(500)
+      cy.addToWishlist(1)
+    })
 
     cy.getByDataCy('my-wishlist').within(() => {
       cy.getByDataCy('game-card').should('have.length', 2)
       cy.removeFromWishlist(1)
+      cy.wait(500)
       cy.removeFromWishlist(0)
     })
 
