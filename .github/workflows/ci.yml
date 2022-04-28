@@ -1,0 +1,23 @@
+name: ci
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.19.1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Linting
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:ci
