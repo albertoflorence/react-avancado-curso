@@ -35,6 +35,7 @@ export const gamesMock: MockedResponse = {
           developers: [{ name: 'any developer' }],
           price: 123,
           release_date: 'any date',
+          discount: null,
           __typename: 'Game'
         }
       ],
@@ -64,6 +65,7 @@ export const fetchMoreMock: MockedResponse = {
           developers: [{ name: 'another developer' }],
           price: 321,
           release_date: 'another date',
+          discount: null,
           __typename: 'Game'
         }
       ],

@@ -93,6 +93,19 @@ describe('mapperGame()', () => {
       price: '$100.00'
     })
   })
+  it('should map with discount', () => {
+    const sut = mapperGame({ ...gameMock(), discount: 80 })
+    expect(sut).toEqual({
+      id: 'any_id',
+      title: 'any name',
+      subtitle: 'any developer',
+      slug: 'any_slug',
+      image: 'http://localhost:1337/any_url',
+      price: '$100.00',
+      discount: '$80.00',
+      ribbon: '20% OFF'
+    })
+  })
 })
 
 describe('mapperHighlight()', () => {

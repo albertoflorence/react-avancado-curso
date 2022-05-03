@@ -11,6 +11,7 @@ const createMock = (id: number) => ({
   },
   developers: [{ name: 'any developer' }],
   price: 100 * id,
+  discount: null,
   release_date: 'any date',
   __typename: 'Game'
 })

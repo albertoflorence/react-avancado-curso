@@ -37,7 +37,11 @@ export const mapperGame = (game: GameFragment): GameCardProps => ({
   subtitle: game.developers[0].name,
   slug: game.slug,
   image: getImageUrl(game.cover?.url),
-  price: formatPrice(game.price)
+  price: formatPrice(game.price),
+  ...(game.discount && {
+    discount: formatPrice(game.discount),
+    ribbon: Math.round((1 - game.discount / game.price) * 100) + '% OFF'
+  })
 })
 
 export const mapperBanner = (banner: BannerFragment): BannerProps => ({
