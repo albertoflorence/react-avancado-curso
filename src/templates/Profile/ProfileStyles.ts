@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     display: grid;
     margin-top: ${theme.spacing(4)};
 
-    ${media.greaterThan('medium')`
+    ${media.greaterThan('large')`
       gap: ${theme.spacing(4)};
       grid-template-columns: minmax(180px, 350px) minmax(450px, 1fr);
       align-items: start;

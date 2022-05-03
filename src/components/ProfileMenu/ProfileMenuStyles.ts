@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   ${({ theme }) => css`
     background: ${theme.colors.white};
 
-    ${media.lessThan('medium')`
+    ${media.lessThan('large')`
       border-bottom: 1px solid ${theme.colors.lightGray};
       display: flex;
     `}

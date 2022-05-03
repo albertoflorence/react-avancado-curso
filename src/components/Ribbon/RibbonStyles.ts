@@ -17,11 +17,11 @@ const sizes = {
     font-size: ${theme.font.sizes.xsmall};
     height: 26px;
     padding: ${theme.spacing(0, 2)};
-    right: -15px;
+    right: -12px;
 
     &::before {
       border-top-width: 7px;
-      border-right-width: 15px;
+      border-right-width: 12px;
     }
   `
 }
