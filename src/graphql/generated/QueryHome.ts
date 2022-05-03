@@ -54,6 +54,7 @@ export interface QueryHome_newGames {
   slug: string;
   cover: QueryHome_newGames_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryHome_newGames_developers[];
 }
 
@@ -75,6 +76,7 @@ export interface QueryHome_upComingGames {
   slug: string;
   cover: QueryHome_upComingGames_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryHome_upComingGames_developers[];
 }
 
@@ -96,6 +98,7 @@ export interface QueryHome_freeGames {
   slug: string;
   cover: QueryHome_freeGames_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryHome_freeGames_developers[];
 }
 
@@ -192,6 +195,7 @@ export interface QueryHome_sections_mostPopular_games {
   slug: string;
   cover: QueryHome_sections_mostPopular_games_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryHome_sections_mostPopular_games_developers[];
 }
 

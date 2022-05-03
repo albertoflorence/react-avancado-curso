@@ -46,6 +46,7 @@ export interface QueryRecommended_recommended_section_games {
   slug: string;
   cover: QueryRecommended_recommended_section_games_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryRecommended_recommended_section_games_developers[];
 }
 

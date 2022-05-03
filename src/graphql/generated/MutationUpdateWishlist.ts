@@ -27,6 +27,7 @@ export interface MutationUpdateWishlist_updateWishlist_wishlist_games {
   slug: string;
   cover: MutationUpdateWishlist_updateWishlist_wishlist_games_cover | null;
   price: number;
+  discount: number | null;
   developers: MutationUpdateWishlist_updateWishlist_wishlist_games_developers[];
 }
 

@@ -25,6 +25,7 @@ export interface QueryUpComing_upComingGames {
   slug: string;
   cover: QueryUpComing_upComingGames_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryUpComing_upComingGames_developers[];
 }
 

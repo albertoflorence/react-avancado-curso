@@ -25,6 +25,7 @@ export interface QueryWishlist_wishlist_games {
   slug: string;
   cover: QueryWishlist_wishlist_games_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryWishlist_wishlist_games_developers[];
 }
 

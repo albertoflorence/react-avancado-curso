@@ -25,6 +25,7 @@ export interface QueryOrders_orders_games {
   slug: string;
   cover: QueryOrders_orders_games_cover | null;
   price: number;
+  discount: number | null;
   developers: QueryOrders_orders_games_developers[];
 }
 

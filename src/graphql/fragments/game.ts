@@ -10,6 +10,7 @@ export const GameFragment = gql`
       url
     }
     price
+    discount
     developers {
       name
     }
