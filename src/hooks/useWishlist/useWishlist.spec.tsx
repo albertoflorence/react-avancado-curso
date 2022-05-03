@@ -6,7 +6,8 @@ import { mockGames, removeWishlistMock, updateWishlistMock, wishlistMock } from 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useSession = jest.spyOn(require('next-auth/react'), 'useSession')
 useSession.mockImplementation(() => ({
-  jwt: '123'
+  jwt: '123',
+  status: 'authenticated'
 }))
 
 const init = (props: MockedResponse[]) => {

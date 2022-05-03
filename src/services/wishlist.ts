@@ -42,8 +42,9 @@ export const useGetWishlist = (): GetWishListResult => {
   const session = useSession()
 
   const { data, loading } = useQuery<QueryWishlist>(QUERY_WISHLIST, {
-    skip: session.status === 'unauthenticated',
-    context: { session }
+    skip: session.status !== 'authenticated',
+    context: { session },
+    fetchPolicy: 'no-cache'
   })
 
   const mapped = useMemo(() => data?.wishlist?.games.map(mapperGame) || [], [data])
