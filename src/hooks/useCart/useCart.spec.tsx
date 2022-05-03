@@ -2,7 +2,7 @@ import { useCart, CartProvider, CartProviderProps } from './useCart'
 import { act, renderHook } from '@testing-library/react-hooks'
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { gamesMock } from './mock'
+import { gameDiscountMock, gamesMock } from './mock'
 
 const init = (props: MockedResponse[]) => {
   const wrapper = ({ children }: CartProviderProps) => (
@@ -61,6 +61,24 @@ describe('useCart()', () => {
     ])
     expect(result.current.total).toBe('$300.00')
     expect(result.current.quantity).toBe(2)
+  })
+
+  it('should return with discount price', async () => {
+    setStorageItem('cartItems', ['any-slug'])
+    const { result, waitForNextUpdate } = init([gameDiscountMock])
+
+    await waitForNextUpdate()
+
+    expect(result.current.items).toEqual([
+      {
+        id: '3',
+        slug: 'any-slug',
+        title: 'any game',
+        image: 'http://localhost:1337/any_url',
+        price: '$80.00'
+      }
+    ])
+    expect(result.current.total).toBe('$80.00')
   })
 
   it('should return true/false if cart item exist', () => {

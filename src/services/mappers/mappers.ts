@@ -60,7 +60,7 @@ export const mapperOrder = (order: QueryOrders_orders): GameItemProps[] => {
   return order.games.map(game => ({
     id: game.id,
     title: game.name,
-    price: formatPrice(game.price),
+    price: formatPrice(game.discount || game.price),
     image: getImageUrl(game.cover?.url),
     downloadLink: '',
     slug: game.slug,

@@ -63,7 +63,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   })
 
   const total = formatPrice(
-    data?.reduce((total, { price }) => total + formattedPriceToNumber(price), 0) || 0
+    data?.reduce(
+      (total, { price, discount }) => total + formattedPriceToNumber(discount || price),
+      0
+    ) || 0
   )
 
   const items = useMemo(
@@ -71,7 +74,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       data?.map(game => ({
         id: game.id,
         image: game.image,
-        price: game.price,
+        price: game.discount || game.price,
         title: game.title,
         slug: game.slug
       })) || [],

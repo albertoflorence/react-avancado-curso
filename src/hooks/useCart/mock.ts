@@ -43,3 +43,33 @@ export const gamesMock: MockedResponse = {
     }
   }
 }
+
+export const gameDiscountMock: MockedResponse = {
+  request: {
+    query: QUERY_GAMES,
+    variables: { where: { slug: ['any-slug'] } }
+  },
+  result: {
+    data: {
+      games: [
+        {
+          id: '3',
+          name: 'any game',
+          slug: 'any-slug',
+          cover: {
+            url: '/any_url'
+          },
+          developers: [{ name: 'any developer' }],
+          price: 100,
+          release_date: 'any date',
+          discount: 80,
+          __typename: 'Game'
+        }
+      ],
+      gamesConnection: {
+        values: [{ id: '3' }],
+        __typename: 'GameConnection'
+      }
+    }
+  }
+}
