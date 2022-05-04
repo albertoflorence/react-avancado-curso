@@ -77,7 +77,8 @@ export const getGameBySlug = async (slug: string): Promise<GameProps | undefined
       title: game.name,
       price: formatPrice(game.price),
       description: game.short_description,
-      slug
+      slug,
+      ...(game.discount && { discount: formatPrice(game.discount) })
     },
     gallery: {
       items: game.gallery.map(image => ({

@@ -23,6 +23,7 @@ export const QUERY_GAME_BY_SLUG = gql`
       short_description
       description
       price
+      discount
       rating
       release_date
       gallery {

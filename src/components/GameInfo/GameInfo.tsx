@@ -11,16 +11,20 @@ export interface GameInfoProps {
   description: string
   price: string
   slug: string
+  discount?: string
 }
 
-const GameInfo = ({ title, description, price, slug, id }: GameInfoProps) => (
+const GameInfo = ({ title, description, price, discount, slug, id }: GameInfoProps) => (
   <S.Wrapper data-cy="game-info">
     <Heading line="bottom" lineColor="primary" color="black">
       {title}
     </Heading>
     <S.Description>{description}</S.Description>
 
-    <Price>{price}</Price>
+    <S.PriceBox discount={Boolean(discount)}>
+      {discount && <div>{price}</div>}
+      <Price>{discount || price}</Price>
+    </S.PriceBox>
     <S.ButtonsWrapper>
       <WishlistButton id={id} size="large" hasText />
       <CartButton size="large" slug={slug} hasText />

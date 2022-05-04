@@ -22,4 +22,10 @@ describe('<GameInfo />', () => {
     expect(screen.getByRole('button', { name: /add to cart/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /wishlist/i })).toBeInTheDocument()
   })
+
+  it('should render with discount', () => {
+    init({ ...mockProps, discount: 'R$100,00' })
+    expect(screen.getByText('R$200,00')).toBeInTheDocument()
+    expect(screen.getByText('R$100,00')).toBeInTheDocument()
+  })
 })
