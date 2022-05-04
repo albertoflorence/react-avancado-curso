@@ -136,3 +136,19 @@ Cypress.Commands.add('removeFromWishlist', (cartNumber = 0) => {
       cy.findByRole('button', { name: /remove from wishlist/i }).click()
     })
 })
+
+Cypress.Commands.add('buyGamesOnCart', (user: User) => {
+  cy.findAllByLabelText('Icon Badge').first().click()
+  cy.findByRole('link', { name: /buy it now/i }).click()
+
+  cy.url().should('eq', Cypress.config().baseUrl + '/login?callbackUrl=/cart')
+  cy.findByRole('link', { name: /sign up/i }).click()
+
+  cy.url().should('eq', Cypress.config().baseUrl + '/signup')
+  cy.signUp(user)
+
+  cy.url().should('eq', Cypress.config().baseUrl + '/')
+
+  cy.findAllByLabelText('Icon Badge').first().click()
+  cy.findByRole('link', { name: /buy it now/i }).click()
+})

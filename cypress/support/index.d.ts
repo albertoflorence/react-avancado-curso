@@ -30,5 +30,6 @@ declare namespace Cypress {
     removeFromShoppingCart: (cartNumber?: number) => Chainable<Element>
     addToWishlist: (cartNumber?: number) => Chainable<Element>
     removeFromWishlist: (cartNumber?: number) => Chainable<Element>
+    buyGamesOnCart: (user: User) => Chainable<Element>
   }
 }

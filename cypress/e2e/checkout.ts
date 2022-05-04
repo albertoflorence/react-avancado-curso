@@ -13,19 +13,13 @@ describe('Checkout', () => {
         cy.addToShoppingCart(1)
       })
 
-      cy.findAllByLabelText('Icon Badge').first().click()
-      cy.findByRole('link', { name: /buy it now/i }).click()
-      cy.findByRole('link', { name: /sign up/i }).click()
-      cy.signUp(user)
-
-      cy.findAllByLabelText('Icon Badge').first().click()
-      cy.findByRole('link', { name: /buy it now/i }).click()
+      cy.buyGamesOnCart(user)
 
       cy.findByText(/you can get for free !/i).should('exist')
       cy.findByRole('button', { name: /buy now/i }).click()
 
+      cy.url({ timeout: 15000 }).should('eq', Cypress.config().baseUrl + '/success')
       cy.findByRole('heading', { name: /your purchase was successful!/i })
-      cy.url().should('equal', Cypress.config().baseUrl + '/success')
     })
 
     it('should show bought games in orders', () => {
@@ -45,13 +39,7 @@ describe('Checkout', () => {
         cy.addToShoppingCart(1)
       })
 
-      cy.findAllByLabelText('Icon Badge').first().click()
-      cy.findByRole('link', { name: /buy it now/i }).click()
-      cy.findByRole('link', { name: /sign up/i }).click()
-      cy.signUp(user)
-
-      cy.findAllByLabelText('Icon Badge').first().click()
-      cy.findByRole('link', { name: /buy it now/i }).click()
+      cy.buyGamesOnCart(user)
 
       cy.findByRole('button', { name: /buy now/i }).should('have.attr', 'disabled')
 
@@ -61,8 +49,8 @@ describe('Checkout', () => {
 
       cy.findByRole('button', { name: /buy now/i }).click()
 
+      cy.url({ timeout: 15000 }).should('eq', Cypress.config().baseUrl + '/success')
       cy.findByRole('heading', { name: /your purchase was successful!/i })
-      cy.url().should('equal', Cypress.config().baseUrl + '/success')
     })
 
     it('should show paid bought games in orders', () => {
