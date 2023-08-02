@@ -36,11 +36,11 @@ const filters: FilterProps[] = [
     name: 'price_lte',
     inputs: [
       { label: 'FREE', name: '0' },
+      { label: 'Under $20', name: '20' },
+      { label: 'Under $35', name: '35' },
       { label: 'Under $50', name: '50' },
       { label: 'Under $100', name: '100' },
-      { label: 'Under $150', name: '150' },
-      { label: 'Under $200', name: '200' },
-      { label: 'Under $500', name: '500' }
+      { label: 'Under $300', name: '300' }
     ]
   },
   {
