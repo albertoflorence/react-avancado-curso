@@ -1,6 +1,6 @@
 ![React Avançado](https://raw.githubusercontent.com/React-Avancado/boilerplate/master/public/img/logo-gh.svg)
 
-Esse é um [projeto](https://curso-wongames.vercel.app/) feito a partir do curso desenvolvido por [Willian Justen](https://www.udemy.com/course/react-avancado/) na Udemy.
+Esse é um [projeto](https://wongames-af.vercel.app/) feito a partir do curso desenvolvido por [Willian Justen](https://www.udemy.com/course/react-avancado/) na Udemy.
 
 ## O que tem dentro?
 
